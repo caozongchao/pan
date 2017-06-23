@@ -25,17 +25,30 @@ return [
                 ],
             ],
         ],
+        'assetManager' => [
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'jsOptions' => [
+                        'position' => \yii\web\View::POS_HEAD,
+                    ]
+                ],
+                // 'yii\bootstrap\BootstrapAsset' => [
+                //     'css' => []
+                // ],
+                // 'yii\bootstrap\BootstrapPluginAsset' => [
+                //     'js'=>[]
+                // ],
+            ],
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
