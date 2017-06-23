@@ -47,6 +47,10 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'index.php' => '',
+                'c-<id:\d+>' => 'category/index',
+                'c-<id:\d+>-<second:\w+>' => 'category/second',
+                'd-<id:\d+>' => 'detail/index',
             ],
         ],
     ],

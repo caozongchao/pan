@@ -7,7 +7,7 @@ use yii\web\Controller;
 /**
  * Site controller
  */
-class SiteController extends Controller
+class UserController extends Controller
 {
     public function actionIndex()
     {
