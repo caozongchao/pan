@@ -48,9 +48,19 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'index.php' => '',
+
                 'c-<id:\d+>' => 'category/index',
+                'c-<id:\d+>-<page:\d+>' => 'category/index',
                 'c-<id:\d+>-<second:\w+>' => 'category/second',
+                'c-<id:\d+>-<second:\w+>-<page:\d+>' => 'category/second',
+
                 'd-<id:\d+>' => 'detail/index',
+
+                'u-<id:\d+>' => 'user/index',
+                'u-<id:\d+>-<page:\d+>' => 'user/index',
+
+                's-<k:\w+>' => 'search/index',
+                's-<k:\w+>-<page:\d+>' => 'search/index',
             ],
         ],
     ],

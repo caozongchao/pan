@@ -9,15 +9,11 @@ use yii\helpers\Url;
             <p><a href="<?=Url::to(['user/index','id' => $data->user->uid])?>" class="btn btn-default">进入主页</a></p>
         </center>
     </div>
-    <div class="panel panel-default">
+    <div class="panel panel-info">
         <div class="panel-heading">Ta 分享的最新资源：</div>
         <div class="list-group">
-            <?php foreach ($userShares as $userShare): ?>
-                <?php if ($userShare->shorturl): ?>
-                    <a href="http://pan.baidu.com/s/<?=$userShare->shorturl?>" target="_blank" class="list-group-item"><?=$userShare->title?></a>
-                <?php else: ?>
-                    <a href="http://pan.baidu.com/share/link?shareid=<?=$userShare->shareid?>&uk=<?=$userShare->uk?>?>" target="_blank" class="list-group-item"><?=$userShare->title?></a>
-                <?php endif ?>
+            <?php foreach ($userNewShares as $userNewShare): ?>
+                <a href="<?=Url::to(['detail/index','id' => $userNewShare->fid])?>" target="_blank" class="list-group-item"><?=$userNewShare->title?></a>
             <?php endforeach ?>
         </div>
     </div>

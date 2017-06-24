@@ -57,22 +57,18 @@ $this->title = $data->title.'_云上搜索';
                     </center>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <?=HtmlPurifier::process($data->title)?>的相关资源
                 </div>
                 <div class="list-group">
                     <?php foreach ($relateShares as $relateShare): ?>
-                        <?php if ($relateShare->shorturl): ?>
-                            <a href="http://pan.baidu.com/s/<?=$relateShare->shorturl?>" class="list-group-item"><?=$relateShare->title?></a>
-                        <?php else: ?>
-                            <a href="http://pan.baidu.com/share/link?shareid=<?=$relateShare->shareid?>&uk=<?=$relateShare->uk?>?>" class="list-group-item"><?=$relateShare->title?></a>
-                        <?php endif ?>
+                        <a href="<?=Url::to(['detail/index','id' => $relateShare->fid])?>" target="_blank" class="list-group-item"><?=$relateShare->title?></a>
                     <?php endforeach ?>
                 </div>
             </div>
         </div>
-        <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/detailSidebar.php',['data' => $data,'userShares' => $userShares]); ?>
+        <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/detailSidebar.php',['data' => $data,'userNewShares' => $userNewShares]); ?>
     </div>
 </div>
-<?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/footerContent.php'); ?>
+<?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/contentFooter.php'); ?>

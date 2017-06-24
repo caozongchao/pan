@@ -20,8 +20,8 @@ rmrevin\yii\fontawesome\AssetBundle::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
+    <meta name="keywords" content="云上搜索,百度网盘搜索,百度云搜索,百度网盘资源,百度云资源" />
+    <meta name="description" content="云上搜索，是搜索百度网盘资源的利器，收录百度云盘资源，每天更新各类视频，种子，小说，壁纸，音乐等优质网盘资源。好资源，尽在云上搜索" />
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>

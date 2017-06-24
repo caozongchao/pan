@@ -6,6 +6,7 @@ use yii\web\Controller;
 use common\models\ShareFile;
 use yii\data\Pagination;
 use yii\helpers\Url;
+use yii\widgets\LinkPager;
 
 /**
  * Site controller
@@ -24,8 +25,17 @@ class CategoryController extends Controller
         $query = ShareFile::find()->where(['file_type' => $id])->orderBy(['fid' => SORT_DESC]);
         $count = $query->count();
         $pagination = new Pagination(['totalCount' => $count,'pageSize' => 20]);
+        $linkPager = LinkPager::widget([
+                            'pagination' => $pagination,
+                            'nextPageLabel' => '下一页',
+                            'prevPageLabel' => '上一页',
+                            'firstPageLabel' => '首页',
+                            'lastPageLabel' => '尾页',
+                            'maxButtonCount' => 5,
+                        ]);
+        $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
         $datas = $query->offset($pagination->offset)->limit($pagination->limit)->with('user')->all();
-        return $this->render('index',['pagination' => $pagination,'datas' => $datas,'id' => $id,'categoryName' => $categoryName,'categorySecondLevel' => $categorySecondLevel]);
+        return $this->render('index',['datas' => $datas,'id' => $id,'categoryName' => $categoryName,'categorySecondLevel' => $categorySecondLevel,'linkPager' => $linkPager]);
     }
 
     public function actionSecond()
@@ -47,8 +57,17 @@ class CategoryController extends Controller
         $query = ShareFile::find()->where(['file_type' => $id,'ext' => '.'.$second])->orderBy(['fid' => SORT_DESC]);
         $count = $query->count();
         $pagination = new Pagination(['totalCount' => $count,'pageSize' => 20]);
+        $linkPager = LinkPager::widget([
+                            'pagination' => $pagination,
+                            'nextPageLabel' => '下一页',
+                            'prevPageLabel' => '上一页',
+                            'firstPageLabel' => '首页',
+                            'lastPageLabel' => '尾页',
+                            'maxButtonCount' => 5,
+                        ]);
+        $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
         $datas = $query->offset($pagination->offset)->limit($pagination->limit)->with('user')->all();
-        return $this->render('second',['pagination' => $pagination,'datas' => $datas,'id' => $id,'categoryName' => $categoryName,'categorySecondLevel' => $categorySecondLevel,'second' => $second]);
+        return $this->render('second',['datas' => $datas,'id' => $id,'categoryName' => $categoryName,'categorySecondLevel' => $categorySecondLevel,'second' => $second,'linkPager' => $linkPager]);
     }
 
     public static function getCategoryName($id)

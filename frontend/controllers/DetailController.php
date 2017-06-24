@@ -20,9 +20,9 @@ class DetailController extends Controller
         if ($data) {
             $data->click = $data->click + 1;
             $data->save();
-            $userShares = ShareFile::find()->where(['uid' => $data->user->uid])->orderBy(['fid' => SORT_DESC])->limit(10)->all();
+            $userNewShares = ShareFile::find()->where(['uid' => $data->user->uid])->orderBy(['fid' => SORT_DESC])->limit(10)->all();
             $relateShares = ShareFile::find()->where(['file_type' => $data->file_type])->andWhere(['!=','fid',$data->fid])->orderBy(['fid' => SORT_DESC])->limit(10)->all();
         }
-        return $this->render('index',['data' => $data,'userShares' => $userShares,'relateShares' => $relateShares]);
+        return $this->render('index',['data' => $data,'userNewShares' => $userNewShares,'relateShares' => $relateShares]);
     }
 }

@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 /* @var $this yii\web\View */
 
-$this->title = '磁力搜索-bt搜索-磁力链接-迅雷下载_水熊BT';
+$this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
 ?>
 <div class="container" style="padding-top:60px;">
     <div class="row">
@@ -13,11 +13,11 @@ $this->title = '磁力搜索-bt搜索-磁力链接-迅雷下载_水熊BT';
 
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-            <form action="<?=Url::to(['site/search'])?>">
+            <form>
                 <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" name="k">
+                    <input type="text" class="form-control" name="k" id="k">
                     <span class="input-group-btn">
-                        <button class="btn btn-info" type="submit">
+                        <button class="btn btn-info" id="searchButton" type="submit">
                             <i class="fa fa-fw fa-search"></i>
                         </button>
                     </span>
@@ -27,4 +27,11 @@ $this->title = '磁力搜索-bt搜索-磁力链接-迅雷下载_水熊BT';
     </div>
     <!-- /.row -->
 </div>
+<script type="text/javascript">
+    $("#searchButton").click(function(){
+        var key = $("#k").val();
+        window.location.href="/s-"+encodeURIComponent(key);
+        return false;
+    });
+</script>
 <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/footer.php'); ?>

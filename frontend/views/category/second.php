@@ -1,10 +1,9 @@
 <?php
-use yii\widgets\LinkPager;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Url;
 use frontend\helpers\FormatSizeHelper;
 use frontend\helpers\ColorHelper;
-$this->title = $categoryName.'目录_云上搜索';
+$this->title = $categoryName.$second.'资源目录_云上搜索';
 ?>
 <div class="container" style="padding-top:60px;">
     <div class="row">
@@ -54,11 +53,7 @@ $this->title = $categoryName.'目录_云上搜索';
                 </ul>
                 <nav>
                     <center>
-                        <?php
-                            echo LinkPager::widget([
-                                'pagination' => $pagination,
-                            ]);
-                        ?>
+                        <?=$linkPager;?>
                     </center>
                 </nav>
 
@@ -67,4 +62,4 @@ $this->title = $categoryName.'目录_云上搜索';
         <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/sidebar.php'); ?>
     </div>
 </div>
-<?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/footerContent.php'); ?>
+<?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/contentFooter.php'); ?>

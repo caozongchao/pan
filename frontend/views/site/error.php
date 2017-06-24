@@ -15,4 +15,4 @@ use yii\helpers\Html;
         </div>
     </div> <!-- /.row -->
 </div>
-<?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/footer1.php'); ?>
+<?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/contentFooter.php'); ?>
