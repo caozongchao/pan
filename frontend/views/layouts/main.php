@@ -25,6 +25,17 @@ rmrevin\yii\fontawesome\AssetBundle::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+<!-- 百度统计 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c8ace86c3b6a855063bf104f04a0e440";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- 百度统计 -->
 </head>
 <body>
 <?php $this->beginBody() ?>
