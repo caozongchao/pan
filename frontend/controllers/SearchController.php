@@ -65,6 +65,12 @@ class SearchController extends Controller
 
     public function actionCategory()
     {
+        $categoryArray = [0,1,2,3,4,5,6,7];
+        $category =  Yii::$app->request->get('category');
+        $categorySecondLevel = CategoryController::getCategorySecondLevel($category);
+        if (!in_array($category,$categoryArray)) {
+            return $this->redirect(['site/index']);
+        }
         $key = Yii::$app->request->get('k');
         if (!$key) {
             return $this->redirect(['site/index']);
@@ -92,7 +98,7 @@ class SearchController extends Controller
             $datas = ShareFile::find()->where(['in','fid',$ids])->all();
             return $this->render('search',['pagination' => $pagination,'datas' => $datas,'k' => $key,'type' => '快速']);
         }else{
-            $query = ShareFile::find()->where(['like','title',$key])->orderBy(['fid' => SORT_DESC]);
+            $query = ShareFile::find()->where(['like','title',$key])->andWhere(['file_type' => $category])->orderBy(['fid' => SORT_DESC]);
             $count = $query->count();
             $pagination = new Pagination([
                 'totalCount' => $count,
@@ -109,7 +115,67 @@ class SearchController extends Controller
                                 'maxButtonCount' => 5,
                             ]);
             $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
-            return $this->render('index',['datas' => $datas,'k' => $key,'type' => '慢速','linkPager' => $linkPager]);
+            return $this->render('category',['datas' => $datas,'category' => $category,'k' => $key,'type' => '慢速','linkPager' => $linkPager,'categorySecondLevel' => $categorySecondLevel]);
+        }
+    }
+
+    public function actionSecond()
+    {
+        $categoryArray = [0,1,2,3,4,5,6,7];
+        $category =  Yii::$app->request->get('category');
+        $categorySecondLevel = CategoryController::getCategorySecondLevel($category);
+        if (!in_array($category,$categoryArray)) {
+            return $this->redirect(['site/index']);
+        }
+        $key = Yii::$app->request->get('k');
+        if (!$key) {
+            return $this->redirect(['site/index']);
+        }
+        $second = Yii::$app->request->get('second');
+        if (!in_array($second,$categorySecondLevel)) {
+            return $this->redirect(['site/index']);
+        }
+        $pageSize = 20;
+        $currentPage = Yii::$app->request->get('page');
+        if (!isset($currentPage)) {
+            $currentPage = 1;
+        }
+        $sphinx = new \SphinxClient();
+        $sphinx->SetServer ('localhost',9312);
+        $sphinx->SetArrayResult (true);
+        //$sphinx->SetSortMode(SPH_SORT_ATTR_DESC, "id");
+        $sphinx->SetLimits((($currentPage - 1) * $pageSize),$pageSize,1000);
+        $sphinx->SetMaxQueryTime(10);
+        $index = 'pan';
+        $results = $sphinx->query ($key, $index);
+        //判断sphinx中是否取出数据，如果为空，再从mysql通过like取数据
+        if ($results['total'] != 0) {
+            $pagination = new Pagination(['totalCount' => $results['total'],'pageSize' => $pageSize]);
+            $ids = [];
+            foreach ($results['matches'] as $value) {
+                $ids[] = $value['id'];
+            }
+            $datas = ShareFile::find()->where(['in','fid',$ids])->all();
+            return $this->render('search',['pagination' => $pagination,'datas' => $datas,'k' => $key,'type' => '快速']);
+        }else{
+            $query = ShareFile::find()->where(['like','title',$key])->andWhere(['file_type' => $category])->andWhere(['ext' => '.'.$second])->orderBy(['fid' => SORT_DESC]);
+            $count = $query->count();
+            $pagination = new Pagination([
+                'totalCount' => $count,
+                'pageSize' => $pageSize,
+                'pageSizeParam' => false,
+            ]);
+            $datas = $query->offset($pagination->offset)->limit($pagination->limit)->all();
+            $linkPager = LinkPager::widget([
+                                'pagination' => $pagination,
+                                'nextPageLabel' => '下一页',
+                                'prevPageLabel' => '上一页',
+                                'firstPageLabel' => '首页',
+                                'lastPageLabel' => '尾页',
+                                'maxButtonCount' => 5,
+                            ]);
+            $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
+            return $this->render('second',['datas' => $datas,'category' => $category,'k' => $key,'type' => '慢速','linkPager' => $linkPager,'categorySecondLevel' => $categorySecondLevel,'second' => $second]);
         }
     }
 }

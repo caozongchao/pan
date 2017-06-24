@@ -11,7 +11,24 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
             <h3>"<?=HtmlPurifier::process($k)?>"<small> 的搜索结果，<small>搜索引擎：<?=$type?></small></small></h3>
             <ul class="nav nav-pills">
                 <?php foreach ([0 => '视频',1=> '图片',2=> '文档',3 => '音乐',4 => '压缩包',5 => '软件',6 => '种子',7 => '其他'] as $key => $value): ?>
-                    <li><a href="<?=Url::to(['search/category','category' => $key,'k' => $k])?>"><?=$value?></a></li>
+                    <?php if ($category == $key): ?>
+                        <li class="active"><a class="disabled"><?=$value?></a></li>
+                    <?php else: ?>
+                        <li><a href="<?=Url::to(['search/category','category' => $key,'k' => $k])?>"><?=$value?></a></li>
+                    <?php endif?>
+                <?php endforeach ?>
+            </ul>
+            <ul class="nav nav-pills">
+                <?php foreach ($categorySecondLevel as $key => $value): ?>
+                    <?php if (count($categorySecondLevel) == 1): ?>
+                        <li class="active"><a class="disabled"><?=$value?></a></li>
+                    <?php else: ?>
+                        <?php if ($value == $second): ?>
+                            <li class="active"><a class="disabled"><?=$value?></a></li>
+                        <?php else: ?>
+                            <li><a href="<?=Url::to(['search/second','category' => $category,'k' => $k,'second' => $value])?>"><?=$value?></a></li>
+                        <?php endif ?>
+                    <?php endif?>
                 <?php endforeach ?>
             </ul>
             <hr>

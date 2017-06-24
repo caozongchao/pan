@@ -50,7 +50,7 @@ rmrevin\yii\fontawesome\AssetBundle::register($this);
                     <li><a href="<?=Url::to(['category/index','id' => 4])?>">压缩包</a></li>
                     <li><a href="<?=Url::to(['category/index','id' => 5])?>">软件</a></li>
                     <li><a href="<?=Url::to(['category/index','id' => 6])?>">种子</a></li>
-                    <li><a href="<?=Url::to(['category/index','id' => -1])?>">其他</a></li>
+                    <li><a href="<?=Url::to(['category/index','id' => 7])?>">其他</a></li>
                 </ul>
             </div>
         </div>

@@ -15,7 +15,7 @@ class CategoryController extends Controller
 {
     public function actionIndex()
     {
-        $categoryArray = [0,1,2,3,4,5,6,-1];
+        $categoryArray = [0,1,2,3,4,5,6,7];
         $id = Yii::$app->request->get('id');
         if (!in_array($id,$categoryArray)) {
             return $this->redirect(['site/index']);
@@ -40,7 +40,7 @@ class CategoryController extends Controller
 
     public function actionSecond()
     {
-        $categoryArray = [0,1,2,3,4,5,6,-1];
+        $categoryArray = [0,1,2,3,4,5,6,7];
         $id = Yii::$app->request->get('id');
         $second = Yii::$app->request->get('second');
         if (!in_array($id,$categoryArray)) {
@@ -72,16 +72,13 @@ class CategoryController extends Controller
 
     public static function getCategoryName($id)
     {
-        if ($id == -1) {
-            return $categoryName = '其他';
-        }
-        $categoryNameArray = ['视频','图片','文档','音乐','压缩包','软件','种子'];
+        $categoryNameArray = ['视频','图片','文档','音乐','压缩包','软件','种子','其他'];
         return $categoryName = $categoryNameArray[$id];
     }
 
     public static function getCategorySecondLevel($id)
     {
-        if ($id == -1) {
+        if ($id == 7) {
             return $categorySecondLevel = [];
         }
         $categorySecondLevelArray = [

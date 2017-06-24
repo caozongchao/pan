@@ -63,6 +63,8 @@ return [
                 's-<k:\w+>-<page:\d+>' => 'search/index',
                 's-<category:\d+>-<k:\w+>' => 'search/category',
                 's-<category:\d+>-<k:\w+>-<page:\d+>' => 'search/category',
+                's-<category:\d+>-<k:\w+>-<second:\w+>' => 'search/second',
+                's-<category:\d+>-<k:\w+>-<second:\w+>-<page:\d+>' => 'search/second',
             ],
         ],
     ],

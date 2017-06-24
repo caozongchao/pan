@@ -8,7 +8,7 @@ use yii\helpers\Url;
         <div class="input-group">
             <input type="text" class="form-control" name="k" id="k">
             <span class="input-group-btn">
-                <button class="btn btn-info" id="searchButton" type="button">
+                <button class="btn btn-info" id="searchButton" type="submit">
                     <i class="fa fa-fw fa-search"></i>
             </button>
             </span>
