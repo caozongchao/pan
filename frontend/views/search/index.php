@@ -5,12 +5,16 @@ use frontend\helpers\FormatSizeHelper;
 use frontend\helpers\ColorHelper;
 $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
 ?>
-<div class="container" style="padding-top:100px;">
+<div class="container" style="padding-top:70px;">
     <div class="row">
-        <!-- Results Content Column -->
         <div class="col-lg-8">
-            <!-- Page title -->
-            <h1>"<?=HtmlPurifier::process($k)?>"<small> 的搜索结果，<small>搜索引擎：<?=$type?></small></small></h1><hr>
+            <h3>"<?=HtmlPurifier::process($k)?>"<small> 的搜索结果，<small>搜索引擎：<?=$type?></small></small></h3>
+            <ul class="nav nav-pills">
+                <?php foreach ([0 => '视频',1=> '图片',2=> '文档',3 => '音乐',4 => '压缩包',5 => '软件',6 => '种子',-1 => '其他'] as $key => $value): ?>
+                    <li><a href="<?=Url::to(['search/category','category' => $key,'k' => $k])?>"><?=$value?></a></li>
+                <?php endforeach ?>
+            </ul>
+            <hr>
             <div class="table-responsive">
                 <ul class="media-list">
                     <?php foreach ($datas as $key => $value): ?>
@@ -47,8 +51,7 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
                 </nav>
             </div>
         </div>
-        <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/sidebar.php'); ?>
+        <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/searchSidebar.php'); ?>
     </div>
-    <!-- /.row -->
 </div>
 <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/contentFooter.php'); ?>

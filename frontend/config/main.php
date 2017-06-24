@@ -61,6 +61,8 @@ return [
 
                 's-<k:\w+>' => 'search/index',
                 's-<k:\w+>-<page:\d+>' => 'search/index',
+                's-<category:\d+>-<k:\w+>' => 'search/category',
+                's-<category:\d+>-<k:\w+>-<page:\d+>' => 'search/category',
             ],
         ],
     ],

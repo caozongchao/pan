@@ -8,19 +8,19 @@ $this->title = $categoryName.$second.'资源目录_云上搜索';
 <div class="container" style="padding-top:60px;">
     <div class="row">
         <div class="col-lg-8">
-            <div class="btn-group">
+            <ul class="nav nav-pills">
                 <?php foreach ($categorySecondLevel as $value): ?>
                     <?php if (count($categorySecondLevel) == 1): ?>
-                        <button type="button" class="btn btn-default" disabled="disabled"><b><?=$value?></b></button>
+                        <li class="active"><a class="disabled"><?=$value?></a></li>
                     <?php else: ?>
                         <?php if ($value == $second): ?>
-                            <button class="btn btn-success" disabled="disabled"><b><?=$value?></b></button>
+                            <li class="active"><a class="disabled"><?=$value?></a></li>
                         <?php else: ?>
-                            <a href="<?=Url::to(['category/second','id' => $id,'second' => $value])?>" class="btn btn-default"><b><?=$value?></b></a>
+                            <li><a href="<?=Url::to(['category/second','id' => $id,'second' => $value])?>"><?=$value?></a></li>
                         <?php endif ?>
                     <?php endif?>
                 <?php endforeach ?>
-            </div>
+            </ul>
             <hr>
             <div class="table-responsive">
                 <ul class="media-list">
@@ -59,7 +59,7 @@ $this->title = $categoryName.$second.'资源目录_云上搜索';
 
             </div>
         </div>
-        <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/sidebar.php'); ?>
+        <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/categorySidebar.php'); ?>
     </div>
 </div>
 <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/contentFooter.php'); ?>
