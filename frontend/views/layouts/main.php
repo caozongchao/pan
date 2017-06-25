@@ -25,6 +25,9 @@ rmrevin\yii\fontawesome\AssetBundle::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+<style type="text/css">
+a{word-break: break-all;word-wrap: break-word;}
+</style>
 <!-- 百度统计 -->
 <script>
 var _hmt = _hmt || [];
