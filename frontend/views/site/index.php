@@ -14,7 +14,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
     <div class="row">
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-center">
-            <form>
+            <form action="<?=Url::to(['search/index'])?>">
                 <div class="input-group custom-search-form">
                     <input type="text" class="form-control" name="k" id="k">
                     <span class="input-group-btn">
@@ -171,14 +171,14 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
 
 </div>
 <script type="text/javascript">
-    $("#searchButton").click(function(){
-        var key = $("#k").val();
-        var regu = "^[^a-zA-Z0-9\u4e00-\u9fa5]$";
-        var reg = new RegExp(regu);
-        var rep = key.replace(reg, '');
-        if (!rep) {return false;}
-        window.location.href="/s-"+encodeURIComponent(rep);
-        return false;
-    });
+    // $("#searchButton").click(function(){
+    //     var key = $("#k").val();
+    //     // var regu = "^[^a-zA-Z0-9\u4e00-\u9fa5]$";
+    //     // var reg = new RegExp(regu);
+    //     // var key = key.replace(reg, '');
+    //     // if (!key) {return false;}
+    //     window.location.href="/s-"+encodeURIComponent(key);
+    //     return false;
+    // });
 </script>
 <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/footer.php'); ?>

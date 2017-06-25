@@ -15,8 +15,9 @@ class SearchController extends Controller
 {
     public function actionIndex()
     {
+        // echo Url::current();die;
         $key = Yii::$app->request->get('k');
-        $key = preg_replace('/[^a-zA-Z0-9\x{4e00}-\x{9fa5}]/u','',$key);
+        // $key = preg_replace('/[^a-zA-Z0-9\x{4e00}-\x{9fa5}]/u','',$key);
         if (!$key) {
             return $this->redirect(['site/index']);
         }
@@ -44,7 +45,7 @@ class SearchController extends Controller
                                 'lastPageLabel' => '尾页',
                                 'maxButtonCount' => 5,
                             ]);
-            $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
+            // $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
             $ids = [];
             foreach ($results['matches'] as $value) {
                 $ids[] = $value['id'];
@@ -68,7 +69,7 @@ class SearchController extends Controller
                                 'lastPageLabel' => '尾页',
                                 'maxButtonCount' => 5,
                             ]);
-            $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
+            // $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
             return $this->render('index',['datas' => $datas,'k' => $key,'type' => '慢速','linkPager' => $linkPager]);
         }
     }
@@ -82,7 +83,7 @@ class SearchController extends Controller
             return $this->redirect(['site/index']);
         }
         $key = Yii::$app->request->get('k');
-        $key = preg_replace('/[^a-zA-Z0-9\x{4e00}-\x{9fa5}]/u','',$key);
+        // $key = preg_replace('/[^a-zA-Z0-9\x{4e00}-\x{9fa5}]/u','',$key);
         if (!$key) {
             return $this->redirect(['site/index']);
         }
@@ -110,7 +111,7 @@ class SearchController extends Controller
                                 'lastPageLabel' => '尾页',
                                 'maxButtonCount' => 5,
                             ]);
-            $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
+            // $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
             $ids = [];
             foreach ($results['matches'] as $value) {
                 $ids[] = $value['id'];
@@ -134,7 +135,7 @@ class SearchController extends Controller
                                 'lastPageLabel' => '尾页',
                                 'maxButtonCount' => 5,
                             ]);
-            $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
+            // $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
             return $this->render('category',['datas' => $datas,'category' => $category,'k' => $key,'type' => '慢速','linkPager' => $linkPager,'categorySecondLevel' => $categorySecondLevel]);
         }
     }
@@ -148,7 +149,7 @@ class SearchController extends Controller
             return $this->redirect(['site/index']);
         }
         $key = Yii::$app->request->get('k');
-        $key = preg_replace('/[^a-zA-Z0-9\x{4e00}-\x{9fa5}]/u','',$key);
+        // $key = preg_replace('/[^a-zA-Z0-9\x{4e00}-\x{9fa5}]/u','',$key);
         if (!$key) {
             return $this->redirect(['site/index']);
         }
@@ -180,7 +181,7 @@ class SearchController extends Controller
                                 'lastPageLabel' => '尾页',
                                 'maxButtonCount' => 5,
                             ]);
-            $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
+            // $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
             $ids = [];
             foreach ($results['matches'] as $value) {
                 $ids[] = $value['id'];
@@ -204,7 +205,7 @@ class SearchController extends Controller
                                 'lastPageLabel' => '尾页',
                                 'maxButtonCount' => 5,
                             ]);
-            $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
+            // $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
             return $this->render('second',['datas' => $datas,'category' => $category,'k' => $key,'type' => '慢速','linkPager' => $linkPager,'categorySecondLevel' => $categorySecondLevel,'second' => $second]);
         }
     }

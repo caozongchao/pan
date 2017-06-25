@@ -31,7 +31,7 @@ class UserController extends Controller
                             'lastPageLabel' => '尾页',
                             'maxButtonCount' => 5,
                         ]);
-        $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
+        // $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
         $datas = $query->offset($pagination->offset)->limit($pagination->limit)->orderBy(['fid' => SORT_DESC])->all();
         $userHotShares = ShareFile::find()->where(['uid' => $id])->orderBy(['click' => SORT_DESC])->limit(10)->all();
         return $this->render('index',['datas' => $datas,'user' => $user,'userHotShares' => $userHotShares,'linkPager' => $linkPager]);

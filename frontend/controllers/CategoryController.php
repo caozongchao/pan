@@ -33,7 +33,7 @@ class CategoryController extends Controller
                             'lastPageLabel' => '尾页',
                             'maxButtonCount' => 5,
                         ]);
-        $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
+        // $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
         $datas = $query->offset($pagination->offset)->limit($pagination->limit)->with('user')->all();
         return $this->render('index',['datas' => $datas,'id' => $id,'categoryName' => $categoryName,'categorySecondLevel' => $categorySecondLevel,'linkPager' => $linkPager]);
     }
@@ -65,7 +65,7 @@ class CategoryController extends Controller
                             'lastPageLabel' => '尾页',
                             'maxButtonCount' => 5,
                         ]);
-        $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
+        // $linkPager = preg_replace('/href="(.*)\?(.*)page=(\d+)/', "href='$1-$3'", $linkPager);
         $datas = $query->offset($pagination->offset)->limit($pagination->limit)->with('user')->all();
         return $this->render('second',['datas' => $datas,'id' => $id,'categoryName' => $categoryName,'categorySecondLevel' => $categorySecondLevel,'second' => $second,'linkPager' => $linkPager]);
     }
