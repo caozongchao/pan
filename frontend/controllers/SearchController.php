@@ -16,6 +16,7 @@ class SearchController extends Controller
     public function actionIndex()
     {
         $key = Yii::$app->request->get('k');
+        $key = preg_replace('/[^a-zA-Z0-9\x{4e00}-\x{9fa5}]/u','',$key);
         if (!$key) {
             return $this->redirect(['site/index']);
         }
@@ -81,6 +82,7 @@ class SearchController extends Controller
             return $this->redirect(['site/index']);
         }
         $key = Yii::$app->request->get('k');
+        $key = preg_replace('/[^a-zA-Z0-9\x{4e00}-\x{9fa5}]/u','',$key);
         if (!$key) {
             return $this->redirect(['site/index']);
         }
@@ -146,6 +148,7 @@ class SearchController extends Controller
             return $this->redirect(['site/index']);
         }
         $key = Yii::$app->request->get('k');
+        $key = preg_replace('/[^a-zA-Z0-9\x{4e00}-\x{9fa5}]/u','',$key);
         if (!$key) {
             return $this->redirect(['site/index']);
         }

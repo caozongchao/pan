@@ -32,6 +32,10 @@ class DetailController extends Controller
             $results = $sphinx->query ($data->title, $index);
             $keys = [];
             foreach ($results['words'] as $key => $value) {
+                $key = preg_replace('/[^a-zA-Z0-9\x{4e00}-\x{9fa5}]/u','',$key);
+                if (!$key) {
+                    continue;
+                }
                 $keys[] = $key;
             }
             $relateShares = ShareFile::find()->where(['file_type' => $data->file_type])->andWhere(['!=','fid',$data->fid])->orderBy(['fid' => SORT_DESC])->limit(10)->all();

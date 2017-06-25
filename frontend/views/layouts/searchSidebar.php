@@ -19,7 +19,11 @@ use yii\helpers\Url;
 <script type="text/javascript">
     $("#searchButton").click(function(){
         var key = $("#k").val();
-        window.location.href="/s-"+encodeURIComponent(key);
+        var regu = "^[^a-zA-Z0-9\u4e00-\u9fa5]$";
+        var reg = new RegExp(regu);
+        var rep = key.replace(reg, '');
+        if (!rep) {return false;}
+        window.location.href="/s-"+encodeURIComponent(rep);
         return false;
     });
 </script>
