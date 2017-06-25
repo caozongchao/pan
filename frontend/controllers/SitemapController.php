@@ -28,7 +28,7 @@ class SitemapController extends Controller
             $detailEnd = "</urlset>";
             $detailContent = '';
             foreach ($ids as $id) {
-                $detailContent .= "<url>\n<mobile:mobile type=\"htmladapt\"/>\n<loc>http://www.yssousuo.com/$id</loc>\n<priority>0.80</priority>\n<lastmod>$date</lastmod>\n<changefreq>Always</changefreq>\n</url>\n";
+                $detailContent .= "<url>\n<mobile:mobile type=\"htmladapt\"/>\n<loc>http://www.yssousuo.com/d-$id</loc>\n<priority>0.80</priority>\n<lastmod>$date</lastmod>\n<changefreq>Always</changefreq>\n</url>\n";
             }
             fwrite($detailHandle, $detailBegin.$detailContent.$detailEnd);
             fclose($detailHandle);

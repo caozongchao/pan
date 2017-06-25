@@ -47,17 +47,17 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                // 'index.php' => '',
+                'index.php' => '',
 
-                // 'c-<id:\d+>' => 'category/index',
-                // 'c-<id:\d+>-<page:\d+>' => 'category/index',
-                // 'c-<id:\d+>-<second:\w+>' => 'category/second',
-                // 'c-<id:\d+>-<second:\w+>-<page:\d+>' => 'category/second',
+                'c-<id:\d+>' => 'category/index',
+                'c-<id:\d+>-<page:\d+>' => 'category/index',
+                'c-<id:\d+>-<second:\w+>' => 'category/second',
+                'c-<id:\d+>-<second:\w+>-<page:\d+>' => 'category/second',
 
-                // 'd-<id:\d+>' => 'detail/index',
+                'd-<id:\d+>' => 'detail/index',
 
-                // 'u-<id:\d+>' => 'user/index',
-                // 'u-<id:\d+>-<page:\d+>' => 'user/index',
+                'u-<id:\d+>' => 'user/index',
+                'u-<id:\d+>-<page:\d+>' => 'user/index',
 
                 // 's-<k:.+>' => 'search/index',
                 // 's-<k:.+>-<page:\d+>' => 'search/index',
