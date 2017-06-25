@@ -18,7 +18,7 @@ use yii\helpers\Url;
 </div>
 <script type="text/javascript">
     $("#searchButton").click(function(){
-        vvar key = $("#k").val();
+        var key = $("#k").val();
         var regu = "^[^a-zA-Z0-9\u4e00-\u9fa5]$";
         var reg = new RegExp(regu);
         var rep = key.replace(reg, '');
