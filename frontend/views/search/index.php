@@ -11,7 +11,7 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
             <h3>"<?=HtmlPurifier::process($k)?>"<small> 的搜索结果，<small>搜索引擎：<?=$type?></small></small></h3>
             <ul class="nav nav-pills">
                 <?php foreach ([0 => '视频',1=> '图片',2=> '文档',3 => '音乐',4 => '压缩包',5 => '软件',6 => '种子',7 => '其他'] as $key => $value): ?>
-                    <li><a href="<?=Url::to(['search/category','category' => $key,'k' => $k])?>"><?=$value?></a></li>
+                    <li><a href="<?=Url::to(['search/category','c' => $key,'k' => $k])?>"><?=$value?></a></li>
                 <?php endforeach ?>
             </ul>
             <hr>

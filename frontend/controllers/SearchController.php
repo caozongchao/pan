@@ -77,7 +77,7 @@ class SearchController extends Controller
     public function actionCategory()
     {
         $categoryArray = [0,1,2,3,4,5,6,7];
-        $category =  Yii::$app->request->get('category');
+        $category =  Yii::$app->request->get('c');
         $categorySecondLevel = CategoryController::getCategorySecondLevel($category);
         if (!in_array($category,$categoryArray)) {
             return $this->redirect(['site/index']);
@@ -143,7 +143,7 @@ class SearchController extends Controller
     public function actionSecond()
     {
         $categoryArray = [0,1,2,3,4,5,6,7];
-        $category =  Yii::$app->request->get('category');
+        $category =  Yii::$app->request->get('c');
         $categorySecondLevel = CategoryController::getCategorySecondLevel($category);
         if (!in_array($category,$categoryArray)) {
             return $this->redirect(['site/index']);
@@ -153,7 +153,7 @@ class SearchController extends Controller
         if (!$key) {
             return $this->redirect(['site/index']);
         }
-        $second = Yii::$app->request->get('second');
+        $second = Yii::$app->request->get('s');
         if (!in_array($second,$categorySecondLevel)) {
             return $this->redirect(['site/index']);
         }

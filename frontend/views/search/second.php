@@ -14,7 +14,7 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
                     <?php if ($category == $key): ?>
                         <li class="active"><a class="disabled"><?=$value?></a></li>
                     <?php else: ?>
-                        <li><a href="<?=Url::to(['search/category','category' => $key,'k' => $k])?>"><?=$value?></a></li>
+                        <li><a href="<?=Url::to(['search/category','c' => $key,'k' => $k])?>"><?=$value?></a></li>
                     <?php endif?>
                 <?php endforeach ?>
             </ul>
@@ -26,7 +26,7 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
                         <?php if ($value == $second): ?>
                             <li class="active"><a class="disabled"><?=$value?></a></li>
                         <?php else: ?>
-                            <li><a href="<?=Url::to(['search/second','category' => $category,'k' => $k,'second' => $value])?>"><?=$value?></a></li>
+                            <li><a href="<?=Url::to(['search/second','c' => $category,'k' => $k,'s' => $value])?>"><?=$value?></a></li>
                         <?php endif ?>
                     <?php endif?>
                 <?php endforeach ?>
