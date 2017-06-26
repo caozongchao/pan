@@ -46,7 +46,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                     <div class="tab-pane active" id="newVideos">
                         <ol>
                             <?php foreach ($newVideos as $newVideo): ?>
-                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newVideo->fid])?>" title="<?=$newVideo->title?>"><?=mb_substr($newVideo->title,0,60)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newVideo->uid])?>" style="color:#ffffff;"><?=$newVideo->user->user_name?></a></span>
+                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newVideo->fid])?>" title="<?=$newVideo->title?>"><?=mb_substr($newVideo->title,0,55)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newVideo->uid])?>" style="color:#ffffff;"><?=$newVideo->user->user_name?></a></span>
                                     <span class="badge" style="background-color: #999999;margin-left: 10px;">
                                         <?php if ($newVideo->isdir): ?>
                                             目录
@@ -61,7 +61,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                     <div class="tab-pane" id="newImages">
                         <ol>
                             <?php foreach ($newImages as $newImage): ?>
-                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newImage->fid])?>" title="<?=$newImage->title?>"><?=mb_substr($newImage->title,0,60)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newImage->uid])?>" style="color:#ffffff;"><?=$newImage->user->user_name?></a></span>
+                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newImage->fid])?>" title="<?=$newImage->title?>"><?=mb_substr($newImage->title,0,55)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newImage->uid])?>" style="color:#ffffff;"><?=$newImage->user->user_name?></a></span>
                                     <span class="badge" style="background-color: #999999;margin-left: 10px;">
                                         <?php if ($newImage->isdir): ?>
                                             目录
@@ -76,7 +76,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                     <div class="tab-pane" id="newDocuments">
                         <ol>
                             <?php foreach ($newDocuments as $newDocument): ?>
-                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newDocument->fid])?>" title="<?=$newDocument->title?>"><?=mb_substr($newDocument->title,0,60)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newDocument->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
+                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newDocument->fid])?>" title="<?=$newDocument->title?>"><?=mb_substr($newDocument->title,0,55)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newDocument->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
                                 <span class="badge" style="background-color: #999999;margin-left: 10px;">
                                         <?php if ($newDocument->isdir): ?>
                                             目录
@@ -91,7 +91,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                     <div class="tab-pane" id="newMusics">
                         <ol>
                             <?php foreach ($newMusics as $newMusic): ?>
-                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newMusic->fid])?>" title="<?=$newMusic->title?>"><?=mb_substr($newMusic->title,0,60)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newMusic->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
+                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newMusic->fid])?>" title="<?=$newMusic->title?>"><?=mb_substr($newMusic->title,0,55)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newMusic->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
                                     <span class="badge" style="background-color: #999999;margin-left: 10px;">
                                         <?php if ($newMusic->isdir): ?>
                                             目录
@@ -106,7 +106,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                     <div class="tab-pane" id="newPackages">
                         <ol>
                             <?php foreach ($newPackages as $newPackage): ?>
-                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newPackage->fid])?>" title="<?=$newPackage->title?>"><?=mb_substr($newPackage->title,0,60)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newPackage->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
+                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newPackage->fid])?>" title="<?=$newPackage->title?>"><?=mb_substr($newPackage->title,0,55)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newPackage->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
                                 <span class="badge" style="background-color: #999999;margin-left: 10px;">
                                     <?php if ($newPackage->isdir): ?>
                                         目录
@@ -121,7 +121,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                     <div class="tab-pane" id="newSoftwares">
                         <ol>
                             <?php foreach ($newSoftwares as $newSoftware): ?>
-                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newSoftware->fid])?>" title="<?=$newSoftware->title?>"><?=mb_substr($newSoftware->title,0,60)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newSoftware->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
+                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newSoftware->fid])?>" title="<?=$newSoftware->title?>"><?=mb_substr($newSoftware->title,0,55)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newSoftware->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
                                 <span class="badge" style="background-color: #999999;margin-left: 10px;">
                                     <?php if ($newSoftware->isdir): ?>
                                         目录
@@ -136,7 +136,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                     <div class="tab-pane" id="newTorrents">
                         <ol>
                             <?php foreach ($newTorrents as $newTorrent): ?>
-                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newTorrent->fid])?>" title="<?=$newTorrent->title?>"><?=mb_substr($newTorrent->title,0,60)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newTorrent->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
+                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newTorrent->fid])?>" title="<?=$newTorrent->title?>"><?=mb_substr($newTorrent->title,0,55)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newTorrent->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
                                 <span class="badge" style="background-color: #999999;margin-left: 10px;">
                                     <?php if ($newTorrent->isdir): ?>
                                         目录
@@ -151,7 +151,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                     <div class="tab-pane" id="newOthers">
                         <ol>
                             <?php foreach ($newOthers as $newOther): ?>
-                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newOther->fid])?>" title="<?=$newOther->title?>"><?=mb_substr($newOther->title,0,60)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newOther->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
+                                <li style="padding: 5px;"><a href="<?=Url::to(['detail/index','id' => $newOther->fid])?>" title="<?=$newOther->title?>"><?=mb_substr($newOther->title,0,55)?></a><span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newOther->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
                                     <span class="badge" style="background-color: #999999;margin-left: 10px;">
                                         <?php if ($newOther->isdir): ?>
                                             目录
