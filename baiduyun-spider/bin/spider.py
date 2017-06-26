@@ -4,13 +4,13 @@ import MySQLdb as mdb
 import utils, traceback, Queue, socket
 
 
-DB_HOST = '45.32.9.33'
+DB_HOST = '**********'
 DB_PORT = '3306'
-DB_USER = 'pan'
+DB_USER = '******'
 # MySQL密码
-DB_PASS = 'pan'
+DB_PASS = '******'
 # 数据库名称
-DB_NAME = 'pan'
+DB_NAME = '******'
 SPIDER_INTERVAL = 10  # 至少保证10秒以上，否则容易被封
 
 ERR_NO = 0  # 正常
