@@ -75,14 +75,9 @@ $this->title = $data->title.'_云上搜索';
                     <?=HtmlPurifier::process($data->title)?> 的相关资源：
                 </div>
                 <div class="list-group">
-                    <?php if ($matches): ?>
-                        <?php foreach ($matches as $matche): ?>
-                            <a href="<?=Url::to(['detail/index','id' => $matche->fid])?>" target="_blank" class="list-group-item"><?=ColorHelper::red($data->title,$matche->title,14)?></a>
-                        <?php endforeach ?>
-                    <?php endif ?>
                     <?php if ($relateShares): ?>
                         <?php foreach ($relateShares as $relateShare): ?>
-                            <a href="<?=Url::to(['detail/index','id' => $relateShare->fid])?>" target="_blank" class="list-group-item"><?=$relateShare->title?></a>
+                            <a href="<?=Url::to(['detail/index','id' => $relateShare->fid])?>" target="_blank" class="list-group-item"><?=ColorHelper::red($relateShare->title,$tmpKey,14)?></a>
                         <?php endforeach ?>
                     <?php endif ?>
                 </div>

@@ -32,36 +32,33 @@ class DetailController extends Controller
             $results = $sphinx->query ($data->title, $index);
             // var_dump($results);die;
             $keys = [];
+            $tmpKey = '';
+            $relateShares = [];
             if (isset($results['words']) && $results['words']) {
                 foreach ($results['words'] as $key => $value) {
-                    // $key = preg_replace('/[^a-zA-Z0-9\x{4e00}-\x{9fa5}]/u','',$key);
-                    // if (!$key) {
-                    //     continue;
-                    // }
                     $keys[] = $key;
                 }
-            }
-            $matches = [];
-            $ids = [];
-            if (isset($results['matches']) && $results['matches']) {
-                foreach ($results['matches'] as $value) {
-                    if ($value['id'] == $data->fid) {
-                        continue;
+                foreach ($keys as $value) {
+                    if (strlen($value) >= 6 ) {
+                        $tmpKey = $value;
+                        break;
                     }
-                    $ids[] = $value['id'];
                 }
-                $query = ShareFile::find()->where(['in','fid',$ids]);
-                $matches = $query->all();
-                $count = count($matches);
-                if ($count >= 10) {
-                    $relateShares = [];
+                if ($tmpKey) {
+                    $results = $sphinx->query ($tmpKey, $index);
+                    if ($results['total'] != 0) {
+                        $ids = [];
+                        foreach ($results['matches'] as $value) {
+                            $ids[] = $value['id'];
+                        }
+                        $query = ShareFile::find()->where(['in','fid',$ids]);
+                        $relateShares = $query->all();
+                    }
                 }else{
-                    $relateShares = ShareFile::find()->where(['file_type' => $data->file_type])->andWhere(['!=','fid',$data->fid])->orderBy(['fid' => SORT_DESC])->limit(10-$count)->all();
+                    $relateShares = ShareFile::find()->where(['file_type' => $data->file_type])->andWhere(['!=','fid',$data->fid])->orderBy(['fid' => SORT_DESC])->limit(10)->all();
                 }
-            }else{
-                $relateShares = ShareFile::find()->where(['file_type' => $data->file_type])->andWhere(['!=','fid',$data->fid])->orderBy(['fid' => SORT_DESC])->limit(10)->all();
             }
         }
-        return $this->render('index',['data' => $data,'userNewShares' => $userNewShares,'keys' => $keys,'matches' => $matches,'relateShares' => $relateShares]);
+        return $this->render('index',['data' => $data,'userNewShares' => $userNewShares,'keys' => $keys,'relateShares' => $relateShares,'tmpKey' => $tmpKey]);
     }
 }
