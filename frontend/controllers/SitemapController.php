@@ -15,7 +15,7 @@ class SitemapController extends Controller
         $summaryBegin = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<sitemap>\n";
         $summaryEnd = "</sitemap>";
         $summaryContent = '';
-        $date = date('Y-m-d',time());
+        $date = date('Y-m-d H:i:s',time());
         $total = $db->createCommand("select count(*) from share_file")->queryScalar();
         $count = ceil($total/$pageSize);
         for ($i = 1; $i <= $count; $i++) {
