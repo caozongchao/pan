@@ -22,7 +22,7 @@ class UserController extends Controller
         $user = ShareUsers::find()->where(['uid' => $id])->one();
         $query = ShareFile::find()->where(['uid' => $id]);
         $count = $query->count();
-        $pagination = new Pagination(['totalCount' => $count,'pageSize' => 20]);
+        $pagination = new Pagination(['totalCount' => $count,'pageSize' => 20,'pageSizeParam' => false,'pageParam' => 'p']);
         $linkPager = LinkPager::widget([
                             'pagination' => $pagination,
                             'nextPageLabel' => '下一页',

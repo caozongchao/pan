@@ -36,7 +36,7 @@ class SearchController extends Controller
         $results = $sphinx->query ($key, $index);
         //判断sphinx中是否取出数据，如果为空，再从mysql通过like取数据
         if ($results['total'] != 0) {
-            $pagination = new Pagination(['totalCount' => $results['total'],'pageSize' => $pageSize]);
+            $pagination = new Pagination(['totalCount' => $results['total'],'pageSize' => $pageSize,'pageSizeParam' => false,'pageParam' => 'p']);
             $linkPager = LinkPager::widget([
                                 'pagination' => $pagination,
                                 'nextPageLabel' => '下一页',
@@ -59,6 +59,7 @@ class SearchController extends Controller
                 'totalCount' => $count,
                 'pageSize' => $pageSize,
                 'pageSizeParam' => false,
+                'pageParam' => 'p',
             ]);
             $datas = $query->offset($pagination->offset)->limit($pagination->limit)->all();
             $linkPager = LinkPager::widget([
@@ -102,7 +103,7 @@ class SearchController extends Controller
         $results = $sphinx->query ($key, $index);
         //判断sphinx中是否取出数据，如果为空，再从mysql通过like取数据
         if ($results['total'] != 0) {
-            $pagination = new Pagination(['totalCount' => $results['total'],'pageSize' => $pageSize]);
+            $pagination = new Pagination(['totalCount' => $results['total'],'pageSize' => $pageSize,'pageSizeParam' => false,'pageParam' => 'p']);
             $linkPager = LinkPager::widget([
                                 'pagination' => $pagination,
                                 'nextPageLabel' => '下一页',
@@ -125,6 +126,7 @@ class SearchController extends Controller
                 'totalCount' => $count,
                 'pageSize' => $pageSize,
                 'pageSizeParam' => false,
+                'pageParam' => 'p'
             ]);
             $datas = $query->offset($pagination->offset)->limit($pagination->limit)->all();
             $linkPager = LinkPager::widget([
@@ -172,7 +174,7 @@ class SearchController extends Controller
         $results = $sphinx->query ($key, $index);
         //判断sphinx中是否取出数据，如果为空，再从mysql通过like取数据
         if ($results['total'] != 0) {
-            $pagination = new Pagination(['totalCount' => $results['total'],'pageSize' => $pageSize]);
+            $pagination = new Pagination(['totalCount' => $results['total'],'pageSize' => $pageSize,'pageSizeParam' => false,'pageParam' => 'p']);
             $linkPager = LinkPager::widget([
                                 'pagination' => $pagination,
                                 'nextPageLabel' => '下一页',
@@ -195,6 +197,7 @@ class SearchController extends Controller
                 'totalCount' => $count,
                 'pageSize' => $pageSize,
                 'pageSizeParam' => false,
+                'pageParam' => 'p'
             ]);
             $datas = $query->offset($pagination->offset)->limit($pagination->limit)->all();
             $linkPager = LinkPager::widget([
