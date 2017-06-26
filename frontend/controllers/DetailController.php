@@ -30,6 +30,7 @@ class DetailController extends Controller
             $sphinx->SetMaxQueryTime(10);
             $index = 'pan';
             $results = $sphinx->query ($data->title, $index);
+            // var_dump($results);die;
             $keys = [];
             if ($results['words']) {
                 foreach ($results['words'] as $key => $value) {

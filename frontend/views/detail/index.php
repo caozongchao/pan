@@ -59,7 +59,7 @@ $this->title = $data->title.'_云上搜索';
             </div>
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <?=HtmlPurifier::process($data->title)?>的相关搜索
+                    <?=HtmlPurifier::process($data->title)?>的相关搜索：
                 </div>
                 <div class="panel-body">
                     <?php foreach ($keys as $key): ?>
@@ -69,7 +69,7 @@ $this->title = $data->title.'_云上搜索';
             </div>
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <?=HtmlPurifier::process($data->title)?>的同类型资源
+                    <?=HtmlPurifier::process($data->title)?>的同类型资源：
                 </div>
                 <div class="list-group">
                     <?php foreach ($relateShares as $relateShare): ?>
