@@ -41,8 +41,27 @@ class DetailController extends Controller
                     $keys[] = $key;
                 }
             }
-            $relateShares = ShareFile::find()->where(['file_type' => $data->file_type])->andWhere(['!=','fid',$data->fid])->orderBy(['fid' => SORT_DESC])->limit(10)->all();
+            $matches = [];
+            $ids = [];
+            if ($results['matches']) {
+                foreach ($results['matches'] as $value) {
+                    if ($value['id'] == $data->fid) {
+                        continue;
+                    }
+                    $ids[] = $value['id'];
+                }
+                $query = ShareFile::find()->where(['in','fid',$ids]);
+                $matches = $query->all();
+                $count = count($matches);
+                if ($count >= 10) {
+                    $relateShares = [];
+                }else{
+                    $relateShares = ShareFile::find()->where(['file_type' => $data->file_type])->andWhere(['!=','fid',$data->fid])->orderBy(['fid' => SORT_DESC])->limit(10-$count)->all();
+                }
+            }else{
+                $relateShares = ShareFile::find()->where(['file_type' => $data->file_type])->andWhere(['!=','fid',$data->fid])->orderBy(['fid' => SORT_DESC])->limit(10)->all();
+            }
         }
-        return $this->render('index',['data' => $data,'userNewShares' => $userNewShares,'keys' => $keys,'relateShares' => $relateShares]);
+        return $this->render('index',['data' => $data,'userNewShares' => $userNewShares,'keys' => $keys,'matches' => $matches,'relateShares' => $relateShares]);
     }
 }

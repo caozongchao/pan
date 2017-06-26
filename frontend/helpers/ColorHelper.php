@@ -5,8 +5,8 @@ use Yii;
 
 class ColorHelper{
 
-    function red($title,$key) {
-        return str_ireplace($key,'<span style="color:red;font-size:18px;">'.$key.'</span>',$title);
+    function red($title,$key,$fontSize = 18) {
+        return str_ireplace($key,'<span style="color:red;font-size:$fontSizepx;">'.$key.'</span>',$title);
     }
 
 }

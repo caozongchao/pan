@@ -2,6 +2,7 @@
 use frontend\helpers\FormatSizeHelper;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Url;
+use frontend\helpers\ColorHelper;
 
 $this->title = $data->title.'_云上搜索';
 ?>
@@ -59,7 +60,7 @@ $this->title = $data->title.'_云上搜索';
             </div>
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <?=HtmlPurifier::process($data->title)?>的相关搜索：
+                    <?=HtmlPurifier::process($data->title)?> 的相关搜索：
                 </div>
                 <div class="panel-body">
                     <?php foreach ($keys as $key): ?>
@@ -69,12 +70,19 @@ $this->title = $data->title.'_云上搜索';
             </div>
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <?=HtmlPurifier::process($data->title)?>的同类型资源：
+                    <?=HtmlPurifier::process($data->title)?> 的同类型资源：
                 </div>
                 <div class="list-group">
-                    <?php foreach ($relateShares as $relateShare): ?>
-                        <a href="<?=Url::to(['detail/index','id' => $relateShare->fid])?>" target="_blank" class="list-group-item"><?=$relateShare->title?></a>
-                    <?php endforeach ?>
+                    <?php if ($matches): ?>
+                        <?php foreach ($matches as $matche): ?>
+                            <a href="<?=Url::to(['detail/index','id' => $matche->fid])?>" target="_blank" class="list-group-item"><?=ColorHelper::red($matche->title,$data->title,14)?></a>
+                        <?php endforeach ?>
+                    <?php endif ?>
+                    <?php if ($relateShares): ?>
+                        <?php foreach ($relateShares as $relateShare): ?>
+                            <a href="<?=Url::to(['detail/index','id' => $relateShare->fid])?>" target="_blank" class="list-group-item"><?=$relateShare->title?></a>
+                        <?php endforeach ?>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
