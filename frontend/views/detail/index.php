@@ -59,12 +59,17 @@ $this->title = $data->title.'_云上搜索';
             </div>
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <?=HtmlPurifier::process($data->title)?>的相关搜索与同类型资源
+                    <?=HtmlPurifier::process($data->title)?>的相关搜索
                 </div>
                 <div class="panel-body">
                     <?php foreach ($keys as $key): ?>
                         <h3 class="pull-left"><span class="label label-success"><a href="<?=Url::to(['search/index','k' => $key])?>" target="_blank" style="color:#ffffff;"><?=$key?></a></span></h3>
                     <?php endforeach ?>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <?=HtmlPurifier::process($data->title)?>的同类型资源
                 </div>
                 <div class="list-group">
                     <?php foreach ($relateShares as $relateShare): ?>

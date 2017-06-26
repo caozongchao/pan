@@ -37,12 +37,14 @@ class SearchController extends Controller
         $results = $sphinx->query ($key, $index);
         //判断sphinx中是否取出数据，如果为空，再从mysql通过like取数据
         if ($results['total'] != 0) {
-            $pagination = new Pagination(['totalCount' => $results['total'],'pageSize' => $pageSize,'pageSizeParam' => false,'pageParam' => 'p']);
             $ids = [];
             foreach ($results['matches'] as $value) {
                 $ids[] = $value['id'];
             }
-            $datas = ShareFile::find()->where(['in','fid',$ids])->all();
+            $query = ShareFile::find()->where(['in','fid',$ids]);
+            $count = $query->count();
+            $pagination = new Pagination(['totalCount' => $count,'pageSize' => $pageSize,'pageSizeParam' => false,'pageParam' => 'p']);
+            $datas = $query->all();
            return $this->render('index',['datas' => $datas,'k' => $key,'type' => '快速','pagination' => $pagination]);
         }else{
             $query = ShareFile::find()->where(['like','title',$key])->orderBy(['fid' => SORT_DESC]);
@@ -86,12 +88,14 @@ class SearchController extends Controller
         $results = $sphinx->query ($key, $index);
         //判断sphinx中是否取出数据，如果为空，再从mysql通过like取数据
         if ($results['total'] != 0) {
-            $pagination = new Pagination(['totalCount' => $results['total'],'pageSize' => $pageSize,'pageSizeParam' => false,'pageParam' => 'p']);
             $ids = [];
             foreach ($results['matches'] as $value) {
                 $ids[] = $value['id'];
             }
-            $datas = ShareFile::find()->where(['in','fid',$ids])->andWhere(['file_type' => $category])->all();
+            $query = ShareFile::find()->where(['in','fid',$ids])->andWhere(['file_type' => $category]);
+            $count = $query->count();
+            $pagination = new Pagination(['totalCount' => $count,'pageSize' => $pageSize,'pageSizeParam' => false,'pageParam' => 'p']);
+            $datas = $query->all();
             return $this->render('category',['datas' => $datas,'category' => $category,'k' => $key,'type' => '快速','pagination' => $pagination,'categorySecondLevel' => $categorySecondLevel]);
         }else{
             $query = ShareFile::find()->where(['like','title',$key])->andWhere(['file_type' => $category])->orderBy(['fid' => SORT_DESC]);
@@ -139,12 +143,14 @@ class SearchController extends Controller
         $results = $sphinx->query ($key, $index);
         //判断sphinx中是否取出数据，如果为空，再从mysql通过like取数据
         if ($results['total'] != 0) {
-            $pagination = new Pagination(['totalCount' => $results['total'],'pageSize' => $pageSize,'pageSizeParam' => false,'pageParam' => 'p']);
             $ids = [];
             foreach ($results['matches'] as $value) {
                 $ids[] = $value['id'];
             }
-            $datas = ShareFile::find()->where(['in','fid',$ids])->andWhere(['file_type' => $category])->andWhere(['ext' => '.'.$second])->all();
+            $query = ShareFile::find()->where(['in','fid',$ids])->andWhere(['file_type' => $category])->andWhere(['ext' => '.'.$second]);
+            $count = $query->count();
+            $pagination = new Pagination(['totalCount' => $count,'pageSize' => $pageSize,'pageSizeParam' => false,'pageParam' => 'p']);
+            $datas = $query->all();
             return $this->render('second',['datas' => $datas,'category' => $category,'k' => $key,'type' => '快速','pagination' => $pagination,'categorySecondLevel' => $categorySecondLevel,'second' => $second]);
         }else{
             $query = ShareFile::find()->where(['like','title',$key])->andWhere(['file_type' => $category])->andWhere(['ext' => '.'.$second])->orderBy(['fid' => SORT_DESC]);
