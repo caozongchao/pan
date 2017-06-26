@@ -3,6 +3,8 @@ use yii\helpers\HtmlPurifier;
 use yii\helpers\Url;
 use frontend\helpers\FormatSizeHelper;
 use frontend\helpers\ColorHelper;
+use yii\widgets\LinkPager;
+
 $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
 ?>
 <div class="container" style="padding-top:70px;">
@@ -63,7 +65,13 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
                 </ul>
                 <nav>
                     <center>
-                        <?=$linkPager;?>
+                        <?php
+                            $linkPager = LinkPager::widget([
+                                'pagination' => $pagination,
+                            ]);
+                            $linkPager = preg_replace('/href="(.*)\?(.*)p=(\d+)(.*)"/', "href='$1-$3'", $linkPager);
+                            echo $linkPager;
+                        ?>
                     </center>
                 </nav>
             </div>

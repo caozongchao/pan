@@ -17,13 +17,13 @@ use yii\helpers\Url;
     </div>
 </div>
 <script type="text/javascript">
-    // $("#searchButton").click(function(){
-    //     var key = $("#k").val();
-    //     // var regu = "^[^a-zA-Z0-9\u4e00-\u9fa5]$";
-    //     // var reg = new RegExp(regu);
-    //     // var key = key.replace(reg, '');
-    //     // if (!key) {return false;}
-    //     window.location.href="/s-"+encodeURIComponent(key);
-    //     return false;
-    // });
+    $("#searchButton").click(function(){
+        var key = $("#k").val();
+        // var regu = "^[^a-zA-Z0-9\u4e00-\u9fa5]$";
+        // var reg = new RegExp(regu);
+        // var key = key.replace(reg, '');
+        // if (!key) {return false;}
+        window.location.href="/s-"+encodeURIComponent(key);
+        return false;
+    });
 </script>
