@@ -42,7 +42,7 @@ class SearchController extends Controller
                 $ids[] = $value['id'];
             }
             $query = ShareFile::find()->where(['in','fid',$ids]);
-            $count = $query->count();
+            $count = $results['total'];
             $pagination = new Pagination(['totalCount' => $count,'pageSize' => $pageSize,'pageSizeParam' => false,'pageParam' => 'p']);
             $datas = $query->all();
            return $this->render('index',['datas' => $datas,'k' => $key,'type' => '快速','pagination' => $pagination]);
@@ -81,6 +81,7 @@ class SearchController extends Controller
         $sphinx = new \SphinxClient();
         $sphinx->SetServer ('localhost',9312);
         $sphinx->SetArrayResult (true);
+        $sphinx->setFilter('file_type', array($category));
         //$sphinx->SetSortMode(SPH_SORT_ATTR_DESC, "id");
         $sphinx->SetLimits((($currentPage - 1) * $pageSize),$pageSize,1000);
         $sphinx->SetMaxQueryTime(10);
@@ -92,8 +93,8 @@ class SearchController extends Controller
             foreach ($results['matches'] as $value) {
                 $ids[] = $value['id'];
             }
-            $query = ShareFile::find()->where(['in','fid',$ids])->andWhere(['file_type' => $category]);
-            $count = $query->count();
+            $query = ShareFile::find()->where(['in','fid',$ids]);
+            $count = $results['total'];
             $pagination = new Pagination(['totalCount' => $count,'pageSize' => $pageSize,'pageSizeParam' => false,'pageParam' => 'p']);
             $datas = $query->all();
             return $this->render('category',['datas' => $datas,'category' => $category,'k' => $key,'type' => '快速','pagination' => $pagination,'categorySecondLevel' => $categorySecondLevel]);
@@ -136,6 +137,8 @@ class SearchController extends Controller
         $sphinx = new \SphinxClient();
         $sphinx->SetServer ('localhost',9312);
         $sphinx->SetArrayResult (true);
+        $sphinx->setFilter('file_type', array($category));
+        $sphinx->setFilter('ext', array('.'.$second));
         //$sphinx->SetSortMode(SPH_SORT_ATTR_DESC, "id");
         $sphinx->SetLimits((($currentPage - 1) * $pageSize),$pageSize,1000);
         $sphinx->SetMaxQueryTime(10);
@@ -147,8 +150,8 @@ class SearchController extends Controller
             foreach ($results['matches'] as $value) {
                 $ids[] = $value['id'];
             }
-            $query = ShareFile::find()->where(['in','fid',$ids])->andWhere(['file_type' => $category])->andWhere(['ext' => '.'.$second]);
-            $count = $query->count();
+            $query = ShareFile::find()->where(['in','fid',$ids]);
+            $count = $results['total'];
             $pagination = new Pagination(['totalCount' => $count,'pageSize' => $pageSize,'pageSizeParam' => false,'pageParam' => 'p']);
             $datas = $query->all();
             return $this->render('second',['datas' => $datas,'category' => $category,'k' => $key,'type' => '快速','pagination' => $pagination,'categorySecondLevel' => $categorySecondLevel,'second' => $second]);
