@@ -32,7 +32,7 @@ class DetailController extends Controller
             $results = $sphinx->query ($data->title, $index);
             // var_dump($results);die;
             $keys = [];
-            if ($results['words']) {
+            if (isset($results['words']) && $results['words']) {
                 foreach ($results['words'] as $key => $value) {
                     // $key = preg_replace('/[^a-zA-Z0-9\x{4e00}-\x{9fa5}]/u','',$key);
                     // if (!$key) {
@@ -43,7 +43,7 @@ class DetailController extends Controller
             }
             $matches = [];
             $ids = [];
-            if ($results['matches']) {
+            if (isset($results['matches']) && $results['matches']) {
                 foreach ($results['matches'] as $value) {
                     if ($value['id'] == $data->fid) {
                         continue;
