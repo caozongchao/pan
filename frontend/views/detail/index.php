@@ -49,7 +49,7 @@ $this->title = $data->title.'_云上搜索';
                             <li>
                                 <i class="fa fa-download"></i>
                                 <?php if ($data->shorturl): ?>
-                                    <a href="http://pan.baidu.com/s/<?=$data->shorturl?>" target="_blank">点击进入百度网盘查看</a>
+                                    <a href="http://pan.baidu.com/s/<?=$data->shorturl?>" rel="nofollow" target="_blank">点击进入百度网盘查看</a>
                                 <?php else: ?>
                                     <a href="http://pan.baidu.com/share/link?shareid=<?=$data->shareid?>&uk=<?=$data->uk?>" target="_blank">点击进入百度网盘查看</a>
                                 <?php endif ?>
