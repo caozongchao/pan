@@ -137,11 +137,11 @@ class BaiduPanCheck(object):
             else:
                 title = titles[0][7:-8]
             if title == '百度网盘-链接不存在':
-                print '====='+data['shareid']+'====='
+                print '====='+data['fid']+'====='
                 self.db.execute("UPDATE share_file set deleted=%s WHERE sid=%s", (1, data['uid']))
                 self.db.commit()
             else:
-                print data['shareid']
+                print data['fid']
                 self.tmpFid = data['fid']
                 self.db.execute("UPDATE check_id set temp_id=%s WHERE id=%s", (self.tmpFid,1))
                 self.db.commit()
