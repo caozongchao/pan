@@ -29,7 +29,11 @@ $this->title = $categoryName.'资源目录_云上搜索';
                             </a>
                             <div class="media-body">
                                 <h4 class="media-heading">
-                                    <a href="<?=Url::to(['detail/index','id' => $value->fid])?>"><?=$value->title?></a>
+                                    <?php if ($value->deleted == 0): ?>
+                                        <a href="<?=Url::to(['detail/index','id' => $value->fid])?>"><?=$value->title?></a>
+                                    <?php else: ?>
+                                        <del><a href="<?=Url::to(['detail/index','id' => $value->fid])?>"><?=$value->title?></a></del>
+                                    <?php endif ?>
                                     <span class="badge" style="background-color: #99CC33">
                                         <?php if ($value->isdir): ?>
                                             目录

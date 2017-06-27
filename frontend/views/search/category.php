@@ -39,7 +39,11 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
                             </a>
                             <div class="media-body">
                                 <h4 class="media-heading">
-                                    <a href="<?=Url::to(['detail/index','id' => $value->fid])?>"><?=ColorHelper::red($value->title,$k)?></a>
+                                    <?php if ($value->deleted == 0): ?>
+                                        <a href="<?=Url::to(['detail/index','id' => $value->fid])?>"><?=ColorHelper::red($value->title,$k)?></a>
+                                    <?php else: ?>
+                                        <del><a href="<?=Url::to(['detail/index','id' => $value->fid])?>"><?=ColorHelper::red($value->title,$k)?></a></del>
+                                    <?php endif ?>
                                     <span class="badge" style="background-color: #99CC33">
                                         <?php if ($value->isdir): ?>
                                             目录
