@@ -16,11 +16,11 @@ class SitemapController extends Controller
         $summaryEnd = "</sitemap>";
         $summaryContent = '';
         $date = date('Y-m-d H:i:s',time());
-        $total = $db->createCommand("select count(*) from share_file where deleted=0")->queryScalar();
+        $total = $db->createCommand("select count(*) from share_file")->queryScalar();
         $count = ceil($total/$pageSize);
         for ($i = 1; $i <= $count; $i++) {
             $offset = ($i-1) * $pageSize;
-            $ids = $db->createCommand("select fid from share_file where deleted=0 order by fid desc limit $offset,$pageSize")->queryColumn();
+            $ids = $db->createCommand("select fid from share_file order by fid desc limit $offset,$pageSize")->queryColumn();
             $summaryContent .= "<loc>http://www.yssousuo.com/sitemap$i.xml</loc>\n";
             $summaryContent .= "<lastmod>$date</lastmod>\n";
             $detailHandle = fopen("sitemap$i.xml",'w+');

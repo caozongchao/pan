@@ -30,7 +30,7 @@ class SearchController extends Controller
         $sphinx = new \SphinxClient();
         $sphinx->SetServer ('localhost',9312);
         $sphinx->SetArrayResult (true);
-        $sphinx->setFilter('deleted', [0]);
+        // $sphinx->setFilter('deleted', [0]);
         //$sphinx->SetSortMode(SPH_SORT_ATTR_DESC, "id");
         $sphinx->SetLimits((($currentPage - 1) * $pageSize),$pageSize,1000);
         $sphinx->SetMaxQueryTime(10);
@@ -48,7 +48,7 @@ class SearchController extends Controller
             $datas = $query->all();
            return $this->render('index',['datas' => $datas,'k' => $key,'type' => '快速','pagination' => $pagination]);
         }else{
-            $query = ShareFile::find()->where(['like','title',$key])->andWhere(['deleted' => 0])->orderBy(['fid' => SORT_DESC]);
+            $query = ShareFile::find()->where(['like','title',$key])->orderBy(['fid' => SORT_DESC]);
             $count = $query->count();
             $pagination = new Pagination([
                 'totalCount' => $count,
@@ -82,7 +82,7 @@ class SearchController extends Controller
         $sphinx = new \SphinxClient();
         $sphinx->SetServer ('localhost',9312);
         $sphinx->SetArrayResult (true);
-        $sphinx->setFilter('deleted', [0]);
+        // $sphinx->setFilter('deleted', [0]);
         $sphinx->setFilter('file_type', [$category]);
         //$sphinx->SetSortMode(SPH_SORT_ATTR_DESC, "id");
         $sphinx->SetLimits((($currentPage - 1) * $pageSize),$pageSize,1000);
@@ -101,7 +101,7 @@ class SearchController extends Controller
             $datas = $query->all();
             return $this->render('category',['datas' => $datas,'category' => $category,'k' => $key,'type' => '快速','pagination' => $pagination,'categorySecondLevel' => $categorySecondLevel]);
         }else{
-            $query = ShareFile::find()->where(['like','title',$key])->andWhere(['file_type' => $category])->andWhere(['deleted' => 0])->orderBy(['fid' => SORT_DESC]);
+            $query = ShareFile::find()->where(['like','title',$key])->andWhere(['file_type' => $category])->orderBy(['fid' => SORT_DESC]);
             $count = $query->count();
             $pagination = new Pagination([
                 'totalCount' => $count,
@@ -139,7 +139,7 @@ class SearchController extends Controller
         $sphinx = new \SphinxClient();
         $sphinx->SetServer ('localhost',9312);
         $sphinx->SetArrayResult (true);
-        $sphinx->setFilter('deleted', [0]);
+        // $sphinx->setFilter('deleted', [0]);
         $sphinx->setFilter('file_type', [$category]);
         $sphinx->setFilter('ext', ['.'.$second]);
         //$sphinx->SetSortMode(SPH_SORT_ATTR_DESC, "id");
@@ -159,7 +159,7 @@ class SearchController extends Controller
             $datas = $query->all();
             return $this->render('second',['datas' => $datas,'category' => $category,'k' => $key,'type' => '快速','pagination' => $pagination,'categorySecondLevel' => $categorySecondLevel,'second' => $second]);
         }else{
-            $query = ShareFile::find()->where(['like','title',$key])->andWhere(['file_type' => $category])->andWhere(['ext' => '.'.$second])->andWhere(['deleted' => 0])->orderBy(['fid' => SORT_DESC]);
+            $query = ShareFile::find()->where(['like','title',$key])->andWhere(['file_type' => $category])->andWhere(['ext' => '.'.$second])->orderBy(['fid' => SORT_DESC]);
             $count = $query->count();
             $pagination = new Pagination([
                 'totalCount' => $count,

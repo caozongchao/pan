@@ -16,7 +16,7 @@ class DetailController extends Controller
         if (!$id) {
             return $this->redirect(['site/index']);
         }
-        $data = ShareFile::find()->where(['fid' => $id])->andWhere(['deleted' => 0])->with('user')->one();
+        $data = ShareFile::find()->where(['fid' => $id])->with('user')->one();
         $userNewShares = [];
         $keys = [];
         $tmpKey = '';
@@ -24,7 +24,7 @@ class DetailController extends Controller
         if ($data) {
             $data->click = $data->click + 1;
             $data->save();
-            $userNewShares = ShareFile::find()->where(['uid' => $data->user->uid])->andWhere(['deleted' => 0])->orderBy(['fid' => SORT_DESC])->limit(10)->all();
+            $userNewShares = ShareFile::find()->where(['uid' => $data->user->uid])->orderBy(['fid' => SORT_DESC])->limit(10)->all();
 
             $sphinx = new \SphinxClient();
             $sphinx->SetServer ('localhost',9312);
@@ -57,7 +57,7 @@ class DetailController extends Controller
                         $relateShares = $query->all();
                     }
                 }else{
-                    $relateShares = ShareFile::find()->where(['file_type' => $data->file_type])->andWhere(['!=','fid',$data->fid])->andWhere(['deleted' => 0])->orderBy(['fid' => SORT_DESC])->limit(10)->all();
+                    $relateShares = ShareFile::find()->where(['file_type' => $data->file_type])->andWhere(['!=','fid',$data->fid])->orderBy(['fid' => SORT_DESC])->limit(10)->all();
                 }
             }
         }
