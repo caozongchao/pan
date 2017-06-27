@@ -46,7 +46,7 @@ class DetailController extends Controller
                     }
                 }
                 if ($tmpKey) {
-                    $sphinx->setFilter('deleted', [0]);
+                    // $sphinx->setFilter('deleted', [0]);
                     $results = $sphinx->query ($tmpKey, $index);
                     if ($results['total'] != 0) {
                         $ids = [];
