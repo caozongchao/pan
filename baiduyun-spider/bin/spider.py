@@ -20,7 +20,7 @@ ERR_EX = 2  # 未知错误
 
 def getHtml(url, ref=None, reget=5):
     try:
-        proxy_info = {'host' : '60.160.128.10','port' : 9797}
+        proxy_info = {'host' : '183.45.172.11','port' : 9797}
         proxy_support = urllib2.ProxyHandler({"http" : "http://%(host)s:%(port)d" % proxy_info})
         opener = urllib2.build_opener(proxy_support)
         urllib2.install_opener(opener)
@@ -48,13 +48,13 @@ def getHtml(url, ref=None, reget=5):
 #     try:
 #         curl = pycurl.Curl()
 #         head = ['Accept:*/*',
-#                 'User-Agent:Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11']
+#                 'User-Agent:Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36']
 #         buf = StringIO.StringIO()
 #         curl.setopt(pycurl.WRITEFUNCTION,buf.write)
 #         curl.setopt(pycurl.URL, url)
 #         curl.setopt(pycurl.HTTPHEADER,head)
 #         if ref:
-#             curl.setopt(curl.REFERER, ref)
+#             curl.setopt(pycurl.REFERER, ref)
 #         curl.setopt(pycurl.SSL_VERIFYPEER,0)
 #         curl.setopt(pycurl.SSL_VERIFYHOST,0)
 #         curl.perform()
@@ -149,7 +149,7 @@ class BaiduPanSpider(object):
                             'torrent': 6, 'other': 7}
 
     def getShareUser(self, uk):
-        url = 'https://yun.baidu.com/share/count?uk=%d&channel=chunlei&clienttype=0&web=1' % uk
+        url = 'http://pan.baidu.com/share/count?uk=%d&channel=chunlei&clienttype=0&web=1' % uk
         follows_json = json.loads(getHtml(url, uk))
         if follows_json['errno'] != 0:
             if follows_json['errno'] == -55:
@@ -165,7 +165,7 @@ class BaiduPanSpider(object):
         }
 
     def getHotUser(self):
-        url = 'https://yun.baidu.com/pcloud/friend/gethotuserlist?type=1&from=feed&start=0&limit=24&channel=chunlei&clienttype=0&web=1'
+        url = 'http://pan.baidu.com/pcloud/friend/gethotuserlist?type=1&from=feed&start=0&limit=24&channel=chunlei&clienttype=0&web=1'
         follows_json = json.loads(getHtml(url))
         if follows_json['errno'] != 0:
             print u'failed to fetch hot users'
@@ -198,7 +198,7 @@ class BaiduPanSpider(object):
         # query_uk:用户ID
         # limit:每一页最多显示数量
         # start:当前页数
-        follows_url = 'https://yun.baidu.com/pcloud/friend/getfanslist?query_uk=%d&limit=%d&start=%d' % (
+        follows_url = 'http://pan.baidu.com/pcloud/friend/getfanslist?query_uk=%d&limit=%d&start=%d' % (
             uk, limit, start)
         follows_json = json.loads(getHtml(follows_url, uk))
         if follows_json['errno'] != 0:
@@ -225,9 +225,9 @@ class BaiduPanSpider(object):
         return (total_count, count, returns)
 
     def getFollows(self, uk, start=0, limit=24):
-        follows_url = 'https://yun.baidu.com/pcloud/friend/getfollowlist?query_uk=%d&limit=%d&start=%d&bdstoken=d82467db8b1f5741daf1d965d1509181&channel=chunlei&clienttype=0&web=1' % (
+        follows_url = 'http://pan.baidu.com/pcloud/friend/getfollowlist?query_uk=%d&limit=%d&start=%d&bdstoken=d82467db8b1f5741daf1d965d1509181&channel=chunlei&clienttype=0&web=1' % (
             uk, limit, start)
-        ref = 'https://yun.baidu.com/pcloud/friendpage?type=follow&uk=%d&self=1' % uk
+        ref = 'http://pan.baidu.com/pcloud/friendpage?type=follow&uk=%d&self=1' % uk
         follows_json = json.loads(getHtml(follows_url, ref))
         if follows_json['errno'] != 0:
             print 'getFollows errno:%d' % follows_json['errno']
@@ -257,9 +257,9 @@ class BaiduPanSpider(object):
         return (total_count, count, returns)
 
     def getShareLists(self, uk, start=0, limit=60):
-        sharelists_url = 'https://yun.baidu.com/pcloud/feed/getsharelist?category=0&auth_type=1&request_location=share_home&start=%d&limit=%d&query_uk=%d&channel=chunlei&clienttype=0&web=1' % (
+        sharelists_url = 'http://pan.baidu.com/pcloud/feed/getsharelist?category=0&auth_type=1&request_location=share_home&start=%d&limit=%d&query_uk=%d&channel=chunlei&clienttype=0&web=1' % (
             start, limit, uk)
-        ref = 'https://yun.baidu.com/share/home?uk=%d&view=share' % uk
+        ref = 'http://pan.baidu.com/share/home?uk=%d&view=share' % uk
         sharelists_json = json.loads(getHtml(sharelists_url, ref))
         if (sharelists_json['errno'] != 0):
             print 'getShareLists errno:%d' % sharelists_json['errno']
@@ -312,7 +312,7 @@ class BaiduPanSpider(object):
         return (total_count, count, returns)
 
     def getAlbum(self, uk, start=0, limit=60):
-        url = 'https://yun.baidu.com/pcloud/album/getlist?start=%d&limit=%d&query_uk=%d&channel=chunlei&clienttype=0&web=1&bdstoken=d82467db8b1f5741daf1d965d1509181' % (
+        url = 'http://pan.baidu.com/pcloud/album/getlist?start=%d&limit=%d&query_uk=%d&channel=chunlei&clienttype=0&web=1&bdstoken=d82467db8b1f5741daf1d965d1509181' % (
             start, limit, uk)
         album_json = json.loads(getHtml(url, uk))
         total_count = album_json['count']
