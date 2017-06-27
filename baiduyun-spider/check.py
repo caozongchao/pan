@@ -11,11 +11,6 @@ DB_USER = 'root'
 DB_PASS = 'root'
 # 数据库名称
 DB_NAME = 'pan'
-SPIDER_INTERVAL = 10  # 至少保证10秒以上，否则容易被封
-
-ERR_NO = 0  # 正常
-ERR_REFUSE = 1  # 爬虫爬取速度过快，被拒绝
-ERR_EX = 2  # 未知错误
 
 
 def getHtml(url, ref=None, reget=5):
@@ -105,15 +100,17 @@ class BaiduPanCheck(object):
     def __init__(self):
         self.db = Db()
         self.queue = Queue.Queue(maxsize = 1000)
-        self.tmpFid = 0
+        result = self.db.execute('SELECT * from check_id')
+        resultOne = self.db.fetchone()
+        self.tmpFid = resultOne[1]
 
     def getPage(self,uk,shareid):
-        url = 'http://pan.baidu.com/share/link?shareid=%s&uk=%d' % (shareid,uk)
+        url = 'http://pan.baidu.com/share/link?shareid=%s&uk=%s' % (shareid,uk)
         return getHtml(url, uk)
 
     def startCheck(self):
         if self.queue.empty():
-            sql = 'SELECT * from share_file ORDER BY fid DESC limit %d,1000' % self.tmpFid
+            sql = 'SELECT * from share_file ORDER BY fid ASC limit %s,1000' % self.tmpFid
             datas = self.db.execute(sql)
             if datas <= 0:
                 print '取出数据错误或者已检测完成'
@@ -121,11 +118,14 @@ class BaiduPanCheck(object):
             fetchall = self.db.fetchall()
             for item in fetchall:
                 self.queue.put({
+                    'fid':item[0],
                     'uid':item[13],
                     'uk':item[2],
-                    'shareid':item[7],
+                    'shareid':item[7]
                 })
                 self.tmpFid = item[0]
+            self.db.execute("UPDATE check_id set temp_id=%s WHERE id=%s", (self.tmpFid,1))
+            self.db.commit()
 
         while not self.queue.empty():
             data = self.queue.get()
@@ -138,14 +138,19 @@ class BaiduPanCheck(object):
                 title = titles[0][7:-8]
             if title == '百度网盘-链接不存在':
                 print '====='+data['shareid']+'====='
-                self.db.execute("UPDATE share_file set deleted=%d WHERE sid=%d", (1, data['uid']))
+                self.db.execute("UPDATE share_file set deleted=%s WHERE sid=%s", (1, data['uid']))
                 self.db.commit()
             else:
                 print data['shareid']
+                self.tmpFid = data['fid']
+                self.db.execute("UPDATE check_id set temp_id=%s WHERE id=%s", (self.tmpFid,1))
+                self.db.commit()
         return true
 
 
 if __name__ == "__main__":
     spider = BaiduPanCheck()
     while (1):
-        spider.startCheck()
+        checkResult = spider.startCheck()
+        if checkResult:
+            print '一个队列完成'
