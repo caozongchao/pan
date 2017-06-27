@@ -43,7 +43,8 @@ $this->title = $categoryName.$second.'资源目录_云上搜索';
                                     </span>
                                 </h4>
                                 资源大小：<span class="badge" style="background-color: #99CCFF"><?=FormatSizeHelper::formatBytes($value->size)?></span><br />
-                                分享日期：<span class="badge" style="background-color: #FF9999"><?=date('Y-m-d H:i:s',$value->create_time)?></span>
+                                分享日期：<span class="badge" style="background-color: #FF9999"><?=date('Y-m-d H:i:s',$value->create_time)?></span>&nbsp;&nbsp;
+                                来源类型：<span class="badge" style="background-color: #FF9999">百度云资源</span>
                             </div>
                             <div class="media-right" >
                                 <a class="btn btn-default" href="#" style="width: 45px;height: 48px;padding: 0;line-height: 26px;font-weight: 500;color: #999;display: block;text-align: center; text-shadow: 0 1px 0 #fff; background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%)">
