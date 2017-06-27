@@ -1,0 +1,25 @@
+存储过程
+DELIMITER //
+CREATE PROCEDURE update_keyword()
+BEGIN
+update keyword set yesterday=today;
+update keyword set today=0;
+END;
+//
+DELIMITER ;
+
+
+定时任务
+DROP EVENT IF EXISTS update_keyword;
+DELIMITER //
+CREATE EVENT update_keyword
+ON SCHEDULE EVERY 1 DAY STARTS date_add(date(curdate() + 1),interval 1 hour)
+ON COMPLETION PRESERVE
+ENABLE
+COMMENT '定时更新用户搜索关键词'
+DO
+BEGIN
+CALL update_keyword();
+END
+//
+DELIMITER ;

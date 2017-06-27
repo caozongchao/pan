@@ -1,0 +1,3 @@
+*/5 * * * * sync && echo 3 > /proc/sys/vm/drop_caches
+0 0 * * * /usr/local/coreseek/pan.sh
+*/30 * * * * /usr/local/coreseek/increment.sh
