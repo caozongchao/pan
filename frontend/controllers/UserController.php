@@ -19,11 +19,11 @@ class UserController extends Controller
             return $this->redirect(['site/index']);
         }
         $user = ShareUsers::find()->where(['uid' => $id])->one();
-        $query = ShareFile::find()->where(['uid' => $id]);
+        $query = ShareFile::find()->where(['uid' => $id])->andWhere(['deleted' => 0]);
         $count = $query->count();
         $pagination = new Pagination(['totalCount' => $count,'pageSize' => 20,'pageSizeParam' => false,'pageParam' => 'p']);
         $datas = $query->offset($pagination->offset)->limit($pagination->limit)->orderBy(['fid' => SORT_DESC])->all();
-        $userHotShares = ShareFile::find()->where(['uid' => $id])->orderBy(['click' => SORT_DESC])->limit(10)->all();
+        $userHotShares = ShareFile::find()->where(['uid' => $id])->andWhere(['deleted' => 0])->orderBy(['click' => SORT_DESC])->limit(10)->all();
         return $this->render('index',['datas' => $datas,'user' => $user,'userHotShares' => $userHotShares,'pagination' => $pagination]);
     }
 }

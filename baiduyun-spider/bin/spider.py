@@ -4,13 +4,13 @@ import MySQLdb as mdb
 import utils, traceback, Queue, socket
 
 
-DB_HOST = '**********'
+DB_HOST = '45.32.9.33'
 DB_PORT = '3306'
-DB_USER = '******'
+DB_USER = 'pan'
 # MySQL密码
-DB_PASS = '******'
+DB_PASS = 'pan'
 # 数据库名称
-DB_NAME = '******'
+DB_NAME = 'pan'
 SPIDER_INTERVAL = 10  # 至少保证10秒以上，否则容易被封
 
 ERR_NO = 0  # 正常
@@ -20,6 +20,11 @@ ERR_EX = 2  # 未知错误
 
 def getHtml(url, ref=None, reget=5):
     try:
+        proxy_info = {'host' : '60.160.128.10','port' : 9797}
+        proxy_support = urllib2.ProxyHandler({"http" : "http://%(host)s:%(port)d" % proxy_info})
+        opener = urllib2.build_opener(proxy_support)
+        urllib2.install_opener(opener)
+
         request = urllib2.Request(url)
         request.add_header('User-Agent',
                            'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36')

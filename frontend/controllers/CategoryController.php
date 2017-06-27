@@ -22,7 +22,7 @@ class CategoryController extends Controller
         }
         $categoryName = self::getCategoryName($id);
         $categorySecondLevel = self::getCategorySecondLevel($id);
-        $query = ShareFile::find()->where(['file_type' => $id])->orderBy(['fid' => SORT_DESC]);
+        $query = ShareFile::find()->where(['file_type' => $id])->andWhere(['deleted' => 0])->orderBy(['fid' => SORT_DESC]);
         $count = $query->count();
         $pagination = new Pagination(['totalCount' => $count,'pageSize' => 20,'pageSizeParam' => false,'pageParam' => 'p']);
         $datas = $query->offset($pagination->offset)->limit($pagination->limit)->with('user')->all();
@@ -45,7 +45,7 @@ class CategoryController extends Controller
         }
         $categoryName = self::getCategoryName($id);
         $categorySecondLevel = self::getCategorySecondLevel($id);
-        $query = ShareFile::find()->where(['file_type' => $id,'ext' => '.'.$second])->orderBy(['fid' => SORT_DESC]);
+        $query = ShareFile::find()->where(['file_type' => $id,'ext' => '.'.$second])->andWhere(['deleted' => 0])->orderBy(['fid' => SORT_DESC]);
         $count = $query->count();
         $pagination = new Pagination(['totalCount' => $count,'pageSize' => 20,'pageSizeParam' => false,'pageParam' => 'p']);
         $datas = $query->offset($pagination->offset)->limit($pagination->limit)->with('user')->all();
