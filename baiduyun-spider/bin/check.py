@@ -3,7 +3,6 @@ import urllib2, re,time
 import MySQLdb as mdb
 import traceback, Queue
 
-
 DB_HOST = '127.0.0.1'
 DB_PORT = '3306'
 DB_USER = 'root'
@@ -12,9 +11,13 @@ DB_PASS = 'root'
 # 数据库名称
 DB_NAME = 'pan'
 
-
 def getHtml(url, ref=None, reget=5):
     try:
+        # proxy_info = {'host' : '45.77.63.107','port' : 1189}
+        # proxy_support = urllib2.ProxyHandler({"http" : "http://%(host)s:%(port)d" % proxy_info})
+        # opener = urllib2.build_opener(proxy_support)
+        # urllib2.install_opener(opener)
+
         request = urllib2.Request(url)
         request.add_header('User-Agent',
                            'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36')
@@ -95,7 +98,6 @@ class Db(object):
     def last_row_id(self):
         return self.dbcurr.lastrowid
 
-
 class BaiduPanCheck(object):
     def __init__(self):
         self.db = Db()
@@ -103,6 +105,7 @@ class BaiduPanCheck(object):
         result = self.db.execute('SELECT * from check_id')
         resultOne = self.db.fetchone()
         self.tmpFid = resultOne[1]
+        self.f = open (r'log','a+')
 
     def getPage(self,uk,shareid):
         url = 'http://pan.baidu.com/share/link?shareid=%s&uk=%s' % (shareid,uk)
@@ -113,17 +116,16 @@ class BaiduPanCheck(object):
             sql = 'SELECT * from share_file ORDER BY fid ASC limit %s,1000' % self.tmpFid
             datas = self.db.execute(sql)
             if datas <= 0:
+                print >> self.f,'取出数据错误或者已检测完成'
                 print '取出数据错误或者已检测完成'
                 return False
             fetchall = self.db.fetchall()
             for item in fetchall:
                 self.queue.put({
                     'fid':item[0],
-                    'uid':item[13],
                     'uk':item[2],
                     'shareid':item[7]
                 })
-                self.tmpFid = item[0]
 
         while not self.queue.empty():
             data = self.queue.get()
@@ -135,10 +137,14 @@ class BaiduPanCheck(object):
             else:
                 title = titles[0][7:-8]
             if title == '百度网盘-链接不存在':
-                print '====='+data['fid']+'====='
-                self.db.execute("UPDATE share_file set deleted=%s WHERE sid=%s", (1, data['uid']))
+                print >> self.f,'=====%s=====' % data['fid']
+                print '=====%s=====' % data['fid']
+                self.tmpFid = data['fid']
+                self.db.execute("UPDATE share_file set deleted=%s WHERE fid=%s", (1, data['fid']))
+                self.db.execute("UPDATE check_id set temp_id=%s WHERE id=%s", (self.tmpFid,1))
                 self.db.commit()
             else:
+                print >> self.f,data['fid']
                 print data['fid']
                 self.tmpFid = data['fid']
                 self.db.execute("UPDATE check_id set temp_id=%s WHERE id=%s", (self.tmpFid,1))
@@ -151,4 +157,5 @@ if __name__ == "__main__":
     while (1):
         checkResult = spider.startCheck()
         if checkResult:
+            print >> self.f,'一个队列完成'
             print '一个队列完成'
