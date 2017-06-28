@@ -149,7 +149,7 @@ class BaiduPanCheck(object):
                 self.tmpFid = data['fid']
                 self.db.execute("UPDATE check_id set temp_id=%s WHERE id=%s", (self.tmpFid,1))
                 self.db.commit()
-        return true
+        return True
 
 
 if __name__ == "__main__":
@@ -157,5 +157,4 @@ if __name__ == "__main__":
     while (1):
         checkResult = spider.startCheck()
         if checkResult:
-            print >> self.f,'一个队列完成'
             print '一个队列完成'
