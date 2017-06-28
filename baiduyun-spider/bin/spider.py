@@ -528,8 +528,8 @@ if __name__ == "__main__":
             print 'start spider...'
             result = spider.startSpider()
             if not result:
-                print 'The spider is refused,5 mins later try again auto...'
-                time.sleep(60 * 5)
+                print 'The spider is refused,1 mins later try again auto...'
+                time.sleep(60 * 1)
             else:
                 print 'one worker queue id done'
                 time.sleep(1)
