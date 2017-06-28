@@ -30,7 +30,7 @@ class DetailController extends Controller
             $sphinx = new \SphinxClient();
             $sphinx->SetServer ('localhost',9312);
             $sphinx->SetArrayResult (true);
-            // $sphinx->SetSortMode(SPH_SORT_EXTENDED,"create_time desc,@weight desc");
+            $sphinx->SetSortMode(SPH_SORT_EXTENDED,"deleted asc,create_time desc,@weight desc");
             // $sphinx->SetSortMode(SPH_SORT_ATTR_DESC,"create_time");
             $sphinx->SetLimits(0,10,1000);
             $sphinx->SetMaxQueryTime(10);
