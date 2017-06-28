@@ -21,22 +21,25 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
                 <?php endforeach ?>
             </ul>
             <ul class="nav nav-pills">
-                <?php foreach ($categorySecondLevel as $key => $value): ?>
-                    <?php if (count($categorySecondLevel) == 1): ?>
-                        <li class="active"><a class="disabled"><?=$value?></a></li>
-                    <?php else: ?>
-                        <?php if ($value == $second): ?>
+                <?php if ($categorySecondLevel): ?>
+                    <?php foreach ($categorySecondLevel as $key => $value): ?>
+                        <?php if (count($categorySecondLevel) == 1): ?>
                             <li class="active"><a class="disabled"><?=$value?></a></li>
                         <?php else: ?>
-                            <li><a href="<?=Url::to(['search/second','c' => $category,'k' => $k,'s' => $value])?>"><?=$value?></a></li>
-                        <?php endif ?>
-                    <?php endif?>
-                <?php endforeach ?>
+                            <?php if ($value == $second): ?>
+                                <li class="active"><a class="disabled"><?=$value?></a></li>
+                            <?php else: ?>
+                                <li><a href="<?=Url::to(['search/second','c' => $category,'k' => $k,'s' => $value])?>"><?=$value?></a></li>
+                            <?php endif ?>
+                        <?php endif?>
+                    <?php endforeach ?>
+                <?php endif ?>
             </ul>
             <hr>
             <div class="table-responsive">
                 <ul class="media-list">
-                    <?php foreach ($datas as $key => $value): ?>
+                    <?php if ($datas): ?>
+                        <?php foreach ($datas as $key => $value): ?>
                         <div class="media well">
                             <a href="<?=Url::to(['user/index','id' => $value->user->uid])?>" class="pull-left">
                                 <img src="<?=$value->user->avatar_url?>" class="media-object" style="width:60px;" />
@@ -67,6 +70,12 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
                             </div>
                         </div>
                     <?php endforeach ?>
+                    <?php else: ?>
+                        <div class="alert alert-danger">
+                            <h4>提示!</h4>
+                            <strong>暂无!</strong> 相关资源，请联系管理员或稍后搜索尝试。
+                        </div>
+                    <?php endif ?>
                 </ul>
                 <nav>
                     <center>

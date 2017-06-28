@@ -48,6 +48,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'index.php' => '',
+                'site/index' => '',
 
                 'c-<id:\d+>' => 'category/index',
                 'c-<id:\d+>-<p:\d+>' => 'category/index',

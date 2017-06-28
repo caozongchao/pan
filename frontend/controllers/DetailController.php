@@ -4,6 +4,7 @@ namespace frontend\controllers;
 use Yii;
 use yii\web\Controller;
 use common\models\ShareFile;
+use yii\helpers\Url;
 
 /**
  * Site controller
@@ -63,6 +64,10 @@ class DetailController extends Controller
                     $relateShares = ShareFile::find()->where(['file_type' => $data->file_type])->andWhere(['!=','fid',$data->fid])->orderBy(['fid' => SORT_DESC])->limit(10)->all();
                 }
             }
+        }else{
+            $session = Yii::$app->session;
+            $session->setFlash('error','未查找到该资源');
+            return $this->redirect(Url::to(['site/index']));
         }
         return $this->render('index',['data' => $data,'userNewShares' => $userNewShares,'keys' => $keys,'relateShares' => $relateShares,'tmpKey' => $tmpKey]);
     }

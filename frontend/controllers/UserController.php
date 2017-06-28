@@ -19,6 +19,11 @@ class UserController extends Controller
             return $this->redirect(['site/index']);
         }
         $user = ShareUsers::find()->where(['uid' => $id])->one();
+        if (!$user) {
+            $session = Yii::$app->session;
+            $session->setFlash('error','未查找到该用户');
+            return $this->redirect(Url::to(['site/index']));
+        }
         $query = ShareFile::find()->where(['uid' => $id]);
         $count = $query->count();
         $pagination = new Pagination(['totalCount' => $count,'pageSize' => 20,'pageSizeParam' => false,'pageParam' => 'p']);

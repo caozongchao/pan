@@ -12,9 +12,11 @@ use yii\helpers\Url;
     <div class="panel panel-info">
         <div class="panel-heading">Ta 分享的最新资源：</div>
         <div class="list-group">
-            <?php foreach ($userNewShares as $userNewShare): ?>
-                <a href="<?=Url::to(['detail/index','id' => $userNewShare->fid])?>" target="_blank" class="list-group-item"><?=$userNewShare->title?></a>
-            <?php endforeach ?>
+            <?php if ($userNewShares): ?>
+                <?php foreach ($userNewShares as $userNewShare): ?>
+                    <a href="<?=Url::to(['detail/index','id' => $userNewShare->fid])?>" target="_blank" class="list-group-item"><?=$userNewShare->title?></a>
+                <?php endforeach ?>
+            <?php endif ?>
         </div>
     </div>
     <!-- <div class="well">

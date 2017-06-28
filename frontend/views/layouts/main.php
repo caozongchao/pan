@@ -75,6 +75,7 @@ var _hmt = _hmt || [];
             </div>
         </div>
     </nav>
+    <?= Alert::widget() ?>
     <?=$content;?>
 <?php $this->endBody() ?>
 <!-- JiaThis Button BEGIN -->

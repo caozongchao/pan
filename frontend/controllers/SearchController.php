@@ -47,7 +47,7 @@ class SearchController extends Controller
             $count = $results['total'];
             $pagination = new Pagination(['totalCount' => $count,'pageSize' => $pageSize,'pageSizeParam' => false,'pageParam' => 'p']);
             $datas = $query->all();
-           return $this->render('index',['datas' => $datas,'k' => $key,'type' => '快速','pagination' => $pagination]);
+            return $this->render('index',['datas' => $datas,'k' => $key,'type' => '快速','pagination' => $pagination]);
         }else{
             $query = ShareFile::find()->where(['like','title',$key])->orderBy(['fid' => SORT_DESC]);
             $count = $query->count();

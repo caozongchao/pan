@@ -19,37 +19,44 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
             <hr>
             <div class="table-responsive">
                 <ul class="media-list">
-                    <?php foreach ($datas as $key => $value): ?>
-                        <div class="media well">
-                            <a href="<?=Url::to(['user/index','id' => $value->user->uid])?>" class="pull-left">
-                                <img src="<?=$value->user->avatar_url?>" class="media-object" style="width:60px;" />
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">
-                                    <?php if ($value->deleted == 0): ?>
-                                        <a href="<?=Url::to(['detail/index','id' => $value->fid])?>"><?=ColorHelper::red($value->title,$k)?></a>
-                                    <?php else: ?>
-                                        <del><a href="<?=Url::to(['detail/index','id' => $value->fid])?>"><?=ColorHelper::red($value->title,$k)?></a></del>
-                                    <?php endif ?>
-                                    <span class="badge" style="background-color: #99CC33">
-                                        <?php if ($value->isdir): ?>
-                                            目录
-                                        <?php else: ?>
-                                            文件
-                                        <?php endif ?>
-                                    </span>
-                                </h4>
-                                资源大小：<span class="badge" style="background-color: #99CCFF"><?=FormatSizeHelper::formatBytes($value->size)?></span><br />
-                                分享日期：<span class="badge" style="background-color: #DD9990"><?=date('Y-m-d H:i:s',$value->create_time)?></span>&nbsp;&nbsp;
-                                来源类型：<span class="badge" style="background-color: #FF9999">百度网盘资源</span>
-                            </div>
-                            <div class="media-right" >
-                                <a class="btn btn-default" href="#" style="width: 45px;height: 48px;padding: 0;line-height: 26px;font-weight: 500;color: #999;display: block;text-align: center; text-shadow: 0 1px 0 #fff; background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%)">
-                                    <h4 style="font-weight: normal; margin: 0; line-height: 20px; background: #ddd;">浏览</h4><?=$value->click?>
+                    <?php if ($datas): ?>
+                        <?php foreach ($datas as $key => $value): ?>
+                            <div class="media well">
+                                <a href="<?=Url::to(['user/index','id' => $value->user->uid])?>" class="pull-left">
+                                    <img src="<?=$value->user->avatar_url?>" class="media-object" style="width:60px;" />
                                 </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <?php if ($value->deleted == 0): ?>
+                                            <a href="<?=Url::to(['detail/index','id' => $value->fid])?>"><?=ColorHelper::red($value->title,$k)?></a>
+                                        <?php else: ?>
+                                            <del><a href="<?=Url::to(['detail/index','id' => $value->fid])?>"><?=ColorHelper::red($value->title,$k)?></a></del>
+                                        <?php endif ?>
+                                        <span class="badge" style="background-color: #99CC33">
+                                            <?php if ($value->isdir): ?>
+                                                目录
+                                            <?php else: ?>
+                                                文件
+                                            <?php endif ?>
+                                        </span>
+                                    </h4>
+                                    资源大小：<span class="badge" style="background-color: #99CCFF"><?=FormatSizeHelper::formatBytes($value->size)?></span><br />
+                                    分享日期：<span class="badge" style="background-color: #DD9990"><?=date('Y-m-d H:i:s',$value->create_time)?></span>&nbsp;&nbsp;
+                                    来源类型：<span class="badge" style="background-color: #FF9999">百度网盘资源</span>
+                                </div>
+                                <div class="media-right" >
+                                    <a class="btn btn-default" href="#" style="width: 45px;height: 48px;padding: 0;line-height: 26px;font-weight: 500;color: #999;display: block;text-align: center; text-shadow: 0 1px 0 #fff; background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%)">
+                                        <h4 style="font-weight: normal; margin: 0; line-height: 20px; background: #ddd;">浏览</h4><?=$value->click?>
+                                    </a>
+                                </div>
                             </div>
+                        <?php endforeach ?>
+                    <?php else: ?>
+                        <div class="alert alert-danger">
+                            <h4>提示!</h4>
+                            <strong>暂无</strong> 相关资源，请联系管理员或稍后搜索尝试。
                         </div>
-                    <?php endforeach ?>
+                    <?php endif ?>
                 </ul>
                 <nav>
                     <center>
