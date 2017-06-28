@@ -31,12 +31,13 @@ class SearchController extends Controller
         $sphinx->SetServer ('localhost',9312);
         $sphinx->SetArrayResult (true);
         // $sphinx->setFilter('deleted', [0]);
-        $sphinx->SetSortMode(SPH_SORT_EXTENDED,"create_time desc,@weight desc");
+        // $sphinx->SetSortMode(SPH_SORT_EXTENDED,"create_time desc,@weight desc");
         // $sphinx->SetSortMode(SPH_SORT_ATTR_DESC,"create_time");
         $sphinx->SetLimits((($currentPage - 1) * $pageSize),$pageSize,1000);
         $sphinx->SetMaxQueryTime(10);
         $index = 'pan';
         $results = $sphinx->query ($key, $index);
+        // var_dump($results);die;
         //判断sphinx中是否取出数据，如果为空，再从mysql通过like取数据
         if ($results['total'] != 0) {
             $ids = [];
@@ -85,7 +86,7 @@ class SearchController extends Controller
         $sphinx->SetArrayResult (true);
         // $sphinx->setFilter('deleted', [0]);
         $sphinx->setFilter('file_type', [$category]);
-        $sphinx->SetSortMode(SPH_SORT_EXTENDED,"create_time desc,@weight desc");
+        // $sphinx->SetSortMode(SPH_SORT_EXTENDED,"create_time desc,@weight desc");
         // $sphinx->SetSortMode(SPH_SORT_ATTR_DESC,"create_time");
         $sphinx->SetLimits((($currentPage - 1) * $pageSize),$pageSize,1000);
         $sphinx->SetMaxQueryTime(10);
@@ -144,7 +145,7 @@ class SearchController extends Controller
         // $sphinx->setFilter('deleted', [0]);
         $sphinx->setFilter('file_type', [$category]);
         $sphinx->setFilter('ext', [crc32('.'.$second)]);
-        $sphinx->SetSortMode(SPH_SORT_EXTENDED,"create_time desc,@weight desc");
+        // $sphinx->SetSortMode(SPH_SORT_EXTENDED,"create_time desc,@weight desc");
         // $sphinx->SetSortMode(SPH_SORT_ATTR_DESC,"create_time");
         $sphinx->SetLimits((($currentPage - 1) * $pageSize),$pageSize,1000);
         $sphinx->SetMaxQueryTime(10);
