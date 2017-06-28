@@ -45,13 +45,14 @@ $this->title = $data->title.'_云上搜索';
                 </div>
                 <div class="panel-footer">
                     <center>
-                        <ul class="list-inline">
+                        <ul class="list-inline" style="margin-bottom: 0px;">
                             <li>
-                                <i class="fa fa-download"></i>
                                 <?php if ($data->shorturl): ?>
-                                    <a href="http://pan.baidu.com/s/<?=$data->shorturl?>" rel="nofollow" target="_blank">点击进入百度网盘查看</a>
+                                    <!-- <i class="fa fa-download"></i> -->
+                                    <a class="btn btn-lg btn-warning" href="http://pan.baidu.com/s/<?=$data->shorturl?>" rel="nofollow" target="_blank">点击进入百度网盘查看</a>
                                 <?php else: ?>
-                                    <a href="http://pan.baidu.com/share/link?shareid=<?=$data->shareid?>&uk=<?=$data->uk?>" target="_blank">点击进入百度网盘查看</a>
+                                    <!-- <i class="fa fa-download"></i> -->
+                                    <a class="btn btn-lg btn-warning" href="http://pan.baidu.com/share/link?shareid=<?=$data->shareid?>&uk=<?=$data->uk?>" target="_blank">点击进入百度网盘查看</a>
                                 <?php endif ?>
                             </li>
                         </ul>
