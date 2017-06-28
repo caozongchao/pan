@@ -38,7 +38,9 @@ class DetailController extends Controller
             // var_dump($results);die;
             if (isset($results['words']) && $results['words']) {
                 foreach ($results['words'] as $key => $value) {
-                    $keys[] = $key;
+                    if (strlen($key) > 3) {
+                        $keys[] = $key;
+                    }
                 }
                 foreach ($keys as $value) {
                     if (strlen($value) >= 6 ) {
