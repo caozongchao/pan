@@ -31,7 +31,7 @@ class SearchController extends Controller
         $sphinx->SetServer ('localhost',9312);
         $sphinx->SetArrayResult (true);
         // $sphinx->setFilter('deleted', [0]);
-        //$sphinx->SetSortMode(SPH_SORT_ATTR_DESC, "id");
+        $sphinx->SetSortMode(SPH_SORT_EXTENDED,"create_time desc,@weight desc");
         $sphinx->SetLimits((($currentPage - 1) * $pageSize),$pageSize,1000);
         $sphinx->SetMaxQueryTime(10);
         $index = 'pan';
@@ -84,7 +84,7 @@ class SearchController extends Controller
         $sphinx->SetArrayResult (true);
         // $sphinx->setFilter('deleted', [0]);
         $sphinx->setFilter('file_type', [$category]);
-        //$sphinx->SetSortMode(SPH_SORT_ATTR_DESC, "id");
+        $sphinx->SetSortMode(SPH_SORT_EXTENDED,"create_time desc,@weight desc");
         $sphinx->SetLimits((($currentPage - 1) * $pageSize),$pageSize,1000);
         $sphinx->SetMaxQueryTime(10);
         $index = 'pan';
@@ -141,8 +141,8 @@ class SearchController extends Controller
         $sphinx->SetArrayResult (true);
         // $sphinx->setFilter('deleted', [0]);
         $sphinx->setFilter('file_type', [$category]);
-        $sphinx->setFilter('ext', ['.'.$second]);
-        //$sphinx->SetSortMode(SPH_SORT_ATTR_DESC, "id");
+        $sphinx->setFilter('ext', [crc32('.'.$second)]);
+        $sphinx->SetSortMode(SPH_SORT_EXTENDED,"create_time desc,@weight desc");
         $sphinx->SetLimits((($currentPage - 1) * $pageSize),$pageSize,1000);
         $sphinx->SetMaxQueryTime(10);
         $index = 'pan';
