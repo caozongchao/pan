@@ -124,8 +124,6 @@ class BaiduPanCheck(object):
                     'shareid':item[7]
                 })
                 self.tmpFid = item[0]
-            self.db.execute("UPDATE check_id set temp_id=%s WHERE id=%s", (self.tmpFid,1))
-            self.db.commit()
 
         while not self.queue.empty():
             data = self.queue.get()
