@@ -121,6 +121,8 @@ var jiathis_config={
         </div>
     </div>
 </div>
+<!-- 百度搜索提示框 -->
+<script charset="gbk" src="http://www.baidu.com/js/opensug.js"></script>
 </body>
 </html>
 <?php $this->endPage() ?>

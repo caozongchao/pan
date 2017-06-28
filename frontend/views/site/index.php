@@ -16,7 +16,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-center">
             <form action="<?=Url::to(['search/index'])?>">
                 <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" name="k" id="k">
+                    <input type="text" class="form-control" name="k" id="k" baiduSug="2">
                     <span class="input-group-btn">
                         <button class="btn btn-info" id="searchButton" type="submit">
                             <i class="fa fa-fw fa-search"></i>
