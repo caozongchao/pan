@@ -51,7 +51,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                                     <?php if ($newVideo->deleted == 0): ?>
                                         <a href="<?=Url::to(['detail/index','id' => $newVideo->fid])?>" title="<?=$newVideo->title?>"><?=mb_substr($newVideo->title,0,50)?><b>[云上搜索]</b></a>
                                     <?php else: ?>
-                                        <del><a href="<?=Url::to(['detail/index','id' => $newVideo->fid])?>" title="<?=$newVideo->title?>"><?=mb_substr($newVideo->title,0,50)?><b>[云上搜索]</b></a></del>
+                                        <b>已失效</b> <del><a href="<?=Url::to(['detail/index','id' => $newVideo->fid])?>" title="<?=$newVideo->title?>"><?=mb_substr($newVideo->title,0,50)?><b>[云上搜索]</b></a></del>
                                     <?php endif ?>
                                     <span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newVideo->uid])?>" style="color:#ffffff;"><?=$newVideo->user->user_name?></a></span>
                                     <span class="badge" style="background-color: #999999;margin-left: 10px;">
@@ -74,7 +74,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                                     <?php if ($newImage->deleted == 0): ?>
                                         <a href="<?=Url::to(['detail/index','id' => $newImage->fid])?>" title="<?=$newImage->title?>"><?=mb_substr($newImage->title,0,50)?><b>[百度网盘搜索]</b></a>
                                     <?php else: ?>
-                                        <del><a href="<?=Url::to(['detail/index','id' => $newImage->fid])?>" title="<?=$newImage->title?>"><?=mb_substr($newImage->title,0,50)?><b>[百度网盘搜索]</b></a></del>
+                                        <b>已失效</b> <del><a href="<?=Url::to(['detail/index','id' => $newImage->fid])?>" title="<?=$newImage->title?>"><?=mb_substr($newImage->title,0,50)?><b>[百度网盘搜索]</b></a></del>
                                     <?php endif ?>
                                     <span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newImage->uid])?>" style="color:#ffffff;"><?=$newImage->user->user_name?></a></span>
                                     <span class="badge" style="background-color: #999999;margin-left: 10px;">
@@ -97,7 +97,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                                     <?php if ($newDocument->deleted == 0): ?>
                                         <a href="<?=Url::to(['detail/index','id' => $newDocument->fid])?>" title="<?=$newDocument->title?>"><?=mb_substr($newDocument->title,0,50)?><b>[百度云搜索]</b></a>
                                     <?php else: ?>
-                                        <del><a href="<?=Url::to(['detail/index','id' => $newDocument->fid])?>" title="<?=$newDocument->title?>"><?=mb_substr($newDocument->title,0,50)?><b>[百度云搜索]</b></a></del>
+                                        <b>已失效</b> <del><a href="<?=Url::to(['detail/index','id' => $newDocument->fid])?>" title="<?=$newDocument->title?>"><?=mb_substr($newDocument->title,0,50)?><b>[百度云搜索]</b></a></del>
                                     <?php endif ?>
                                     <span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newDocument->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
                                     <span class="badge" style="background-color: #999999;margin-left: 10px;">
@@ -120,7 +120,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                                     <?php if ($newMusic->deleted == 0): ?>
                                         <a href="<?=Url::to(['detail/index','id' => $newMusic->fid])?>" title="<?=$newMusic->title?>"><?=mb_substr($newMusic->title,0,50)?><b>[百度网盘资源]</b></a>
                                     <?php else: ?>
-                                        <del><a href="<?=Url::to(['detail/index','id' => $newMusic->fid])?>" title="<?=$newMusic->title?>"><?=mb_substr($newMusic->title,0,50)?><b>[百度网盘资源]</b></a></del>
+                                        <b>已失效</b> <del><a href="<?=Url::to(['detail/index','id' => $newMusic->fid])?>" title="<?=$newMusic->title?>"><?=mb_substr($newMusic->title,0,50)?><b>[百度网盘资源]</b></a></del>
                                     <?php endif ?>
                                     <span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newMusic->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
                                     <span class="badge" style="background-color: #999999;margin-left: 10px;">
@@ -143,7 +143,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                                     <?php if ($newPackage->deleted == 0): ?>
                                         <a href="<?=Url::to(['detail/index','id' => $newPackage->fid])?>" title="<?=$newPackage->title?>"><?=mb_substr($newPackage->title,0,50)?><b>[百度云资源]</b></a>
                                     <?php else: ?>
-                                        <del><a href="<?=Url::to(['detail/index','id' => $newPackage->fid])?>" title="<?=$newPackage->title?>"><?=mb_substr($newPackage->title,0,50)?><b>[百度云资源]</b></a></del>
+                                        <b>已失效</b> <del><a href="<?=Url::to(['detail/index','id' => $newPackage->fid])?>" title="<?=$newPackage->title?>"><?=mb_substr($newPackage->title,0,50)?><b>[百度云资源]</b></a></del>
                                     <?php endif ?>
                                     <span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newPackage->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
                                     <span class="badge" style="background-color: #999999;margin-left: 10px;">
@@ -166,7 +166,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                                     <?php if ($newSoftware->deleted == 0): ?>
                                         <a href="<?=Url::to(['detail/index','id' => $newSoftware->fid])?>" title="<?=$newSoftware->title?>"><?=mb_substr($newSoftware->title,0,50)?><b>[云上搜索]</b></a>
                                     <?php else: ?>
-                                        <del><a href="<?=Url::to(['detail/index','id' => $newSoftware->fid])?>" title="<?=$newSoftware->title?>"><?=mb_substr($newSoftware->title,0,50)?><b>[云上搜索]</b></a></del>
+                                        <b>已失效</b> <del><a href="<?=Url::to(['detail/index','id' => $newSoftware->fid])?>" title="<?=$newSoftware->title?>"><?=mb_substr($newSoftware->title,0,50)?><b>[云上搜索]</b></a></del>
                                     <?php endif ?>
                                     <span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newSoftware->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
                                     <span class="badge" style="background-color: #999999;margin-left: 10px;">
@@ -189,7 +189,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                                     <?php if ($newTorrent->deleted == 0): ?>
                                         <a href="<?=Url::to(['detail/index','id' => $newTorrent->fid])?>" title="<?=$newTorrent->title?>"><?=mb_substr($newTorrent->title,0,50)?><b>[云上搜索]</b></a>
                                     <?php else: ?>
-                                        <del><a href="<?=Url::to(['detail/index','id' => $newTorrent->fid])?>" title="<?=$newTorrent->title?>"><?=mb_substr($newTorrent->title,0,50)?><b>[云上搜索]</b></a></del>
+                                        <b>已失效</b> <del><a href="<?=Url::to(['detail/index','id' => $newTorrent->fid])?>" title="<?=$newTorrent->title?>"><?=mb_substr($newTorrent->title,0,50)?><b>[云上搜索]</b></a></del>
                                     <?php endif ?>
                                     <span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newTorrent->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
                                     <span class="badge" style="background-color: #999999;margin-left: 10px;">
@@ -212,7 +212,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                                     <?php if ($newOther->deleted == 0): ?>
                                         <a href="<?=Url::to(['detail/index','id' => $newOther->fid])?>" title="<?=$newOther->title?>"><?=mb_substr($newOther->title,0,50)?><b>[云上搜索]</b></a>
                                     <?php else: ?>
-                                        <del><a href="<?=Url::to(['detail/index','id' => $newOther->fid])?>" title="<?=$newOther->title?>"><?=mb_substr($newOther->title,0,50)?><b>[云上搜索]</b></a></del>
+                                        <b>已失效</b> <del><a href="<?=Url::to(['detail/index','id' => $newOther->fid])?>" title="<?=$newOther->title?>"><?=mb_substr($newOther->title,0,50)?><b>[云上搜索]</b></a></del>
                                     <?php endif ?>
                                     <span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $newOther->uid])?>" style="color:#ffffff;"><?=$newDocument->user->user_name?></a></span>
                                     <span class="badge" style="background-color: #999999;margin-left: 10px;">

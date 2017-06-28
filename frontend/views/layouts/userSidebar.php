@@ -14,7 +14,11 @@ use yii\helpers\Url;
         <div class="list-group">
             <?php if ($userHotShares): ?>
                 <?php foreach ($userHotShares as $userHotShare): ?>
-                    <a href="<?=Url::to(['detail/index','id' => $userHotShare->fid])?>" target="_blank" class="list-group-item"><?=$userHotShare->title?></a>
+                    <?php if ($userHotShare->deleted == 0): ?>
+                        <a href="<?=Url::to(['detail/index','id' => $userHotShare->fid])?>" target="_blank" class="list-group-item"><?=$userHotShare->title?></a>
+                    <?php else: ?>
+                        <del><a href="<?=Url::to(['detail/index','id' => $userHotShare->fid])?>" target="_blank" class="list-group-item"><?=$userHotShare->title?></a></del>
+                    <?php endif?>
                 <?php endforeach ?>
             <?php endif ?>
         </div>
