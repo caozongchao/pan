@@ -20,10 +20,10 @@ ERR_EX = 2  # 未知错误
 
 def getHtml(url, ref=None, reget=5):
     try:
-        proxy_info = {'host' : '183.45.172.11','port' : 9797}
-        proxy_support = urllib2.ProxyHandler({"http" : "http://%(host)s:%(port)d" % proxy_info})
-        opener = urllib2.build_opener(proxy_support)
-        urllib2.install_opener(opener)
+        # proxy_info = {'host' : '********','port' : ****}
+        # proxy_support = urllib2.ProxyHandler({"http" : "http://%(host)s:%(port)d" % proxy_info})
+        # opener = urllib2.build_opener(proxy_support)
+        # urllib2.install_opener(opener)
 
         request = urllib2.Request(url)
         request.add_header('User-Agent',
