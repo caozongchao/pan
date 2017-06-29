@@ -102,7 +102,7 @@ class BaiduPanCheck(object):
     def __init__(self):
         self.db = Db()
         self.queue = Queue.Queue(maxsize = 1000)
-        result = self.db.execute('SELECT * from check_id')
+        result = self.db.execute('SELECT * from ifdelete_temp_id')
         resultOne = self.db.fetchone()
         self.tmpFid = resultOne[1]
         self.f = open (r'log','a+')
@@ -141,13 +141,13 @@ class BaiduPanCheck(object):
                 print '=====%s=====' % data['fid']
                 self.tmpFid = data['fid']
                 self.db.execute("UPDATE share_file set deleted=%s WHERE fid=%s", (1, data['fid']))
-                self.db.execute("UPDATE check_id set temp_id=%s WHERE id=%s", (self.tmpFid,1))
+                self.db.execute("UPDATE ifdelete_temp_id set temp_id=%s WHERE id=%s", (self.tmpFid,1))
                 self.db.commit()
             else:
                 print >> self.f,data['fid']
                 print data['fid']
                 self.tmpFid = data['fid']
-                self.db.execute("UPDATE check_id set temp_id=%s WHERE id=%s", (self.tmpFid,1))
+                self.db.execute("UPDATE ifdelete_temp_id set temp_id=%s WHERE id=%s", (self.tmpFid,1))
                 self.db.commit()
         return True
 

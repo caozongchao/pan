@@ -69,7 +69,12 @@ $this->title = $categoryName.$second.'资源目录_云上搜索';
                     <center>
                         <?php
                             $linkPager = LinkPager::widget([
-                                'pagination' => $pagination,
+                                'pagination'     => $pagination,
+                                'firstPageLabel' => '<<',
+                                'lastPageLabel'  => '>>',
+                                'prevPageLabel'  => '<',
+                                'nextPageLabel'  => '>',
+                                'maxButtonCount' => 6
                             ]);
                             $linkPager = preg_replace('/href="(.*)\?(.*)p=(\d+)(.*)"/', "href='$1-$3'", $linkPager);
                             echo $linkPager;
