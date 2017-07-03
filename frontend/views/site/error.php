@@ -3,7 +3,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 /* @var $this yii\web\View */
 ?>
-<div class="container" style="padding-top:120px; padding-bottom:50px; font-size:18px;">
+<div class="container" style="padding-top:120px; font-size:18px;">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="alert alert-danger">

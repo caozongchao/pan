@@ -4,12 +4,21 @@ use yii\helpers\Url;
 use frontend\helpers\FormatSizeHelper;
 use frontend\helpers\ColorHelper;
 use yii\widgets\LinkPager;
+use yii\widgets\Breadcrumbs;
 
 $this->title = $categoryName.'资源目录_云上搜索';
+$this->params['breadcrumbs'][] = ['label' => $categoryName];
 ?>
-<div class="container" style="padding-top:60px;">
+<div class="container">
     <div class="row">
         <div class="col-lg-8">
+            <?= Breadcrumbs::widget([
+                'homeLink'=>[
+                    'label' => '首页',
+                    'url' => Yii::$app->homeUrl
+                ],
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
             <ul class="nav nav-pills">
                 <?php if ($categorySecondLevel): ?>
                     <?php foreach ($categorySecondLevel as $value): ?>

@@ -16,6 +16,11 @@ use yii\helpers\Url;
         </form>
     </div>
 </div>
+<div class="col-md-4">
+    <center>
+        <!-- 广告位 -->
+    </center>
+</div>
 <script type="text/javascript">
     $("#searchButton").click(function(){
         var key = $("#k").val();

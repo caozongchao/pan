@@ -7,7 +7,7 @@ use yii\widgets\LinkPager;
 
 $this->title = $user->user_name.'分享的网盘资源_云上搜索';
 ?>
-<div class="container" style="padding-top:65px;">
+<div class="container">
     <div class="row">
         <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/userSidebar.php',['user' => $user,'userHotShares' => $userHotShares]); ?>
         <div class="col-lg-9">

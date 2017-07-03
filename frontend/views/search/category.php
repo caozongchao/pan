@@ -7,7 +7,7 @@ use yii\widgets\LinkPager;
 
 $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
 ?>
-<div class="container" style="padding-top:70px;">
+<div class="container">
     <div class="row">
         <div class="col-lg-8">
             <h3>"<?=HtmlPurifier::process($k)?>"<small> 的搜索结果，<small>搜索引擎：<?=$type?></small></small></h3>

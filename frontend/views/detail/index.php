@@ -3,12 +3,21 @@ use frontend\helpers\FormatSizeHelper;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Url;
 use frontend\helpers\ColorHelper;
+use yii\widgets\Breadcrumbs;
 
 $this->title = $data->title.'_云上搜索';
+$this->params['breadcrumbs'][] = ['label' => $data->title];
 ?>
-<div class="container" style="padding-top:60px;">
+<div class="container">
     <div class="row">
         <div class="col-lg-8">
+            <?= Breadcrumbs::widget([
+                'homeLink'=>[
+                    'label' => '首页',
+                    'url' => Yii::$app->homeUrl
+                ],
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">

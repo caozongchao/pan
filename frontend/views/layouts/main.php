@@ -75,7 +75,16 @@ var _hmt = _hmt || [];
             </div>
         </div>
     </nav>
-    <?= Alert::widget() ?>
+    <div class="container" style="padding-top:60px;">
+        <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-center">
+                    <!-- 广告位 -->
+                </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+        </div>
+    </div>
+    <?//= Alert::widget() ?>
     <?=$content;?>
 <?php $this->endBody() ?>
 <!-- JiaThis Button BEGIN -->
@@ -124,6 +133,8 @@ var jiathis_config={
 </div>
 <!-- 百度搜索提示框 -->
 <script charset="gbk" src="http://www.baidu.com/js/opensug.js"></script>
+<!-- 老榕树广告 -->
+
 </body>
 </html>
 <?php $this->endPage() ?>

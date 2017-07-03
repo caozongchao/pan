@@ -4,7 +4,7 @@ use yii\helpers\Url;
 
 $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
 ?>
-<div class="container" style="padding-top:60px;">
+<div class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
             <h2>云上搜索</h2>
