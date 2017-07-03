@@ -133,8 +133,8 @@ var jiathis_config={
 </div>
 <!-- 百度搜索提示框 -->
 <script charset="gbk" src="http://www.baidu.com/js/opensug.js"></script>
-<!-- 老榕树广告 -->
-
+<!-- 移动端admin5广告位 -->
+<script src='http://slb.jiehantai.com/46455'></script>
 </body>
 </html>
 <?php $this->endPage() ?>

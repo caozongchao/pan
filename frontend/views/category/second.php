@@ -14,6 +14,8 @@ $this->params['breadcrumbs'][] = ['label' => $second];
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
+            <!-- 广告位 -->
+            
             <?= Breadcrumbs::widget([
                 'homeLink'=>[
                     'label' => '首页',
@@ -39,6 +41,10 @@ $this->params['breadcrumbs'][] = ['label' => $second];
                 <ul class="media-list">
                     <?php if ($datas): ?>
                         <?php foreach ($datas as $key => $value): ?>
+                            <?php if ($key == 10): ?>
+                                <!-- 广告位 -->
+                                <center><script src='http://www.yezilm.com/vs.php?id=3815'></script></center>
+                            <?php endif ?>
                             <div class="media well">
                                 <a href="<?=Url::to(['user/index','id' => $value->user->uid])?>" class="pull-left">
                                     <img src="<?=$value->user->avatar_url?>" class="media-object" style="width:60px;" />
