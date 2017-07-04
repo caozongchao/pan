@@ -44,7 +44,7 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
                         <?php foreach ($datas as $key => $value): ?>
                         <?php if ($key == 10): ?>
                             <!-- 广告位 -->
-                            <center><script src='http://www.yezilm.com/vs.php?id=3815'></script></center>
+                            
                         <?php endif ?>
                         <div class="media well">
                             <a href="<?=Url::to(['user/index','id' => $value->user->uid])?>" class="pull-left">

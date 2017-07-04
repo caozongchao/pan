@@ -9,7 +9,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-center">
                 <!-- 首页上广告位 -->
-                <script src="http://wm.lrswl.com/page/s.php?s=242201&w=950&h=90"></script>
+                
             </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
     </div>
@@ -248,7 +248,7 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-center">
                 <!-- 首页下广告位 -->
-                <script src="http://wm.lrswl.com/page/s.php?s=242197&w=950&h=90"></script>
+                
             </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
     </div>
