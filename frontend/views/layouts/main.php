@@ -109,7 +109,7 @@ var jiathis_config={
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                    <h4 class="modal-title" id="mySmallModalLabel">云上搜索与您相伴，请捐助我。</h4>
+                    <h4 class="modal-title" id="mySmallModalLabel">云上搜索与您相伴</h4>
                 </div>
                 <div class="modal-body">
                     <div style="text-align:center;">
