@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                                 <img src="http://placehold.it/100x145" class="img-responsive">
                             </center>
                         </div> -->
-                        <div class="col-lg-10">
+                        <div class="col-lg-12">
                             <dl class="dl-horizontal">
                                 <dt>资源名称</dt>
                                 <dd>
@@ -54,6 +54,14 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                                 </dd>
                                 <dt>分享用户</dt>
                                 <dd><a href="<?=Url::to(['user/index','id' => $data->user->uid])?>"><?=$data->user->user_name?></a></dd>
+                                <dt>相关关键词</dt>
+                                <dd>
+                                    <?php if ($keys): ?>
+                                        <?php foreach ($keys as $key): ?>
+                                            <span class="label label-success"><a href="<?=Url::to(['search/index','k' => $key])?>" target="_blank" style="color:#ffffff;"><?=$key?></a></span>
+                                        <?php endforeach ?>
+                                    <?php endif ?>
+                                </dd>
                             </dl>
                         </div>
                     </div>
@@ -77,21 +85,7 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                 <?php endif ?>
             </div>
             <div class="panel panel-info">
-                <div class="panel-heading">
-                    <?=HtmlPurifier::process($data->title)?> 的相关搜索：
-                </div>
-                <div class="panel-body">
-                    <?php if ($keys): ?>
-                        <?php foreach ($keys as $key): ?>
-                            <h3 class="pull-left"><span class="label label-success"><a href="<?=Url::to(['search/index','k' => $key])?>" target="_blank" style="color:#ffffff;"><?=$key?></a></span></h3>
-                        <?php endforeach ?>
-                    <?php endif ?>
-                </div>
-            </div>
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <?=HtmlPurifier::process($data->title)?> 的相关资源：
-                </div>
+                <div class="panel-heading">百度云相关资源</div>
                 <div class="list-group">
                     <?php if ($relateShares): ?>
                         <?php foreach ($relateShares as $relateShare): ?>
