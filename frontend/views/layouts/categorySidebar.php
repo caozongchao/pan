@@ -6,7 +6,7 @@ use yii\helpers\Url;
         <h4>云上搜索</h4>
         <form action="<?=Url::to(['search/index'])?>">
         <div class="input-group">
-            <input type="text" class="form-control" name="k" id="k" baiduSug="2">
+            <input type="text" class="form-control" name="k" id="k" baiduSug="2" placeholder="暂只支持英文和中文搜索">
             <span class="input-group-btn">
                 <button class="btn btn-info" id="searchButton" type="submit">
                     <i class="fa fa-fw fa-search"></i>

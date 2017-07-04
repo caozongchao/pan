@@ -50,16 +50,18 @@ class SearchController extends Controller
             $datas = $query->all();
             return $this->render('index',['datas' => $datas,'k' => $key,'type' => '快速','pagination' => $pagination]);
         }else{
-            $query = ShareFile::find()->where(['like','title',$key])->orderBy(['fid' => SORT_DESC]);
-            $count = $query->count();
-            $pagination = new Pagination([
-                'totalCount' => $count,
-                'pageSize' => $pageSize,
-                'pageSizeParam' => false,
-                'pageParam' => 'p',
-            ]);
-            $datas = $query->offset($pagination->offset)->limit($pagination->limit)->all();
-            return $this->render('index',['datas' => $datas,'k' => $key,'type' => '慢速','pagination' => $pagination]);
+            // $query = ShareFile::find()->where(['like','title',$key])->orderBy(['fid' => SORT_DESC]);
+            // $count = $query->count();
+            // $pagination = new Pagination([
+            //     'totalCount' => $count,
+            //     'pageSize' => $pageSize,
+            //     'pageSizeParam' => false,
+            //     'pageParam' => 'p',
+            // ]);
+            // $datas = $query->offset($pagination->offset)->limit($pagination->limit)->all();
+            // return $this->render('index',['datas' => $datas,'k' => $key,'type' => '慢速','pagination' => $pagination]);
+            $datas = [];
+            return $this->render('index',['datas' => $datas,'k' => $key,'type' => '慢速']);
         }
     }
 
@@ -104,16 +106,18 @@ class SearchController extends Controller
             $datas = $query->all();
             return $this->render('category',['datas' => $datas,'category' => $category,'k' => $key,'type' => '快速','pagination' => $pagination,'categorySecondLevel' => $categorySecondLevel]);
         }else{
-            $query = ShareFile::find()->where(['like','title',$key])->andWhere(['file_type' => $category])->orderBy(['fid' => SORT_DESC]);
-            $count = $query->count();
-            $pagination = new Pagination([
-                'totalCount' => $count,
-                'pageSize' => $pageSize,
-                'pageSizeParam' => false,
-                'pageParam' => 'p'
-            ]);
-            $datas = $query->offset($pagination->offset)->limit($pagination->limit)->all();
-            return $this->render('category',['datas' => $datas,'category' => $category,'k' => $key,'type' => '慢速','pagination' => $pagination,'categorySecondLevel' => $categorySecondLevel]);
+            // $query = ShareFile::find()->where(['like','title',$key])->andWhere(['file_type' => $category])->orderBy(['fid' => SORT_DESC]);
+            // $count = $query->count();
+            // $pagination = new Pagination([
+            //     'totalCount' => $count,
+            //     'pageSize' => $pageSize,
+            //     'pageSizeParam' => false,
+            //     'pageParam' => 'p'
+            // ]);
+            // $datas = $query->offset($pagination->offset)->limit($pagination->limit)->all();
+            // return $this->render('category',['datas' => $datas,'category' => $category,'k' => $key,'type' => '慢速','pagination' => $pagination,'categorySecondLevel' => $categorySecondLevel]);
+            $datas = [];
+            return $this->render('category',['datas' => $datas,'category' => $category,'k' => $key,'type' => '慢速','categorySecondLevel' => $categorySecondLevel]);
         }
     }
 
@@ -163,16 +167,18 @@ class SearchController extends Controller
             $datas = $query->all();
             return $this->render('second',['datas' => $datas,'category' => $category,'k' => $key,'type' => '快速','pagination' => $pagination,'categorySecondLevel' => $categorySecondLevel,'second' => $second]);
         }else{
-            $query = ShareFile::find()->where(['like','title',$key])->andWhere(['file_type' => $category])->andWhere(['ext' => '.'.$second])->orderBy(['fid' => SORT_DESC]);
-            $count = $query->count();
-            $pagination = new Pagination([
-                'totalCount' => $count,
-                'pageSize' => $pageSize,
-                'pageSizeParam' => false,
-                'pageParam' => 'p'
-            ]);
-            $datas = $query->offset($pagination->offset)->limit($pagination->limit)->all();
-            return $this->render('second',['datas' => $datas,'category' => $category,'k' => $key,'type' => '慢速','pagination' => $pagination,'categorySecondLevel' => $categorySecondLevel,'second' => $second]);
+            // $query = ShareFile::find()->where(['like','title',$key])->andWhere(['file_type' => $category])->andWhere(['ext' => '.'.$second])->orderBy(['fid' => SORT_DESC]);
+            // $count = $query->count();
+            // $pagination = new Pagination([
+            //     'totalCount' => $count,
+            //     'pageSize' => $pageSize,
+            //     'pageSizeParam' => false,
+            //     'pageParam' => 'p'
+            // ]);
+            // $datas = $query->offset($pagination->offset)->limit($pagination->limit)->all();
+            // return $this->render('second',['datas' => $datas,'category' => $category,'k' => $key,'type' => '慢速','pagination' => $pagination,'categorySecondLevel' => $categorySecondLevel,'second' => $second]);
+            $datas = [];
+            return $this->render('second',['datas' => $datas,'category' => $category,'k' => $key,'type' => '慢速','categorySecondLevel' => $categorySecondLevel,'second' => $second]);
         }
     }
 }

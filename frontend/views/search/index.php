@@ -66,18 +66,20 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
                 </ul>
                 <nav>
                     <center>
-                        <?php
-                            $linkPager = LinkPager::widget([
-                                'pagination'     => $pagination,
-                                'firstPageLabel' => '<<',
-                                'lastPageLabel'  => '>>',
-                                'prevPageLabel'  => '<',
-                                'nextPageLabel'  => '>',
-                                'maxButtonCount' => 6
-                            ]);
-                            $linkPager = preg_replace('/href="(.*)\?(.*)p=(\d+)(.*)"/', "href='$1-$3'", $linkPager);
-                            echo $linkPager;
-                        ?>
+                        <?php if (isset($pagination)): ?>
+                            <?php
+                                $linkPager = LinkPager::widget([
+                                    'pagination'     => $pagination,
+                                    'firstPageLabel' => '<<',
+                                    'lastPageLabel'  => '>>',
+                                    'prevPageLabel'  => '<',
+                                    'nextPageLabel'  => '>',
+                                    'maxButtonCount' => 6
+                                ]);
+                                $linkPager = preg_replace('/href="(.*)\?(.*)p=(\d+)(.*)"/', "href='$1-$3'", $linkPager);
+                                echo $linkPager;
+                            ?>
+                        <?php endif ?>
                     </center>
                 </nav>
             </div>
