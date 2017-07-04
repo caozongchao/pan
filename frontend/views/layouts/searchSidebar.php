@@ -19,7 +19,7 @@ use yii\helpers\Url;
 <div class="col-md-4">
     <center>
         <!-- 广告位 -->
-        <script src="http://wm.lrswl.com/page/s.php?s=242200&w=250&h=250"></script>
+        
     </center>
 </div>
 <script type="text/javascript">
