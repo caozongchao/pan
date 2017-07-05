@@ -34,7 +34,9 @@ class SiteController extends Controller
         $newSoftwares = ShareFile::find()->where(['file_type' => 5])->with('user')->orderBy(['fid' => SORT_DESC])->limit(50)->all();
         $newTorrents = ShareFile::find()->where(['file_type' => 6])->with('user')->orderBy(['fid' => SORT_DESC])->limit(50)->all();
         $newOthers = ShareFile::find()->where(['file_type' => 7])->with('user')->orderBy(['fid' => SORT_DESC])->limit(50)->all();
-        $topUsers = ShareUsers::find()->orderBy(['fetched' => SORT_DESC])->limit(14)->all();
+        $topFxUsers = ShareUsers::find()->orderBy(['fetched' => SORT_DESC])->limit(14)->all();
+        // $topFsUsers = ShareUsers::find()->orderBy(['fens_count' => SORT_DESC,'fetched' => SORT_DESC])->limit(14)->all();
+        // $topGzzUsers = ShareUsers::find()->orderBy(['follow_count' => SORT_DESC,'fetched' => SORT_DESC])->limit(14)->all();
         return $this->render('index',[
             'newVideos' => $newVideos,
             'newImages' => $newImages,
@@ -44,7 +46,9 @@ class SiteController extends Controller
             'newSoftwares' => $newSoftwares,
             'newTorrents' => $newTorrents,
             'newOthers' => $newOthers,
-            'topUsers' => $topUsers,
+            'topFxUsers' => $topFxUsers,
+            // 'topFsUsers' => $topFsUsers,
+            // 'topGzzUsers' => $topGzzUsers,
         ]);
     }
 }

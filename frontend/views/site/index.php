@@ -43,16 +43,32 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
             <div class="tabbable">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="javascript:void(0)">分享达人</a></li>
+                    <li class="active"><a href="#topFxUser" data-toggle="tab">分享达人</a></li>
+                    <!-- <li><a href="#topFsUser" data-toggle="tab">粉丝达人</a></li>
+                    <li><a href="#topGzzUser" data-toggle="tab">关注者达人</a></li> -->
                 </ul>
             </div>
-            <center style="margin-top:10px;">
-                <?php if ($topUsers): ?>
-                    <?php foreach ($topUsers as $topUser): ?>
-                        <a href="<?=Url::to(['user/index','id' => $topUser->uid])?>"><img src="<?=$topUser->avatar_url?>" class="img-circle" width="60" /></a>
-                    <?php endforeach ?>
-                <?php endif ?>
-            </center>
+            <div class="tab-content">
+                <div class="tab-pane active" id="topFxUser">
+                    <center style="margin-top: 10px;">
+                        <?php if ($topFxUsers): ?>
+                            <?php foreach ($topFxUsers as $topFxUser): ?>
+                                <a href="<?=Url::to(['user/index','id' => $topFxUser->uid])?>"><img src="<?=$topFxUser->avatar_url?>" class="img-circle" width="60" /></a>
+                            <?php endforeach ?>
+                        <?php endif ?>
+                    </center>
+                </div>
+                <!-- <div class="tab-pane active" id="topFsUser">
+                    <center style="margin-top: 10px;">
+                        
+                    </center>
+                </div>
+                <div class="tab-pane" id="topGzzUser">
+                    <center style="margin-top: 10px;">
+                        
+                    </center>
+                </div> -->
+            </div>
             <div class="tabbable" style="margin-top:20px;">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#newVideos" data-toggle="tab">最新视频</a></li>
