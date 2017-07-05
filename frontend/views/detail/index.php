@@ -11,21 +11,9 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
-            <?= Breadcrumbs::widget([
-                'homeLink'=>[
-                    'label' => '首页',
-                    'url' => Yii::$app->homeUrl
-                ],
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
-                        <!-- <div class="col-lg-6">
-                            <center>
-                                <img src="http://placehold.it/100x145" class="img-responsive">
-                            </center>
-                        </div> -->
                         <div class="col-lg-12">
                             <dl class="dl-horizontal">
                                 <dt>资源名称</dt>
@@ -84,14 +72,62 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                     </div>
                 <?php endif ?>
             </div>
-            <div class="panel panel-info">
-                <div class="panel-heading">百度云相关资源</div>
-                <div class="list-group">
-                    <?php if ($relateShares): ?>
-                        <?php foreach ($relateShares as $relateShare): ?>
-                            <a href="<?=Url::to(['detail/index','id' => $relateShare->fid])?>" target="_blank" class="list-group-item"><?=ColorHelper::red($relateShare->title,$tmpKey,14)?></a>
-                        <?php endforeach ?>
-                    <?php endif ?>
+            <div class="tabbable tabs-left" style="margin-top:20px;">
+                <ul class="nav nav-tabs">
+                    <?php $index = 0;?>
+                    <?php foreach ($tmpKeys as $value): ?>
+                        <?php if ($index == 0): ?>
+                            <li class="active"><a href="#tabContent_<?=$index?>" data-toggle="tab"><?=$value?></a></li>
+                        <?php else: ?>
+                            <li><a href="#tabContent_<?=$index?>" data-toggle="tab"><?=$value?></a></li>
+                        <?php endif?>
+                        <?php $index++;?>
+                    <?php endforeach ?>
+                    <li><a href="#tabContent_ext" data-toggle="tab">同类型资源</a></li>
+                </ul>
+                <div class="tab-content">
+                    <?php $index = 0;?>
+                    <?php foreach ($relateShares as $key => $relateShare): ?>
+                        <?php if ($index == 0): ?>
+                            <div class="tab-pane active" id="tabContent_<?=$index?>">
+                        <?php else: ?>
+                            <div class="tab-pane" id="tabContent_<?=$index?>">
+                        <?php endif?>
+                            <ol>
+                                <?php if ($relateShare): ?>
+                                    <?php foreach ($relateShare as $relate): ?>
+                                        <li style="padding: 5px;">
+                                        <?php if ($relate->deleted == 0): ?>
+                                            <a href="<?=Url::to(['detail/index','id' => $relate->fid])?>" title="<?=$relate->title?>"><?=ColorHelper::red(mb_substr($relate->title,0,70),$key,14)?></a>
+                                        <?php else: ?>
+                                            <b>已失效</b> <del><a href="<?=Url::to(['detail/index','id' => $relate->fid])?>" title="<?=$relate->title?>"><?=ColorHelper::red(mb_substr($relate->title,0,70),$key,14)?></a></del>
+                                        <?php endif ?>
+                                        <span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $relate->uid])?>" style="color:#ffffff;"><?=$relate->user->user_name?></a></span>
+                                        </li>
+                                    <?php endforeach ?>
+                                <?php else: ?>
+                                    暂无
+                                <?php endif?>
+                            </ol>
+                        </div>
+                    <?php $index++;?>
+                    <?php endforeach ?>
+                    <div class="tab-pane" id="tabContent_ext">
+                        <ol>
+                            <?php if ($relateShares['同类型资源']): ?>
+                                <?php foreach ($relateShares['同类型资源'] as $relate): ?>
+                                    <li style="padding: 5px;">
+                                    <?php if ($relate->deleted == 0): ?>
+                                        <a href="<?=Url::to(['detail/index','id' => $relate->fid])?>" title="<?=$relate->title?>"><?=mb_substr($relate->title,0,70)?></a>
+                                    <?php else: ?>
+                                        <b>已失效</b> <del><a href="<?=Url::to(['detail/index','id' => $relate->fid])?>" title="<?=$relate->title?>"><?=mb_substr($relate->title,0,70)?></a></del>
+                                    <?php endif ?>
+                                    <span class="label label-default" style="margin-left:10px;"><a href="<?=Url::to(['user/index','id' => $relate->uid])?>" style="color:#ffffff;"><?=$relate->user->user_name?></a></span>
+                                    </li>
+                                <?php endforeach ?>
+                            <?php endif ?>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>

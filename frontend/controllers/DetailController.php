@@ -20,7 +20,7 @@ class DetailController extends Controller
         $data = ShareFile::find()->where(['fid' => $id])->with('user')->one();
         $userNewShares = [];
         $keys = [];
-        $tmpKey = '';
+        $tmpKeys = [];
         $relateShares = [];
         if ($data) {
             $data->click = $data->click + 1;
@@ -43,32 +43,30 @@ class DetailController extends Controller
                         $keys[] = $key;
                     }
                 }
-                foreach ($keys as $value) {
-                    if (strlen($value) >= 6 ) {
-                        $tmpKey = $value;
-                        break;
-                    }
-                }
-                if ($tmpKey) {
-                    // $sphinx->setFilter('deleted', [0]);
-                    $results = $sphinx->query ($tmpKey, $index);
-                    if ($results['total'] != 0) {
-                        $ids = [];
-                        foreach ($results['matches'] as $value) {
-                            $ids[] = $value['id'];
+                if ($keys) {
+                    foreach ($keys as $value) {
+                        if (strlen($value) >= 6 ) {
+                            $tmpKeys[] = $value;
+                            $results = $sphinx->query ($value, $index);
+                            if ($results['total'] != 0) {
+                                $ids = [];
+                                foreach ($results['matches'] as $result) {
+                                    $ids[] = $result['id'];
+                                }
+                                $query = ShareFile::find()->where(['in','fid',$ids]);
+                                $relateShares[$value] = $query->all();
+                            }
                         }
-                        $query = ShareFile::find()->where(['in','fid',$ids]);
-                        $relateShares = $query->all();
                     }
-                }else{
-                    $relateShares = ShareFile::find()->where(['file_type' => $data->file_type])->andWhere(['!=','fid',$data->fid])->orderBy(['fid' => SORT_DESC])->limit(10)->all();
                 }
+                $relateShares['同类型资源'] = ShareFile::find()->where(['ext' => $data->ext])->andWhere(['!=','fid',$data->fid])->orderBy(['fid' => SORT_DESC])->limit(10)->all();
             }
         }else{
             $session = Yii::$app->session;
             $session->setFlash('error','未查找到该资源');
             return $this->redirect(Url::to(['site/index']));
         }
-        return $this->render('index',['data' => $data,'userNewShares' => $userNewShares,'keys' => $keys,'relateShares' => $relateShares,'tmpKey' => $tmpKey]);
+        // var_dump($relateShares);die;
+        return $this->render('index',['data' => $data,'userNewShares' => $userNewShares,'keys' => $keys,'relateShares' => $relateShares,'tmpKeys' => $tmpKeys]);
     }
 }
