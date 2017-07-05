@@ -106,7 +106,9 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                                         </li>
                                     <?php endforeach ?>
                                 <?php else: ?>
-                                    暂无
+                                    <div class="alert alert-danger" style="margin-top:10px;">
+                                        该关键字暂无资源
+                                    </div>
                                 <?php endif?>
                             </ol>
                         </div>

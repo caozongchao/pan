@@ -55,6 +55,8 @@ class DetailController extends Controller
                                 }
                                 $query = ShareFile::find()->where(['in','fid',$ids]);
                                 $relateShares[$value] = $query->all();
+                            }else{
+                                $relateShares[$value] = [];
                             }
                         }
                     }
