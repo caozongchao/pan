@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                         <center>
                             <ul class="list-inline" style="margin-bottom: 0px;">
                                 <li>
-                                    <a href="javascript:void(0)" data-toggle="modal" data-target=".juanzeng" style="outline:none;font-size:16px;" rel="nofollow">点击进入百度网盘查看</a>
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target=".juanzeng" style="outline:none;font-size:18px;" rel="nofollow">点击进入百度网盘查看</a>
                                 </li>
                             </ul>
                         </center>
@@ -154,10 +154,10 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                         <div style="margin-top:10px;">
                             <?php if ($data->shorturl): ?>
                                 <!-- <i class="fa fa-download"></i> -->
-                                <a href="http://pan.baidu.com/s/<?=$data->shorturl?>" rel="nofollow" target="_blank">跳过捐赠，直接访问百度云</a>
+                                <a href="http://pan.baidu.com/s/<?=$data->shorturl?>" rel="nofollow" target="_blank" style="font-size:18px;" >跳过捐赠，直接访问百度云</a>
                             <?php else: ?>
                                 <!-- <i class="fa fa-download"></i> -->
-                                <a href="http://pan.baidu.com/share/link?shareid=<?=$data->shareid?>&uk=<?=$data->uk?>" rel="nofollow" target="_blank">跳过捐赠，直接访问百度云</a>
+                                <a href="http://pan.baidu.com/share/link?shareid=<?=$data->shareid?>&uk=<?=$data->uk?>" rel="nofollow" target="_blank" style="font-size:18px;" >跳过捐赠，直接访问百度云</a>
                             <?php endif ?>
                         </div>
                     </div>

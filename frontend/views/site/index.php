@@ -33,6 +33,16 @@ $this->title = '云上搜索,百度网盘搜索,百度云搜索_云上搜索';
                         </button>
                     </span>
                 </div>
+                <div style="padding:10px 0px 0px 0px">
+                    热门搜索：
+                    <a href="/s-%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%BF%80%E6%83%858">速度与激情8</a>&nbsp;&nbsp;
+                    <a href="/s-%E6%91%94%E8%B7%A4%E5%90%A7%E7%88%B8%E7%88%B8">摔跤吧爸爸</a>&nbsp;&nbsp;
+                    <a href="/s-%E6%A5%9A%E4%B9%94%E4%BC%A0">楚乔传</a>&nbsp;&nbsp;
+                    <a href="/s-%E9%BA%BB%E7%83%A6%E5%AE%B6%E6%97%8F">麻烦家族</a>&nbsp;&nbsp;
+                    <a href="/s-tvb">tvb</a>&nbsp;&nbsp;
+                    <a href="/s-%E6%95%91%E5%83%B5%E6%B8%85%E9%81%93%E5%A4%AB">救僵清道夫</a>&nbsp;&nbsp;
+                    <a href="/s-%E6%8B%86%E5%BC%B9%E4%B8%93%E5%AE%B6">拆弹专家</a>
+                </div>
             </form>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
