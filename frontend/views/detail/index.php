@@ -59,13 +59,7 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                         <center>
                             <ul class="list-inline" style="margin-bottom: 0px;">
                                 <li>
-                                    <?php if ($data->shorturl): ?>
-                                        <!-- <i class="fa fa-download"></i> -->
-                                        <a class="btn btn-lg btn-warning" href="http://pan.baidu.com/s/<?=$data->shorturl?>" rel="nofollow" target="_blank">点击进入百度网盘查看</a>
-                                    <?php else: ?>
-                                        <!-- <i class="fa fa-download"></i> -->
-                                        <a class="btn btn-lg btn-warning" href="http://pan.baidu.com/share/link?shareid=<?=$data->shareid?>&uk=<?=$data->uk?>" rel="nofollow" target="_blank">点击进入百度网盘查看</a>
-                                    <?php endif ?>
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target=".juanzeng" style="outline:none;font-size:16px;" rel="nofollow">点击进入百度网盘查看</a>
                                 </li>
                             </ul>
                         </center>
@@ -137,3 +131,38 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
     </div>
 </div>
 <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/contentFooter.php'); ?>
+<div>
+    <div class="modal fade juanzeng" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="mySmallModalLabel">云上搜索与您相伴</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div>
+                            <center>微信捐赠</center>
+                            <img src="/images/wxsq.png" width="150">
+                        </div>
+                        <div>
+                            <center>支付宝捐赠</center>
+                            <img src="/images/zfbsq.png" width="150">
+                        </div>
+                        <div style="margin-top:10px;">
+                            <?php if ($data->shorturl): ?>
+                                <!-- <i class="fa fa-download"></i> -->
+                                <a href="http://pan.baidu.com/s/<?=$data->shorturl?>" rel="nofollow" target="_blank">跳过捐赠，直接访问百度云</a>
+                            <?php else: ?>
+                                <!-- <i class="fa fa-download"></i> -->
+                                <a href="http://pan.baidu.com/share/link?shareid=<?=$data->shareid?>&uk=<?=$data->uk?>" rel="nofollow" target="_blank">跳过捐赠，直接访问百度云</a>
+                            <?php endif ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

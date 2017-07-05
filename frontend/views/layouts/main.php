@@ -69,9 +69,9 @@ var _hmt = _hmt || [];
                     <li><a href="<?=Url::to(['category/index','id' => 6])?>">种子</a></li>
                     <li><a href="<?=Url::to(['category/index','id' => 7])?>">其他</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <!-- <ul class="nav navbar-nav navbar-right">
                     <li><a href="javascript:void(0)" data-toggle="modal" data-target=".juanzeng" style="outline:none;">与您相伴</a></li>
-                </ul>
+                </ul> -->
             </div>
         </div>
     </nav>
@@ -101,36 +101,6 @@ var jiathis_config={
 </script>
 <!-- <script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?btn=r.gif&move=1" charset="utf-8"></script> -->
 <!-- JiaThis Button END -->
-<div>
-    <div class="modal fade juanzeng" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog modal-sm" style="width:560px;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title" id="mySmallModalLabel">云上搜索与您相伴</h4>
-                </div>
-                <div class="modal-body">
-                    <div style="text-align:center;">
-                        <div style="display:inline-block;">
-                            <center>微信捐赠</center>
-                            <img src="/images/wxsq.png">
-                        </div>
-                        <div style="display:inline-block;margin-left:40px;">
-                            <center>支付宝捐赠</center>
-                            <img src="/images/zfbsq.png">
-                        </div>
-                        <div style="font-weight:bold;margin-top:15px;">
-                            <center>如需联系请加微信</center>
-                            <center><img src="/images/wxmp.jpg" style="width:200px;"></center>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- 百度搜索提示框 -->
 <script charset="gbk" src="http://www.baidu.com/js/opensug.js"></script>
 <!-- 移动端admin5广告位 -->
