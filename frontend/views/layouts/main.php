@@ -134,7 +134,7 @@ var jiathis_config={
 <!-- 百度搜索提示框 -->
 <script charset="gbk" src="http://www.baidu.com/js/opensug.js"></script>
 <!-- 移动端admin5广告位 -->
-<script src='http://slb.jiehantai.com/46455'></script>
+<script src='http://slb.jiehantai.com/46573'></script>
 </body>
 </html>
 <?php $this->endPage() ?>

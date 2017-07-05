@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = ['label' => $categoryName];
     <div class="row">
         <div class="col-lg-8">
             <!-- 广告位 -->
-            
+            <center><script src='http://www.yezilm.com/vs.php?id=3872'></script></center>
             <?= Breadcrumbs::widget([
                 'homeLink'=>[
                     'label' => '首页',

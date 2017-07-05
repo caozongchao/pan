@@ -7,6 +7,7 @@ use common\models\ShareFile;
 use yii\data\Pagination;
 use yii\helpers\Url;
 use common\models\Keyword;
+use frontend\helpers\CheckbotHelper;
 
 /**
  * Site controller
@@ -24,7 +25,9 @@ class SearchController extends Controller
         $pageSize = 20;
         $currentPage = Yii::$app->request->get('page');
         if (!isset($currentPage)) {
-            Keyword::add($key);
+            if (!CheckbotHelper::check3()) {
+                Keyword::add($key);
+            }
             $currentPage = 1;
         }
         $sphinx = new \SphinxClient();

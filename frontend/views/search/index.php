@@ -11,7 +11,7 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
     <div class="row">
         <div class="col-lg-8">
             <!-- 广告位 -->
-            
+            <center><script src='http://www.yezilm.com/vs.php?id=3872'></script></center>
             <h3>"<?=HtmlPurifier::process($k)?>"<small> 的搜索结果，<small>搜索引擎：<?=$type?></small></small></h3>
             <ul class="nav nav-pills">
                 <?php foreach ([0 => '视频',1=> '图片',2=> '文档',3 => '音乐',4 => '压缩包',5 => '软件',6 => '种子',7 => '其他'] as $key => $value): ?>
