@@ -15,14 +15,18 @@ use yii\helpers\Url;
 <div class="container">
     <div class="row">
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
             <p class="text-right"><img src="/images/wxmp.jpg" style="width:80px;"></p>
         </div>
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
+        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-left">
             友情链接：
-            <div style="margin:5px 0px 10px 0px;">
-                <a href="http://bt.yssousuo.com" rel="nofollow" target="_blank">磁力搜索</a>
-            </div>
+            <ul class="list-inline">
+                <li><a href="http://www.yssousuo.com" target="_blank">百度云搜索</a></li>
+                <li><a href="http://www.yssousuo.com" target="_blank">百度网盘搜索</a></li>
+                <li><a href="http://www.yssousuo.com" target="_blank">网盘搜索</a></li>
+                <li><a href="http://www.yssousuo.com" target="_blank">百度网盘</a></li>
+                <li><a href="http://bt.yssousuo.com" rel="nofollow" target="_blank">磁力搜索</a></li>
+            </ul>
             <p>Copyright © 2017 www.yssousuo.com 云上搜索 版权所有</p>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
