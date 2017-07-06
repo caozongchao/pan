@@ -6,7 +6,7 @@ use yii\helpers\Url;
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-center">
                 <!-- footer广告位 -->
-                <script src='http://www.yezilm.com/vs.php?id=3871'></script>
+                
             </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
     </div>

@@ -10,7 +10,7 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
-            <!-- 广告位 -->
+            <!-- 椰子联盟广告位 -->
             <center><script src='http://www.yezilm.com/vs.php?id=3872'></script></center>
             <h3>"<?=HtmlPurifier::process($k)?>"<small> 的搜索结果，<small>搜索引擎：<?=$type?></small></small></h3>
             <ul class="nav nav-pills">

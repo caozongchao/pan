@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = ['label' => $second];
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
-            <!-- 广告位 -->
+            <!-- 椰子联盟广告位 -->
             <center><script src='http://www.yezilm.com/vs.php?id=3872'></script></center>
             <?= Breadcrumbs::widget([
                 'homeLink'=>[

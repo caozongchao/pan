@@ -125,6 +125,8 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                         </ol>
                     </div>
                 </div>
+                <!-- 广告位 -->
+
             </div>
         </div>
         <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/detailSidebar.php',['data' => $data,'userNewShares' => $userNewShares]); ?>
@@ -166,3 +168,4 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
         </div>
     </div>
 </div>
+
