@@ -5,6 +5,7 @@ use Yii;
 use yii\web\Controller;
 use common\models\ShareFile;
 use common\models\ShareUsers;
+use common\models\Keyword;
 
 /**
  * Site controller
@@ -37,6 +38,9 @@ class SiteController extends Controller
         $topFxUsers = ShareUsers::find()->orderBy(['fetched' => SORT_DESC])->limit(14)->all();
         // $topFsUsers = ShareUsers::find()->orderBy(['fens_count' => SORT_DESC,'fetched' => SORT_DESC])->limit(14)->all();
         // $topGzzUsers = ShareUsers::find()->orderBy(['follow_count' => SORT_DESC,'fetched' => SORT_DESC])->limit(14)->all();
+        $topSearchAll = Keyword::find()->orderBy(['times' => SORT_DESC])->limit(30)->all();
+        $topSearchYesterday = Keyword::find()->orderBy(['yesterday' => SORT_DESC])->limit(30)->all();
+        $topSearchToday = Keyword::find()->orderBy(['today' => SORT_DESC])->limit(30)->all();
         return $this->render('index',[
             'newVideos' => $newVideos,
             'newImages' => $newImages,
@@ -49,6 +53,9 @@ class SiteController extends Controller
             'topFxUsers' => $topFxUsers,
             // 'topFsUsers' => $topFsUsers,
             // 'topGzzUsers' => $topGzzUsers,
+            'topSearchAll' => $topSearchAll,
+            'topSearchYesterday' => $topSearchYesterday,
+            'topSearchToday' => $topSearchToday,
         ]);
     }
 }
