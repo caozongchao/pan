@@ -139,28 +139,28 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                    <h4 class="modal-title" id="mySmallModalLabel">云上搜索与您相伴</h4>
+                    <h4 class="modal-title" id="mySmallModalLabel">对您如有帮助，请打赏我</h4>
                 </div>
                 <div class="modal-body">
                     <div class="text-center">
                         <div>
-                            <center>微信捐赠</center>
                             <img src="/images/wxsq.png" width="150">
+                            <center>微信捐赠</center>
                         </div>
                         <div>
-                            <center>支付宝捐赠</center>
                             <img src="/images/zfbsq.png" width="150">
-                        </div>
-                        <div style="margin-top:10px;">
-                            <?php if ($data->shorturl): ?>
-                                <!-- <i class="fa fa-download"></i> -->
-                                <a href="http://pan.baidu.com/s/<?=$data->shorturl?>" rel="nofollow" target="_blank" style="font-size:18px;" >跳过捐赠，直接访问百度云</a>
-                            <?php else: ?>
-                                <!-- <i class="fa fa-download"></i> -->
-                                <a href="http://pan.baidu.com/share/link?shareid=<?=$data->shareid?>&uk=<?=$data->uk?>" rel="nofollow" target="_blank" style="font-size:18px;" >跳过捐赠，直接访问百度云</a>
-                            <?php endif ?>
+                            <center>支付宝捐赠</center>
                         </div>
                     </div>
+                </div>
+                <div class="modal-footer text-right">
+                    <?php if ($data->shorturl): ?>
+                        <!-- <i class="fa fa-download"></i> -->
+                        <a href="http://pan.baidu.com/s/<?=$data->shorturl?>" rel="nofollow" target="_blank" style="font-size:16px" >跳过捐赠，直接访问百度云</a>
+                    <?php else: ?>
+                        <!-- <i class="fa fa-download"></i> -->
+                        <a href="http://pan.baidu.com/share/link?shareid=<?=$data->shareid?>&uk=<?=$data->uk?>" rel="nofollow" target="_blank" style="font-size:18px;" >跳过捐赠，直接访问百度云</a>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
