@@ -32,13 +32,11 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                                 <dd><span class="badge" style="background-color: #99CC33"><?=$data->click?></span></dd>
                                 <dt>文件类型</dt>
                                 <dd>
-                                    <span class="badge" style="background-color: #99CC33">
-                                        <?php if ($data->isdir): ?>
-                                            目录
-                                        <?php else: ?>
-                                            文件
-                                        <?php endif ?>
-                                    </span>
+                                    <?php if ($value->isdir): ?>
+                                        <span class="fa fa-folder" style="color: #99CC33"></span>
+                                    <?php else: ?>
+                                        <span class="fa fa-file" style="color: #99CC33"></span>
+                                    <?php endif ?>
                                 </dd>
                                 <dt>分享用户</dt>
                                 <dd><a href="<?=Url::to(['user/index','id' => $data->user->uid])?>"><?=$data->user->user_name?></a></dd>
