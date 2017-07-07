@@ -30,12 +30,12 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                                 <dd><span class="badge" style="background-color: #FFCC99"><?=date('Y-m-d H:i:s',$data->create_time)?></span></dd>
                                 <dt>浏览</dt>
                                 <dd><span class="badge" style="background-color: #99CC33"><?=$data->click?></span></dd>
-                                <dt>文件类型</dt>
+                                <dt>类型</dt>
                                 <dd>
-                                    <?php if ($value->isdir): ?>
-                                        <span class="fa fa-folder" style="color: #99CC33"></span>
+                                    <?php if ($data->isdir): ?>
+                                        <span class="fa fa-folder"></span>
                                     <?php else: ?>
-                                        <span class="fa fa-file" style="color: #99CC33"></span>
+                                        <span class="fa fa-file"></span>
                                     <?php endif ?>
                                 </dd>
                                 <dt>分享用户</dt>
