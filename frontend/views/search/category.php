@@ -72,8 +72,7 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
                         <?php endforeach ?>
                     <?php else: ?>
                         <div class="alert alert-danger">
-                            <h4>提示!</h4>
-                            <strong>暂无!</strong> 相关资源，请联系管理员或稍后搜索尝试。
+                            暂无 相关资源，您可以更换关键字搜索或稍后重试。
                         </div>
                     <?php endif ?>
                 </ul>

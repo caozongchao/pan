@@ -69,9 +69,9 @@ var _hmt = _hmt || [];
                     <li><a href="<?=Url::to(['category/index','id' => 6])?>">种子</a></li>
                     <li><a href="<?=Url::to(['category/index','id' => 7])?>">其他</a></li>
                 </ul>
-                <!-- <ul class="nav navbar-nav navbar-right">
-                    <li><a href="javascript:void(0)" data-toggle="modal" data-target=".juanzeng" style="outline:none;">与您相伴</a></li>
-                </ul> -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" id="contactMe" data-container="body" data-toggle="popover" data-placement="bottom" tabindex="0" role="button" style="outline:none;">微信联系我</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -105,6 +105,38 @@ var jiathis_config={
 <script charset="gbk" src="http://www.baidu.com/js/opensug.js"></script>
 <!-- 移动端admin5广告位 -->
 <script src='http://slb.jiehantai.com/46573'></script>
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 360自动推送 -->
+<script>
+(function(){
+   var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?61624e2947e96a705a2bd91995de60af":"https://jspassport.ssl.qhimg.com/11.0.1.js?61624e2947e96a705a2bd91995de60af";
+   document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script>
+<script type="text/javascript">
+$(function () { $("[data-toggle='popover']").popover(); });
+$('#contactMe').popover({
+    trigger : 'click',//鼠标以上时触发弹出提示框
+    html:true,//开启html 为true的话，data-content里就能放html代码了
+    content:"<img src='/images/wxmp.jpg' width='150'>"
+});
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>
