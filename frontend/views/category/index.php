@@ -12,8 +12,8 @@ $this->params['breadcrumbs'][] = ['label' => $categoryName];
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
-            <!-- 椰子联盟广告位 -->
-            <center><script src='http://www.yezilm.com/vs.php?id=3872'></script></center>
+            <!-- 广告位 -->
+            <center></center>
             <?= Breadcrumbs::widget([
                 'homeLink'=>[
                     'label' => '首页',
@@ -38,8 +38,8 @@ $this->params['breadcrumbs'][] = ['label' => $categoryName];
                     <?php if ($datas): ?>
                         <?php foreach ($datas as $key => $value): ?>
                             <?php if ($key == 10): ?>
-                                <!-- 广告位 -->
-                                
+                                <!-- 椰子联盟广告位 -->
+                                <center><script src='http://www.yezilm.com/vs.php?id=3872'></script></center>
                             <?php endif ?>
                             <div class="media well">
                                 <a href="<?=Url::to(['user/index','id' => $value->user->uid])?>" class="pull-left">

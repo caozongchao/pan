@@ -10,8 +10,8 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
-            <!-- 椰子联盟广告位 -->
-            <center><script src='http://www.yezilm.com/vs.php?id=3872'></script></center>
+            <!-- 广告位 -->
+            <center></center>
             <h3>"<?=HtmlPurifier::process($k)?>"<small> 的搜索结果，<small>搜索引擎：<?=$type?></small></small></h3>
             <ul class="nav nav-pills">
                 <?php foreach ([0 => '视频',1=> '图片',2=> '文档',3 => '音乐',4 => '压缩包',5 => '软件',6 => '种子',7 => '其他'] as $key => $value): ?>
@@ -24,8 +24,8 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
                     <?php if ($datas): ?>
                         <?php foreach ($datas as $key => $value): ?>
                             <?php if ($key == 10): ?>
-                                <!-- 广告位 -->
-                                
+                                <!-- 椰子联盟广告位 -->
+                                <center><script src='http://www.yezilm.com/vs.php?id=3872'></script></center>
                             <?php endif ?>
                             <div class="media well">
                                 <a href="<?=Url::to(['user/index','id' => $value->user->uid])?>" class="pull-left">

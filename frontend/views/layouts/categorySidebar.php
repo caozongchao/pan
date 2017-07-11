@@ -20,7 +20,18 @@ use yii\helpers\Url;
     <center>
         <!-- 搜狐联盟广告位 -->
         <iframe id="f" width="350px" height="350px" src= "https://info.lm.tv.sohu.com/c/0000000b4bc8b3b7ce00a7240538bc2530b12d4csk5/29187.do" frameborder="no" border="0" marginwidth="0" marginheight="0" allowtransparency="yes" scrolling="NO"> </iframe>
-        
+        <!-- 淘宝tanx -->
+        <script type="text/javascript">
+            document.write('<a style="display:none!important" id="tanx-a-mm_26539241_33090324_118706297"></a>');
+            tanx_s = document.createElement("script");
+            tanx_s.type = "text/javascript";
+            tanx_s.charset = "gbk";
+            tanx_s.id = "tanx-s-mm_26539241_33090324_118706297";
+            tanx_s.async = true;
+            tanx_s.src = "http://p.tanx.com/ex?i=mm_26539241_33090324_118706297";
+            tanx_h = document.getElementsByTagName("head")[0];
+            if(tanx_h)tanx_h.insertBefore(tanx_s,tanx_h.firstChild);
+        </script>
     </center>
 </div>
 <script type="text/javascript">

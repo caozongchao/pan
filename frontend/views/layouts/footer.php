@@ -23,8 +23,8 @@ use yii\helpers\Url;
             <ul class="list-inline">
                 <li><a href="http://www.yssousuo.com" target="_blank">百度云搜索</a></li>
                 <li><a href="http://www.yssousuo.com" target="_blank">百度网盘搜索</a></li>
-                <li><a href="http://www.yssousuo.com" target="_blank">网盘搜索</a></li>
-                <li><a href="http://www.yssousuo.com" target="_blank">百度网盘</a></li>
+                <li><a href="http://www.yssousuo.com" target="_blank">百度网盘资源</a></li>
+                <li><a href="http://www.yssousuo.com" target="_blank">百度云资源</a></li>
                 <li><a href="http://bt.yssousuo.com" rel="nofollow" target="_blank">磁力搜索</a></li>
             </ul>
             <p>Copyright © 2017 www.yssousuo.com 云上搜索 版权所有</p>
@@ -39,7 +39,7 @@ use yii\helpers\Url;
             <center>
                 <p>本站仅提供百度网盘资源搜索和百度网盘资源下载的网站，本站只抓取百度网盘的链接而不保存任何资源.</p>
                 <p>本站所有资源均来自互联网，本站只负责技术收集和整理，均不承担任何法律责任。</p>
-                <p>如有侵权违规等其它行为请加上图微信联系我们。 </p>
+                <p>如有侵权违规等其它行为请加右上角微信联系我。 </p>
             </center>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
