@@ -23,13 +23,14 @@ class SearchController extends Controller
             return $this->redirect(['site/index']);
         }
         $pageSize = 20;
-        $currentPage = Yii::$app->request->get('page');
+        $currentPage = Yii::$app->request->get('p');
         if (!isset($currentPage)) {
             if (!CheckbotHelper::check3()) {
                 Keyword::add($key);
             }
             $currentPage = 1;
         }
+        // echo $currentPage;die;
         $sphinx = new \SphinxClient();
         $sphinx->SetServer ('localhost',9312);
         $sphinx->SetArrayResult (true);
@@ -82,7 +83,7 @@ class SearchController extends Controller
             return $this->redirect(['site/index']);
         }
         $pageSize = 20;
-        $currentPage = Yii::$app->request->get('page');
+        $currentPage = Yii::$app->request->get('p');
         if (!isset($currentPage)) {
             $currentPage = 1;
         }
@@ -142,7 +143,7 @@ class SearchController extends Controller
             return $this->redirect(['site/index']);
         }
         $pageSize = 20;
-        $currentPage = Yii::$app->request->get('page');
+        $currentPage = Yii::$app->request->get('p');
         if (!isset($currentPage)) {
             $currentPage = 1;
         }
