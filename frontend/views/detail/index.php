@@ -144,16 +144,17 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                 <div class="modal-body">
                     <div class="text-center">
                         <div>
-                            <img src="/images/wxsq.png" width="150">
+                            <img src="/images/wxsq.png" width="120">
                             <center>微信捐赠</center>
                         </div>
                         <div>
-                            <img src="/images/zfbsq.png" width="150">
+                            <img src="/images/zfbsq.png" width="120">
                             <center>支付宝捐赠</center>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer text-right">
+                    <small>若资源失效，烦请联系我标注，谢谢</small><br />
                     <?php if ($data->shorturl): ?>
                         <!-- <i class="fa fa-download"></i> -->
                         <a href="http://pan.baidu.com/s/<?=$data->shorturl?>" rel="nofollow" target="_blank" style="font-size:16px" >跳过捐赠，直接访问百度云</a>

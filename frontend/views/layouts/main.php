@@ -70,7 +70,7 @@ var _hmt = _hmt || [];
                     <li><a href="<?=Url::to(['category/index','id' => 7])?>">其他</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" id="contactMe" data-container="body" data-toggle="popover" data-placement="bottom" tabindex="0" role="button" style="outline:none;">微信联系我</a></li>
+                    <li><a href="#" id="contactMe" data-container="body" data-toggle="popover" data-placement="bottom" tabindex="0" role="button" style="outline:none;">联系我</a></li>
                 </ul>
             </div>
         </div>
@@ -134,7 +134,7 @@ $(function () { $("[data-toggle='popover']").popover(); });
 $('#contactMe').popover({
     trigger : 'click',//鼠标以上时触发弹出提示框
     html:true,//开启html 为true的话，data-content里就能放html代码了
-    content:"<img src='/images/wxmp.jpg' width='150'>"
+    content:"<center>微信<br /><img src='/images/wxmp.jpg' width='150'></center>"
 });
 </script>
 </body>
