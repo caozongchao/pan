@@ -80,7 +80,7 @@ class CheckbotHelper{
                 "Java (Often spam bot)",
                 "BaiDuSpider",
                 "Voila",
-                "Yandex bot",
+                "Yandexbot",
                 "BSpider",
                 "twiceler",
                 "Sogou Spider",
