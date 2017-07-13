@@ -39,8 +39,8 @@ class SiteController extends Controller
         // $topFsUsers = ShareUsers::find()->orderBy(['fens_count' => SORT_DESC,'fetched' => SORT_DESC])->limit(14)->all();
         // $topGzzUsers = ShareUsers::find()->orderBy(['follow_count' => SORT_DESC,'fetched' => SORT_DESC])->limit(14)->all();
         $topSearchAll = Keyword::find()->orderBy(['times' => SORT_DESC])->limit(30)->all();
-        $topSearchYesterday = Keyword::find()->orderBy(['yesterday' => SORT_DESC])->limit(30)->all();
-        $topSearchToday = Keyword::find()->orderBy(['today' => SORT_DESC])->limit(30)->all();
+        $topSearchYesterday = Keyword::find()->where(['>=','yesterday',2])->orderBy(['yesterday' => SORT_DESC])->limit(30)->all();
+        $topSearchToday = Keyword::find()->where(['>=','today',2])->orderBy(['today' => SORT_DESC])->limit(30)->all();
         return $this->render('index',[
             'newVideos' => $newVideos,
             'newImages' => $newImages,
