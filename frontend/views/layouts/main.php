@@ -30,6 +30,7 @@ rmrevin\yii\fontawesome\AssetBundle::register($this);
 <style type="text/css">
 a{word-break: break-all;word-wrap: break-word;}
 </style>
+
 <!-- 百度统计 -->
 <script>
 var _hmt = _hmt || [];
@@ -40,7 +41,7 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-<!-- 百度统计 -->
+
 <!-- 百度分享 -->
 <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"0","bdPos":"right","bdTop":"100"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 <!-- 百度分享 -->
@@ -89,20 +90,7 @@ var _hmt = _hmt || [];
     <?//= Alert::widget() ?>
     <?=$content;?>
 <?php $this->endBody() ?>
-<!-- JiaThis Button BEGIN -->
-<script type="text/javascript" >
-var jiathis_config={
-    siteNum:10,
-    sm:"cqq,weixin,tsina,tqq,qzone,tieba,douban,ishare",
-    summary:"",
-    boldNum:6,
-    showClose:true,
-    shortUrl:false,
-    hideMore:false
-}
-</script>
-<!-- <script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?btn=r.gif&move=1" charset="utf-8"></script> -->
-<!-- JiaThis Button END -->
+
 <!-- 百度搜索提示框 -->
 <script charset="gbk" src="http://www.baidu.com/js/opensug.js"></script>
 <!-- 移动端admin5广告位 -->
@@ -131,12 +119,14 @@ var jiathis_config={
    document.write('<script src="' + src + '" id="sozz"><\/script>');
 })();
 </script>
+
+<!-- 右上角联系我js代码 -->
 <script type="text/javascript">
 $(function () { $("[data-toggle='popover']").popover(); });
 $('#contactMe').popover({
     trigger : 'click',//鼠标以上时触发弹出提示框
     html:true,//开启html 为true的话，data-content里就能放html代码了
-    content:"<center>微信<br /><img src='/images/wxmp.jpg' width='150'></center>"
+    content:'<center>微信<br /><img src="/images/wxmp.jpg" width="150"></center>'
 });
 </script>
 </body>

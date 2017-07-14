@@ -4,6 +4,7 @@ use yii\helpers\HtmlPurifier;
 use yii\helpers\Url;
 use frontend\helpers\ColorHelper;
 use yii\widgets\Breadcrumbs;
+use frontend\helpers\CheckMobileHelper;
 
 $this->title = $data->title.'_云上搜索';
 $this->params['breadcrumbs'][] = ['label' => $data->title];
@@ -64,6 +65,12 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                     </div>
                 <?php endif ?>
             </div>
+            <!-- 广告位 -->
+            <?php if (CheckMobileHelper::isMobile()): ?>
+                <center><script id="138wap_ad" src='http://wap.138lm.com/code/mobile/wap_cpc.php?uw=2&u=116227'></script></center>
+            <?php else: ?>
+                <center><iframe height='90' width='740' frameborder='no' scrolling='no' src= 'http://ue.ueadlian.com/code/adview_pic.php?r=1&c=7&w=740&h=90&b=FFFFCC&s=818181&bg=FFFFFF&p=FFFFFF&u=116227&at=p0&tt=t1'></iframe></center>
+            <?php endif ?>
             <div class="tabbable tabs-left" style="margin-top:20px;">
                 <ul class="nav nav-tabs">
                     <?php $index = 0;?>
@@ -123,8 +130,6 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                         </ol>
                     </div>
                 </div>
-                <!-- 广告位 -->
-
             </div>
         </div>
         <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/detailSidebar.php',['data' => $data,'userNewShares' => $userNewShares]); ?>
@@ -144,24 +149,24 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                 <div class="modal-body">
                     <div class="text-center">
                         <div>
-                            <img src="/images/wxsq.png" width="120">
+                            <img src="/images/wxsq.png" width="130">
                             <center>微信捐赠</center>
                         </div>
                         <div>
-                            <img src="/images/zfbsq.png" width="120">
+                            <img src="/images/zfbsq.png" width="130">
                             <center>支付宝捐赠</center>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer text-right">
-                    <small>若资源失效，烦请联系我标注，谢谢</small><br />
+                    <small>若资源失效，烦请联系我标注，谢谢</small>（
                     <?php if ($data->shorturl): ?>
                         <!-- <i class="fa fa-download"></i> -->
-                        <a href="http://pan.baidu.com/s/<?=$data->shorturl?>" rel="nofollow" target="_blank" style="font-size:16px" >跳过捐赠，直接访问百度云</a>
+                        <a href="http://pan.baidu.com/s/<?=$data->shorturl?>" rel="nofollow" target="_blank" style="font-size:16px" >跳转</a>
                     <?php else: ?>
                         <!-- <i class="fa fa-download"></i> -->
-                        <a href="http://pan.baidu.com/share/link?shareid=<?=$data->shareid?>&uk=<?=$data->uk?>" rel="nofollow" target="_blank" style="font-size:18px;" >跳过捐赠，直接访问百度云</a>
-                    <?php endif ?>
+                        <a href="http://pan.baidu.com/share/link?shareid=<?=$data->shareid?>&uk=<?=$data->uk?>" rel="nofollow" target="_blank" style="font-size:18px;" >跳转</a>
+                    <?php endif ?>）
                 </div>
             </div>
         </div>

@@ -76,27 +76,27 @@ class Db(object):
 
 def xsdq():
     db = Db()
-    for i in range(1,101):
+    for i in range(1,25):
         if i == 1:
-            url = 'http://book.km.com/girl.html'
+            url = 'http://r.qidian.com/fin?style=1&dateType=3'
             # pass
         else:
-            url = 'http://book.km.com/shuku_1_0_0_0_0_0_%d.html' % i
+            url = 'http://r.qidian.com/fin?style=1&dateType=3&page=%d' % i
         content = requests.get(url).content
         soup = BeautifulSoup(content, 'html5lib')
 
-        for dl in soup.find_all('dl', {'class' : 'info'}):
-            title = dl.dt.a.string
+        for div in soup.find_all('div', {'class' : 'book-mid-info'}):
+            title = div.h4.a.string
             if title is None:
                 pass
             else:
-                if db.execute('SELECT * FROM topic WHERE title=%s', (dl.dt.a.string,)) > 0:
-                    print '%s 已经采集过了' % dl.dt.a.string
+                if db.execute('SELECT * FROM topic WHERE title=%s', (title,)) > 0:
+                    print '%s 已经采集过了' % title
                     continue
                 else:
-                    db.execute("INSERT INTO topic (title,type) VALUES(%s,%s)", (dl.dt.a.string, 3))
+                    db.execute("INSERT INTO topic (title,type) VALUES(%s,%s)", (title, 3))
                     db.commit()
-                    print '%s 采集成功' % dl.dt.a.string
+                    print '%s 采集成功' % title
 
 if __name__ == '__main__':
     xsdq()
