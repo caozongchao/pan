@@ -66,6 +66,9 @@ return [
                 'sd-<c:\d+>-<k:[^-]+>-<p:\d+>' => 'search/category',
                 'sds-<c:\d+>-<k:[^-]+>-<s:\w+>' => 'search/second',
                 'sds-<c:\d+>-<k:[^-]+>-<s:\w+>-<p:\d+>' => 'search/second',
+
+                't-<t:\d+>' => 'topic/index',
+                't-<t:\d+>-<p:\d+>' => 'topic/index',
             ],
         ],
     ],

@@ -71,6 +71,9 @@ var _hmt = _hmt || [];
                     <li><a href="<?=Url::to(['category/index','id' => 5])?>">软件</a></li>
                     <li><a href="<?=Url::to(['category/index','id' => 6])?>">种子</a></li>
                     <li><a href="<?=Url::to(['category/index','id' => 7])?>">其他</a></li>
+                    <li><a href="<?=Url::to(['topic/index','t' => 0])?>">电影</a></li>
+                    <li><a href="<?=Url::to(['topic/index','t' => 1])?>">电视剧</a></li>
+                    <li><a href="<?=Url::to(['topic/index','t' => 3])?>">小说</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#" id="contactMe" data-container="body" data-toggle="popover" data-placement="bottom" tabindex="0" role="button" style="outline:none;">联系我</a></li>
