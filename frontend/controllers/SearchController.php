@@ -22,7 +22,7 @@ class SearchController extends Controller
         if (!$key) {
             return $this->redirect(['site/index']);
         }
-        $pageSize = 20;
+        $pageSize = 10;
         $currentPage = Yii::$app->request->get('p');
         if (!isset($currentPage)) {
             if (!CheckbotHelper::check3()) {
@@ -82,7 +82,7 @@ class SearchController extends Controller
         if (!$key) {
             return $this->redirect(['site/index']);
         }
-        $pageSize = 20;
+        $pageSize = 10;
         $currentPage = Yii::$app->request->get('p');
         if (!isset($currentPage)) {
             $currentPage = 1;
@@ -142,7 +142,7 @@ class SearchController extends Controller
         if (!in_array($second,$categorySecondLevel)) {
             return $this->redirect(['site/index']);
         }
-        $pageSize = 20;
+        $pageSize = 10;
         $currentPage = Yii::$app->request->get('p');
         if (!isset($currentPage)) {
             $currentPage = 1;

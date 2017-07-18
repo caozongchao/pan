@@ -6,6 +6,7 @@ use yii\helpers\Url;
         <center>
             <p><img src="<?=$data->user->avatar_url?>" class="media-object"/></p>
             <p>分享用户：<?=$data->user->user_name?></p>
+            <p>共 <?=$data->user->fetched?> 个分享</p>
             <p><a href="<?=Url::to(['user/index','id' => $data->user->uid])?>" class="btn btn-default">进入主页</a></p>
         </center>
     </div>

@@ -35,10 +35,7 @@ class SiteController extends Controller
         $newSoftwares = ShareFile::find()->where(['file_type' => 5])->with('user')->orderBy(['fid' => SORT_DESC])->limit(50)->all();
         $newTorrents = ShareFile::find()->where(['file_type' => 6])->with('user')->orderBy(['fid' => SORT_DESC])->limit(50)->all();
         $newOthers = ShareFile::find()->where(['file_type' => 7])->with('user')->orderBy(['fid' => SORT_DESC])->limit(50)->all();
-        $topFxUsers = ShareUsers::find()->orderBy(['fetched' => SORT_DESC])->limit(14)->all();
-        // $topFsUsers = ShareUsers::find()->orderBy(['fens_count' => SORT_DESC,'fetched' => SORT_DESC])->limit(14)->all();
-        // $topGzzUsers = ShareUsers::find()->orderBy(['follow_count' => SORT_DESC,'fetched' => SORT_DESC])->limit(14)->all();
-        $topSearchAll = Keyword::find()->orderBy(['times' => SORT_DESC])->limit(30)->all();
+        $topSearchAll = Keyword::find()->orderBy(['times' => SORT_DESC])->limit(40)->all();
         $topSearchYesterday = Keyword::find()->where(['>=','yesterday',2])->orderBy(['yesterday' => SORT_DESC])->limit(30)->all();
         $topSearchToday = Keyword::find()->where(['>=','today',2])->orderBy(['today' => SORT_DESC])->limit(30)->all();
         return $this->render('index',[
@@ -50,9 +47,6 @@ class SiteController extends Controller
             'newSoftwares' => $newSoftwares,
             'newTorrents' => $newTorrents,
             'newOthers' => $newOthers,
-            'topFxUsers' => $topFxUsers,
-            // 'topFsUsers' => $topFsUsers,
-            // 'topGzzUsers' => $topGzzUsers,
             'topSearchAll' => $topSearchAll,
             'topSearchYesterday' => $topSearchYesterday,
             'topSearchToday' => $topSearchToday,

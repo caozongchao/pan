@@ -24,9 +24,10 @@ class CategoryController extends Controller
         $categorySecondLevel = self::getCategorySecondLevel($id);
         $query = ShareFile::find()->where(['file_type' => $id])->orderBy(['fid' => SORT_DESC]);
         $count = $query->count();
-        $pagination = new Pagination(['totalCount' => $count,'pageSize' => 20,'pageSizeParam' => false,'pageParam' => 'p']);
+        $pagination = new Pagination(['totalCount' => $count,'pageSize' => 10,'pageSizeParam' => false,'pageParam' => 'p']);
         $datas = $query->offset($pagination->offset)->limit($pagination->limit)->with('user')->all();
-        return $this->render('index',['datas' => $datas,'id' => $id,'categoryName' => $categoryName,'categorySecondLevel' => $categorySecondLevel,'pagination' => $pagination]);
+        $top10 = ShareFile::find()->where(['file_type' => $id])->orderBy(['click' => SORT_DESC])->limit(10)->all();
+        return $this->render('index',['datas' => $datas,'id' => $id,'categoryName' => $categoryName,'categorySecondLevel' => $categorySecondLevel,'pagination' => $pagination,'top10' => $top10]);
     }
 
     public function actionSecond()
@@ -47,9 +48,10 @@ class CategoryController extends Controller
         $categorySecondLevel = self::getCategorySecondLevel($id);
         $query = ShareFile::find()->where(['file_type' => $id,'ext' => '.'.$second])->orderBy(['fid' => SORT_DESC]);
         $count = $query->count();
-        $pagination = new Pagination(['totalCount' => $count,'pageSize' => 20,'pageSizeParam' => false,'pageParam' => 'p']);
+        $pagination = new Pagination(['totalCount' => $count,'pageSize' => 10,'pageSizeParam' => false,'pageParam' => 'p']);
         $datas = $query->offset($pagination->offset)->limit($pagination->limit)->with('user')->all();
-        return $this->render('second',['datas' => $datas,'id' => $id,'categoryName' => $categoryName,'categorySecondLevel' => $categorySecondLevel,'second' => $second,'pagination' => $pagination]);
+        $top10 = ShareFile::find()->where(['file_type' => $id,'ext' => '.'.$second])->orderBy(['click' => SORT_DESC])->limit(10)->all();
+        return $this->render('second',['datas' => $datas,'id' => $id,'categoryName' => $categoryName,'categorySecondLevel' => $categorySecondLevel,'second' => $second,'pagination' => $pagination,'top10' => $top10]);
     }
 
     public static function getCategoryName($id)

@@ -11,6 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
 ?>
 <div class="container">
     <div class="row">
+        <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/detailSidebar.php',['data' => $data,'userNewShares' => $userNewShares]); ?>
         <div class="col-lg-8">
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -29,6 +30,8 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                                 <dd><span class="badge" style="background-color: #99CCFF"><?=FormatSizeHelper::formatBytes($data->size)?></span></dd>
                                 <dt>收录时间</dt>
                                 <dd><span class="badge" style="background-color: #FFCC99"><?=date('Y-m-d H:i:s',$data->create_time)?></span></dd>
+                                <dt>分享时间</dt>
+                                <dd><span class="badge" style="background-color: #FFCC99"><?=date('Y-m-d H:i:s',$data->feed_time)?></span></dd>
                                 <dt>浏览</dt>
                                 <dd><span class="badge" style="background-color: #99CC33"><?=$data->click?></span></dd>
                                 <dt>类型</dt>
@@ -67,9 +70,9 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
             </div>
             <!-- 广告位 -->
             <?php if (CheckMobileHelper::isMobile()): ?>
-                <center><script id="138wap_ad" src='http://wap.138lm.com/code/mobile/wap_cpc.php?uw=2&u=116227'></script></center>
+                <center></center>
             <?php else: ?>
-                <center><iframe height='90' width='740' frameborder='no' scrolling='no' src= 'http://ue.ueadlian.com/code/adview_pic.php?r=1&c=7&w=740&h=90&b=FFFFCC&s=818181&bg=FFFFFF&p=FFFFFF&u=116227&at=p0&tt=t1'></iframe></center>
+                <center></center>
             <?php endif ?>
             <div class="tabbable tabs-left" style="margin-top:20px;">
                 <ul class="nav nav-tabs">
@@ -132,7 +135,6 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                 </div>
             </div>
         </div>
-        <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/detailSidebar.php',['data' => $data,'userNewShares' => $userNewShares]); ?>
     </div>
 </div>
 <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/contentFooter.php'); ?>

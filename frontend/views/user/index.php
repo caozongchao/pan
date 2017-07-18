@@ -10,7 +10,7 @@ $this->title = $user->user_name.'分享的网盘资源_云上搜索';
 <div class="container">
     <div class="row">
         <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/userSidebar.php',['user' => $user,'userHotShares' => $userHotShares]); ?>
-        <div class="col-lg-9">
+        <div class="col-lg-8">
             <h4><?=$user->user_name?> 分享的资源列表：</h4>
             <hr>
             <div class="table-responsive">

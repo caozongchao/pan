@@ -1,7 +1,10 @@
 <?php
 use yii\helpers\Url;
+use frontend\widgets\TopuserWidget;
+
 ?>
-<div class="col-md-3">
+<link rel="stylesheet" type="text/css" href="/css/animate.css">
+<div class="col-md-4">
     <div style="padding:5px; border:1px solid #dddddd; border-radius: 5px; margin-bottom: 5px;">
         <center>
             <p><img src="<?=$user->avatar_url?>" class="media-object"/></p>
@@ -10,7 +13,7 @@ use yii\helpers\Url;
         </center>
     </div>
     <div class="panel panel-info">
-        <div class="panel-heading">Ta 分享的热门资源：</div>
+        <div class="panel-heading">Ta 分享的热门资源</div>
         <div class="list-group">
             <?php if ($userHotShares): ?>
                 <?php foreach ($userHotShares as $userHotShare): ?>
@@ -23,9 +26,24 @@ use yii\helpers\Url;
             <?php endif ?>
         </div>
     </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">分享达人</div>
+        <center style="padding:5px 0px;background-color: #f5f5f5;"><?php echo TopuserWidget::widget() ?></center>
+    </div>
     <!-- <div class="well">
         <center>
             <img src="https://placekitten.com/g/320/200" class="img-responsive">
         </center>
     </div> -->
 </div>
+<script type="text/javascript">
+$(function() {
+    $(".animate-box").each(function(index, el) {
+        $(this).hover(function(){
+            $(this).addClass('shake');
+        },function(){
+            $(this).removeClass('shake');
+        });
+    });
+});
+</script>

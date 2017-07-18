@@ -107,6 +107,8 @@ class CheckbotHelper{
                 "WGet tools",
                 "larbin",
                 "Fish search",
+                "YisouSpider",
+                "360Spider",
             );
             foreach($spiderSite as $val) {
                 $str = strtolower($val);

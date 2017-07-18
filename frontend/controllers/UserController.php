@@ -26,7 +26,7 @@ class UserController extends Controller
         }
         $query = ShareFile::find()->where(['uid' => $id]);
         $count = $query->count();
-        $pagination = new Pagination(['totalCount' => $count,'pageSize' => 20,'pageSizeParam' => false,'pageParam' => 'p']);
+        $pagination = new Pagination(['totalCount' => $count,'pageSize' => 10,'pageSizeParam' => false,'pageParam' => 'p']);
         $datas = $query->offset($pagination->offset)->limit($pagination->limit)->orderBy(['fid' => SORT_DESC])->all();
         $userHotShares = ShareFile::find()->where(['uid' => $id])->orderBy(['click' => SORT_DESC])->limit(10)->all();
         return $this->render('index',['datas' => $datas,'user' => $user,'userHotShares' => $userHotShares,'pagination' => $pagination]);

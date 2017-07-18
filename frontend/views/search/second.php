@@ -9,6 +9,7 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
 ?>
 <div class="container">
     <div class="row">
+        <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/searchSidebar.php'); ?>
         <div class="col-lg-8">
             <!-- 广告位 -->
             <center></center>
@@ -100,7 +101,6 @@ $this->title = HtmlPurifier::process($k).'搜索结果_云上搜索';
                 </nav>
             </div>
         </div>
-        <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/searchSidebar.php'); ?>
     </div>
 </div>
 <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/contentFooter.php'); ?>

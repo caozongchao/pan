@@ -11,6 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => $categoryName];
 ?>
 <div class="container">
     <div class="row">
+        <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/categorySidebar.php',['top10' => $top10]); ?>
         <div class="col-lg-8">
             <!-- 广告位 -->
             <center></center>
@@ -92,10 +93,8 @@ $this->params['breadcrumbs'][] = ['label' => $categoryName];
                         ?>
                     </center>
                 </nav>
-
             </div>
         </div>
-        <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/categorySidebar.php'); ?>
     </div>
 </div>
 <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/contentFooter.php'); ?>

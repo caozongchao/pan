@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 use frontend\helpers\CheckMobileHelper;
 ?>
-<div class="col-md-4">
+<div class="col-lg-4">
     <div class="well">
         <h4>云上搜索</h4>
         <form action="<?=Url::to(['search/index'])?>">
@@ -16,17 +16,29 @@ use frontend\helpers\CheckMobileHelper;
         </div>
         </form>
     </div>
-</div>
-<div class="col-md-4">
+    <div class="panel panel-info">
+        <div class="panel-heading">该分类资源Top 10</div>
+        <div class="list-group">
+            <?php if ($top10): ?>
+                <?php foreach ($top10 as $top): ?>
+                    <?php if ($top->deleted == 0): ?>
+                        <a href="<?=Url::to(['detail/index','id' => $top->fid])?>" target="_blank" class="list-group-item"><?=$top->title?></a>
+                    <?php else: ?>
+                        <del><a href="<?=Url::to(['detail/index','id' => $top->fid])?>" target="_blank" class="list-group-item"><?=$top->title?></a></del>
+                    <?php endif?>
+                <?php endforeach ?>
+            <?php endif ?>
+        </div>
+    </div>
     <center>
         <!-- 广告位 -->
         <img src="/images/ggwzz.png" class="img-responsive">
         <br />
         <!-- 广告位 -->
         <?php if (CheckMobileHelper::isMobile()): ?>
-            <center><script id="138wap_ad" src='http://wap.138lm.com/code/mobile/wap_cpc.php?uw=2&u=116227'></script></center>
+            <center></center>
         <?php else: ?>
-            <center><iframe height='100' width='320' frameborder='no' scrolling='no' src= 'http://ue.ueadlian.com/code/adview_pic.php?r=1&c=7&w=320&h=100&b=FFFFCC&s=818181&bg=FFFFFF&p=FFFFFF&u=116227&at=p0&tt=t1'></iframe></center>
+            <center></center>
         <?php endif ?>
     </center>
 </div>
