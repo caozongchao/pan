@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
 ?>
 <div class="container">
     <div class="row">
-        <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/detailSidebar.php',['data' => $data,'userNewShares' => $userNewShares]); ?>
+        <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/detailSidebar.php',['data' => $data]); ?>
         <div class="col-lg-8">
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -28,20 +28,10 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                                 </dd>
                                 <dt>大小</dt>
                                 <dd><span class="badge" style="background-color: #99CCFF"><?=FormatSizeHelper::formatBytes($data->size)?></span></dd>
-                                <dt>收录时间</dt>
-                                <dd><span class="badge" style="background-color: #FFCC99"><?=date('Y-m-d H:i:s',$data->create_time)?></span></dd>
                                 <dt>分享时间</dt>
                                 <dd><span class="badge" style="background-color: #FFCC99"><?=date('Y-m-d H:i:s',$data->feed_time)?></span></dd>
                                 <dt>浏览</dt>
                                 <dd><span class="badge" style="background-color: #99CC33"><?=$data->click?></span></dd>
-                                <dt>类型</dt>
-                                <dd>
-                                    <?php if ($data->isdir): ?>
-                                        <span class="fa fa-folder"></span>
-                                    <?php else: ?>
-                                        <span class="fa fa-file"></span>
-                                    <?php endif ?>
-                                </dd>
                                 <dt>分享用户</dt>
                                 <dd><a href="<?=Url::to(['user/index','id' => $data->user->uid])?>"><?=$data->user->user_name?></a></dd>
                                 <dt>相关关键词</dt>
@@ -87,7 +77,7 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                     <?php endforeach ?>
                     <li><a href="#tabContent_ext" data-toggle="tab">同类型资源</a></li>
                 </ul>
-                <div class="tab-content">
+                <div class="tab-content" style="margin-top:5px; padding-left:5px;">
                     <?php $index = 0;?>
                     <?php foreach ($relateShares as $key => $relateShare): ?>
                         <?php if ($index == 0): ?>
@@ -95,7 +85,7 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                         <?php else: ?>
                             <div class="tab-pane" id="tabContent_<?=$index?>">
                         <?php endif?>
-                            <ol>
+                            <ul class="list-unstyled">
                                 <?php if ($relateShare): ?>
                                     <?php foreach ($relateShare as $relate): ?>
                                         <li style="padding: 5px;">
@@ -112,12 +102,12 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                                         该关键字暂无资源
                                     </div>
                                 <?php endif?>
-                            </ol>
+                            </ul>
                         </div>
                     <?php $index++;?>
                     <?php endforeach ?>
                     <div class="tab-pane" id="tabContent_ext">
-                        <ol>
+                        <ul class="list-unstyled">
                             <?php if ($relateShares['同类型资源']): ?>
                                 <?php foreach ($relateShares['同类型资源'] as $relate): ?>
                                     <li style="padding: 5px;">
@@ -130,8 +120,22 @@ $this->params['breadcrumbs'][] = ['label' => $data->title];
                                     </li>
                                 <?php endforeach ?>
                             <?php endif ?>
-                        </ol>
+                        </ul>
                     </div>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading"><?=$data->user->user_name?> 分享的最新资源</div>
+                <div class="list-group">
+                    <?php if ($userNewShares): ?>
+                        <?php foreach ($userNewShares as $userNewShare): ?>
+                            <?php if ($userNewShare->deleted == 0): ?>
+                                <a href="<?=Url::to(['detail/index','id' => $userNewShare->fid])?>" target="_blank" class="list-group-item"><?=$userNewShare->title?></a>
+                            <?php else: ?>
+                                <del><a href="<?=Url::to(['detail/index','id' => $userNewShare->fid])?>" target="_blank" class="list-group-item"><?=$userNewShare->title?></a></del>
+                            <?php endif?>
+                        <?php endforeach ?>
+                    <?php endif ?>
                 </div>
             </div>
         </div>

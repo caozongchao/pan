@@ -2,6 +2,7 @@
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Url;
 use frontend\helpers\FormatSizeHelper;
+use frontend\helpers\CheckMobileHelper;
 use frontend\helpers\ColorHelper;
 use yii\widgets\LinkPager;
 use yii\widgets\Breadcrumbs;
@@ -16,7 +17,11 @@ $this->params['breadcrumbs'][] = ['label' => $second];
         <?php echo \Yii::$app->view->renderFile('@frontend/views/layouts/categorySidebar.php',['top10' => $top10]); ?>
         <div class="col-lg-8">
             <!-- 广告位 -->
-            <center></center>
+            <?php if (CheckMobileHelper::isMobile()): ?>
+                <center></center>
+            <?php else: ?>
+                <center></center>
+            <?php endif ?>
             <?= Breadcrumbs::widget([
                 'homeLink'=>[
                     'label' => '首页',
@@ -64,7 +69,7 @@ $this->params['breadcrumbs'][] = ['label' => $second];
                                         <?php endif ?>
                                     </h4>
                                     资源大小：<span class="badge" style="background-color: #99CCFF"><?=FormatSizeHelper::formatBytes($value->size)?></span><br />
-                                    收录日期：<span class="badge" style="background-color: #FF9999"><?=date('Y-m-d H:i:s',$value->create_time)?></span>&nbsp;&nbsp;
+                                    本站收录日期：<span class="badge" style="background-color: #FF9999"><?=date('Y-m-d H:i:s',$value->create_time)?></span>&nbsp;&nbsp;
                                     来源类型：<span class="badge" style="background-color: #FF9999">百度云资源</span>
                                 </div>
                                 <div class="media-right" >

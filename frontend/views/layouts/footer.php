@@ -6,11 +6,11 @@ use frontend\helpers\CheckMobileHelper;
     <div class="row">
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-center">
-                <!-- pc端cpv广告位 -->
+                <!-- 广告位 -->
                 <?php if (CheckMobileHelper::isMobile()): ?>
                     <center></center>
                 <?php else: ?>
-                    <center><script src="http://wm.lrswl.com/page/s.php?s=243886&w=950&h=90"></script></center>
+                    <center></center>
                 <?php endif ?>
             </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>

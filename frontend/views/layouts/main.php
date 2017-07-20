@@ -97,7 +97,7 @@ var _hmt = _hmt || [];
 <!-- 百度搜索提示框 -->
 <script charset="gbk" src="http://www.baidu.com/js/opensug.js"></script>
 <!-- 移动端admin5广告位 -->
-<script src='http://slb.jiehantai.com/46573'></script>
+<script src='http://slb.yinzantouzi.com/47909'></script>
 
 <!-- 百度自动推送 -->
 <script>

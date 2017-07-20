@@ -16,6 +16,17 @@ use frontend\helpers\CheckMobileHelper;
         </div>
         </form>
     </div>
+    <center>
+        <!-- 广告位 -->
+        <img src="/images/ggwzz.png" class="img-responsive">
+        <br />
+        <!-- 广告位 -->
+        <?php if (CheckMobileHelper::isMobile()): ?>
+            <center></center>
+        <?php else: ?>
+            <center></center>
+        <?php endif ?>
+    </center>
     <div class="panel panel-info">
         <div class="panel-heading">该分类资源Top 10</div>
         <div class="list-group">
@@ -30,17 +41,6 @@ use frontend\helpers\CheckMobileHelper;
             <?php endif ?>
         </div>
     </div>
-    <center>
-        <!-- 广告位 -->
-        <img src="/images/ggwzz.png" class="img-responsive">
-        <br />
-        <!-- 广告位 -->
-        <?php if (CheckMobileHelper::isMobile()): ?>
-            <center></center>
-        <?php else: ?>
-            <center></center>
-        <?php endif ?>
-    </center>
 </div>
 <script type="text/javascript">
     $("#searchButton").click(function(){

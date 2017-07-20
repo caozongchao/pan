@@ -13,6 +13,10 @@ use frontend\widgets\TopuserWidget;
         </center>
     </div>
     <div class="panel panel-info">
+        <div class="panel-heading">分享达人</div>
+        <center style="padding:5px 0px;background-color: #f5f5f5;"><?php echo TopuserWidget::widget() ?></center>
+    </div>
+    <div class="panel panel-info">
         <div class="panel-heading">Ta 分享的热门资源</div>
         <div class="list-group">
             <?php if ($userHotShares): ?>
@@ -25,10 +29,6 @@ use frontend\widgets\TopuserWidget;
                 <?php endforeach ?>
             <?php endif ?>
         </div>
-    </div>
-    <div class="panel panel-info">
-        <div class="panel-heading">分享达人</div>
-        <center style="padding:5px 0px;background-color: #f5f5f5;"><?php echo TopuserWidget::widget() ?></center>
     </div>
     <!-- <div class="well">
         <center>

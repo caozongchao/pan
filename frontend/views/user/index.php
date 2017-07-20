@@ -33,7 +33,7 @@ $this->title = $user->user_name.'分享的网盘资源_云上搜索';
                                     </span>
                                 </h4>
                                 资源大小：<span class="badge" style="background-color: #99CCFF"><?=FormatSizeHelper::formatBytes($value->size)?></span><br />
-                                收录日期：<span class="badge" style="background-color: #FF9999"><?=date('Y-m-d H:i:s',$value->create_time)?></span>&nbsp;&nbsp;
+                                本站收录日期：<span class="badge" style="background-color: #FF9999"><?=date('Y-m-d H:i:s',$value->create_time)?></span>&nbsp;&nbsp;
                                 来源类型：<span class="badge" style="background-color: #FF9999">百度网盘资源</span>
                             </div>
                             <div class="media-right" >
