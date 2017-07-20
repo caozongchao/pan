@@ -516,7 +516,6 @@ class BaiduPanSpider(object):
                         filelist = item['filelist']
                         isdir = filelist[0]['isdir']
                         size = filelist[0]['size']
-                        md5 = ''
                     else:
                         isdir = 1
                 elif feed_type == 'album':
@@ -526,11 +525,24 @@ class BaiduPanSpider(object):
                 if item.has_key('shorturl'):
                     shorturl = item['shorturl']
 
-                if feed_type == 'share' or feed_type == 'album':
+                if feed_type == 'share':
                     returns.append({
                         'title': item['title'].encode('utf-8'),
                         'shorturl': shorturl,
                         'shareid': item['shareid'],
+                        'feed_time': item['feed_time'] // 1000,  # 分享时间
+                        'dCnt': 0,
+                        'isdir': isdir,
+                        'size': size,
+                        'md5': md5,
+                        'uk': uk,
+                        'feed_type': feed_type
+                    })
+                if feed_type == 'album':
+                    returns.append({
+                        'title': item['title'].encode('utf-8'),
+                        'shorturl': shorturl,
+                        'shareid': item['album_id'],
                         'feed_time': item['feed_time'] // 1000,  # 分享时间
                         'dCnt': 0,
                         'isdir': isdir,
