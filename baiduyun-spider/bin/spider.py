@@ -629,65 +629,12 @@ class BaiduPanSpider(object):
                         self.got_files_count += files_count
                         self.db.commit()
 
-            # 爬取完文件后在爬取订阅列表
+            # 爬取完文件后在爬取订阅列表，wap暂时不爬取
             if share_user['follow_done'] == 0 and share_user['file_done'] == 1:
-                print '%d now spidering follow ,%d  follow fetched' % (share_user['uk'], share_user['follow_fetched'])
-                rs = self.getFollows(share_user['uk'], share_user['follow_fetched'])
-                if not rs:
-                    print 'error to fetch follows,try again later...'
-                    return
-                total_count, fetched_count, follow_list = rs
-                total_fetched = share_user['follow_fetched'] + fetched_count
-                print 'fetched_follow_count:%d' % fetched_count
-                if total_fetched >= total_count or total_count == 0:
-                    share_user['follow_done'] = 1
-                if total_count == 0:
-                    self.db.execute("DELETE FROM spider_list WHERE sid=%s", (share_user['sid'],))
-                    self.db.commit()
-                else:
-                    try:
-                        follow_count = 0
-                        for follow in follow_list:
-                            follow_count += 1
-                            # 判断该用户是否已经在表中了
-                            if self.db.execute('SELECT * FROM share_users WHERE uk=%s', (follow['follow_uk'],)) > 0:
-                                print 'uk:%d has already in share_user table' % follow['follow_uk']
-                                continue
-                            time_stamp = int(time.time())
-                            self.db.execute("INSERT INTO share_users (uk,user_name,avatar_url,intro,follow_count,album_count,\
-                                fens_count,pubshare_count,last_visited,create_time,weight) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-                                            (
-                                                follow['follow_uk'], follow['follow_uname'], follow['avatar_url'],
-                                                follow['intro'], follow['follow_count'],
-                                                follow['album_count'], follow['fans_count'], follow['pubshare_count'],
-                                                time_stamp, time_stamp, 5
-                                            )
-                                            )
-                            # 将获取的新分享者加入爬取列表
-                            self.db.execute("INSERT INTO spider_list (uk,uid) VALUES(%s,%s)",
-                                            (follow['follow_uk'], self.db.last_row_id()))
-                    except:
-                        share_user['follow_done'] = 0
-                        self.db.rollback()
-                        traceback.print_exc()
-                        return False
-                    else:
-                        if share_user['follow_done'] == 1:
-                            # 订阅者爬取完成，该分享者的任务完成，从待爬取列表中删除
-                            print 'delete follow fetched sid:%d from spider_list' % share_user['sid']
-                            self.db.execute("DELETE FROM spider_list WHERE sid=%s", (share_user['sid'],))
-                        else:
-                            self.db.execute("UPDATE spider_list set follow_fetched=%s,follow_done=%s WHERE sid=%s",
-                                            (total_fetched, share_user['follow_done'], share_user['sid']))
-                        share_user['follow_fetched'] = total_fetched
-                        self.got_follow_count += follow_count
-                        self.db.commit()
-            # 只要分享者列表没完成，说明该分享者还未爬取完，则加入工作队列，继续爬取
-            if share_user['follow_done'] == 0:
-                self.spider_queue.put(share_user)
-            else:
-                print '%d has done' % share_user['uk']
-                del share_user
+                share_user['follow_done'] = 1
+                print '删除用户:%d' % share_user['sid']
+                self.db.execute("DELETE FROM spider_list WHERE sid=%s", (share_user['sid'],))
+                self.db.commit()
             time.sleep(SPIDER_INTERVAL)
 
         print '-----------------Done------------------'
