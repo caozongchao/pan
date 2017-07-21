@@ -492,9 +492,9 @@ class BaiduPanSpider(object):
         print 'got_files_count:%d' % self.got_files_count
         return True
 
-    def getShareListsWap(self, uk, start=0):
-        sharelists_url = ' http://pan.baidu.com/wap/share/home?uk=%d&start=%d&adapt=pc&fr=ftw' % (
-            uk, start)
+    def getShareListsWap(self, uk, start=0, limit=100):
+        sharelists_url = ' http://pan.baidu.com/wap/share/home?uk=%d&start=%d&limit=%d&adapt=pc&fr=ftw' % (
+            uk, start,limit)
         # ref = 'http://yun.baidu.com/share/home?uk=%d&view=share' % uk
         sharelists_json = json.loads(getHtmlWap(sharelists_url))
         feedata = sharelists_json['feedata']
@@ -555,7 +555,7 @@ class BaiduPanSpider(object):
 
     def startSpiderWap(self):
         if self.spider_queue.empty():
-            fetched_users = self.db.execute('SELECT * from spider_list ORDER BY weight DESC limit 0,100')
+            fetched_users = self.db.execute('SELECT * from spider_list ORDER BY weight DESC limit 0,30')
             if fetched_users <= 0:
                 print 'nothing to spider,spider_list is empty'
                 return False
