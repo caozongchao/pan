@@ -43,7 +43,7 @@ class ShareFile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'uk', 'isdir', 'size', 'md5', 'shareid', 'ext', 'create_time', 'file_type', 'uid', 'feed_time'], 'required'],
+            [['title', 'uk', 'isdir', 'size', 'shareid', 'ext', 'create_time', 'file_type', 'uid', 'feed_time'], 'required'],
             [['shorturl'], 'required','on' => 'new'],
             [['uk', 'isdir', 'size', 'deleted', 'd_cnt', 'create_time', 'file_type', 'uid', 'feed_time', 'indexed','click'], 'integer'],
             [['title'], 'string', 'max' => 100],
